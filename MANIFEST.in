@@ -1,0 +1,6 @@
+exclude pyside_material/resources/generate.py
+recursive-include pyside_material *.css.template
+recursive-include pyside_material/themes *.xml
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+

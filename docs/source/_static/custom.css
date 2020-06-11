@@ -1,0 +1,45 @@
+.highlight pre{
+    border: 1px solid #e3e3e3;
+    border-radius: 2px;
+    font-size: 75%;
+}
+
+.docutils.literal{
+    color: #41cd52;
+    padding: 1px 4px;
+    margin: 0 -2px;
+    border-radius: 2px;
+}
+
+a {
+    color: #41cd52;
+}
+
+a.reference {
+    border-bottom: 1px dotted #41cd52;
+}
+
+a.reference:hover {
+    border-bottom: 1px solid #41cd52;
+}
+
+a:hover {
+    color: #41cd52;
+}
+
+
+h1 {
+    margin: 30px 0px 10px 0px !important;
+}
+
+
+.body {
+    max-width: unset !important;
+}
+
+
+img.logo{
+
+width: 210px;
+
+}
