@@ -3,7 +3,7 @@
     font-family: Roboto;
     /*font-size: 13px;*/
     line-height: 13px;
-    /*font-weight: 400;*/
+    /*font-weight: "Light";*/
 
     selection-background-color: {{primaryLightColor}};
     selection-color: {{secondaryColor}};
@@ -17,7 +17,7 @@ QWidget {
 }
 
 
-
+/*.QWebEngineView,*/
 .QFrame {
     background-color: {{secondaryDarkColor}};
     border: 1px solid {{secondaryColor}};
@@ -32,8 +32,8 @@ QFrame {
 
 .QStatusBar {
     color: {{secondaryTextColor}};
-    background-color: {{secondaryColor}};
-    border: 0px solid {{secondaryColor}};
+    background-color: {{secondaryDarkColor}};
+    border: 0px solid {{secondaryDarkColor}};
     border-radius: 0px;
 }
 
@@ -575,7 +575,7 @@ QDockWidget::title {
     /*text-transform: uppercase;*/
     /*border-top: 5px solid {{secondaryDarkColor}};*/
     text-align: left;
-    background-color: {{secondaryColor}};
+    background-color: {{secondaryColor|opacity(0.3)}};
     padding-left: 35px;
     padding: 3px;
     margin-top: 4px;
@@ -855,11 +855,19 @@ border-color: red;
 }
 
 
+/*QMdiArea{*/
+
+    /*background-color:{{secondaryColor}};*/
+    /*background:{{secondaryColor}};*/
+
+/*}*/
+
 QMdiSubWindow{
 
 /*border-radius: 2px;*/
 /*border-color: {{secondaryLightColor}};*/
 /*background: {{secondaryColor}};*/
+/*background-color: {{secondaryColor}};*/
 /*border: 1px solid {{secondaryLightColor}};*/
 
 }
@@ -1056,3 +1064,11 @@ QTableView > QHeaderView::section:last {
 QTableView {
     alternate-background-color: {{secondaryColor|opacity(0.7)}};
 }
+
+
+
+/*QGroupBox {*/
+
+/*background-color: {{secondaryColor|opacity(0.5)}};*/
+
+/*}*/

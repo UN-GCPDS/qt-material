@@ -6,7 +6,7 @@
 PySide Material
 ===============
 
-This is another stylesheet for PySide, this time looks like Material.
+This is another stylesheet for PySide, this time looks like Material Design.
 
 
 There is some custom dark themes:

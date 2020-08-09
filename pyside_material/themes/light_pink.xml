@@ -5,7 +5,7 @@
   <color name="primaryDarkColor">#c60055</color>
   <color name="secondaryColor">#eeeeee</color>
   <color name="secondaryLightColor">#ffffff</color>
-  <color name="secondaryDarkColor">#bcbcbc</color>
+  <color name="secondaryDarkColor">#e6e6e6</color>
   <color name="primaryTextColor">#000000</color>
-  <color name="secondaryTextColor">#424242</color>
+  <color name="secondaryTextColor">#000000</color>
 </resources>

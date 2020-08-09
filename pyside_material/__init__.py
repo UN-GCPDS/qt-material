@@ -1,5 +1,6 @@
 import os
 import logging
+from PySide2.QtGui import QFontDatabase
 
 import jinja2
 # from jinja2 import Template
@@ -26,7 +27,8 @@ def build_stylesheet(theme='', light_secondary=False, resources=[], extra={}):
     theme = get_theme(theme, light_secondary)
     set_icons_theme(theme)
 
-    loader = jinja2.FileSystemLoader(os.path.join(os.path.dirname(os.path.abspath(__file__))))
+    loader = jinja2.FileSystemLoader(os.path.join(
+        os.path.dirname(os.path.abspath(__file__))))
     env = jinja2.Environment(autoescape=True, loader=loader)
 
     theme['icon'] = None
@@ -42,20 +44,24 @@ def build_stylesheet(theme='', light_secondary=False, resources=[], extra={}):
 
 
 # ----------------------------------------------------------------------
-def get_theme(theme, light_secondary=False):
-    if theme in ['default.xml', 'default_dark.xml']:
-        default_theme = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'themes', 'dark_teal.xml')
-    elif theme in ['default_light.xml']:
+def get_theme(theme_name, light_secondary=False):
+    if theme_name in ['default.xml', 'default_dark.xml']:
+        default_theme = os.path.join(os.path.dirname(
+            os.path.abspath(__file__)), 'themes', 'dark_teal.xml')
+    elif theme_name in ['default_light.xml']:
         light_secondary = True
-        default_theme = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'themes', 'light_blue.xml')
+        default_theme = os.path.join(os.path.dirname(
+            os.path.abspath(__file__)), 'themes', 'light_blue.xml')
 
-    if not os.path.exists(theme):
+    if not os.path.exists(theme_name):
 
-        theme = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'themes', theme)
+        theme = os.path.join(os.path.dirname(
+            os.path.abspath(__file__)), 'themes', theme_name)
         if not os.path.exists(theme):
 
             if theme:
-                logging.warning(f"{theme} not exist, using {default_theme} by default.")
+                logging.warning(
+                    f"{theme} not exist, using {default_theme} by default.")
 
             theme = default_theme
 
@@ -66,15 +72,37 @@ def get_theme(theme, light_secondary=False):
         os.environ[str(k)] = theme[k]
 
     if light_secondary:
-        theme['secondaryColor'], theme['secondaryLightColor'], theme['secondaryDarkColor'] = theme['secondaryColor'], theme['secondaryDarkColor'], theme['secondaryLightColor']
+        theme['secondaryColor'], theme['secondaryLightColor'], theme['secondaryDarkColor'] = theme[
+            'secondaryColor'], theme['secondaryDarkColor'], theme['secondaryLightColor']
         # 'secondaryColor': '#fafafa', 'secondaryLightColor': '#ffffff', 'secondaryDarkColor': '#c7c7c7'
+
+    for color in ['primaryColor',
+                  'primaryLightColor',
+                  'primaryDarkColor',
+                  'secondaryColor',
+                  'secondaryLightColor',
+                  'secondaryDarkColor',
+                  'primaryTextColor',
+                  'secondaryTextColor']:
+        os.environ[f'PYSIDEMATERIAL_{color.upper()}'] = theme[color]
+    os.environ['PYSIDEMATERIAL_THEME'] = theme_name
 
     return theme
 
 
 # ----------------------------------------------------------------------
+def add_fonts():
+    """"""
+    fonts_path = os.path.join(os.path.dirname(__file__), 'fonts')
+    for font in os.listdir(fonts_path):
+        QFontDatabase.addApplicationFont(os.path.join(fonts_path, font))
+
+
+# ----------------------------------------------------------------------
 def apply_stylesheet(app, theme='', style='Fusion', save_as=None, light_secondary=False, resources=[], extra={}):
     """"""
+    add_fonts()
+
     if style:
         app.setStyle(style)
     stylesheet = build_stylesheet(theme, light_secondary, resources, extra)
@@ -104,7 +132,8 @@ def set_icons_theme(theme, resource=None, overwrite=False):
         pass
 
     if resource is None:
-        resource = os.path.join(os.path.dirname(os.path.abspath(__file__)), _resource)
+        resource = os.path.join(os.path.dirname(
+            os.path.abspath(__file__)), _resource)
     # else:
         # rsc =
 
@@ -119,7 +148,8 @@ def set_icons_theme(theme, resource=None, overwrite=False):
         )
 
         for color, replace in replaces:
-            colors = [color] + [''.join(list(color)[:i] + ['\\\n'] + list(color)[i:]) for i in range(1, 7)]
+            colors = [
+                color] + [''.join(list(color)[:i] + ['\\\n'] + list(color)[i:]) for i in range(1, 7)]
             for c in colors:
                 content = content.replace(c, theme[replace])
 
@@ -135,6 +165,7 @@ def set_icons_theme(theme, resource=None, overwrite=False):
 # ----------------------------------------------------------------------
 def list_themes():
     """"""
-    themes = os.listdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'themes'))
+    themes = os.listdir(os.path.join(
+        os.path.dirname(os.path.abspath(__file__)), 'themes'))
     themes = filter(lambda a: a.endswith('xml'), themes)
     return list(themes)

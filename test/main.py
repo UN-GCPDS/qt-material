@@ -28,15 +28,16 @@ if __name__ == "__main__":
         QTimer.singleShot(T0 * 2, app.closeAllWindows)
     except:
         # theme = 'light_blue'
+        # theme = 'light_cyan_500'
         theme = 'default'
 
     app.setStyleSheet("")
 
-
     extra = {'danger': '#dc3545',
              'warning': '#ffc107',
-             'success': '#17a2b8',}
-    apply_stylesheet(app, theme=f'{theme}.xml', light_secondary=theme.startswith('light'), save_as='material.qss', extra=extra)
+             'success': '#17a2b8', }
+    apply_stylesheet(app, theme=f'{theme}.xml', light_secondary=theme.startswith(
+        'light'), save_as='material.qss', extra=extra)
 
     frame = QUiLoader().load('main_window.ui')
     frame.show()
