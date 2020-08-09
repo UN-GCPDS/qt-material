@@ -250,8 +250,8 @@ QPushButton:pressed {
 
 QPushButton:flat {
 
-    min-height: 40px;
-    min-width: 40px;
+    /*min-height: 40px;*/
+    /*min-width: 40px;*/
 
     padding: 5px;
     margin: 0px;
@@ -261,33 +261,15 @@ QPushButton:flat {
     background-color: transparent;
 }
 
-/*QPushButton[text=""]:flat {*/
-
-
-    /*background-color: red;*/
-
-    /*padding: 0px;*/
-    /*margin: 0px;*/
-
-    /*height: 40px;*/
-    /*width: 40px;*/
-    /*min-height: 40px;*/
-    /*min-width: 40px;*/
-
-/*}*/
-
-
-
-
 QPushButton:flat:hover {
-    color: {{secondaryDarkColor}};
-    background-color: {{secondaryColor}};
+    color: {{primaryLightColor}};
+    /*background-color: {{primaryLightColor|opacity(0.4)}};*/
 }
 
 QPushButton:flat:pressed,
 QPushButton:flat:checked {
-    color: {{secondaryDarkColor}};
-    background-color: {{secondaryLightColor}};
+    color: {{primaryDarkColor|opacity(0.4)}};
+    /*background-color: {{primaryDarkColor}};*/
 }
 
 QPushButton:flat:disabled,

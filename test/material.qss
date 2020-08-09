@@ -250,8 +250,8 @@ QPushButton:pressed {
 
 QPushButton:flat {
 
-    min-height: 40px;
-    min-width: 40px;
+    /*min-height: 40px;*/
+    /*min-width: 40px;*/
 
     padding: 5px;
     margin: 0px;
@@ -261,33 +261,15 @@ QPushButton:flat {
     background-color: transparent;
 }
 
-/*QPushButton[text=""]:flat {*/
-
-
-    /*background-color: red;*/
-
-    /*padding: 0px;*/
-    /*margin: 0px;*/
-
-    /*height: 40px;*/
-    /*width: 40px;*/
-    /*min-height: 40px;*/
-    /*min-width: 40px;*/
-
-/*}*/
-
-
-
-
 QPushButton:flat:hover {
-    color: #000a12;
-    background-color: #263238;
+    color: #6effe8;
+    /*background-color: rgba(110, 255, 232, 0.4);*/
 }
 
 QPushButton:flat:pressed,
 QPushButton:flat:checked {
-    color: #000a12;
-    background-color: #4f5b62;
+    color: rgba(0, 182, 134, 0.4);
+    /*background-color: #00b686;*/
 }
 
 QPushButton:flat:disabled,
@@ -855,19 +837,19 @@ border-color: red;
 }
 
 
-QMdiArea{
+/*QMdiArea{*/
 
-    background-color:#263238;
-    background:#263238;
+    /*background-color:#263238;*/
+    /*background:#263238;*/
 
-}
+/*}*/
 
 QMdiSubWindow{
 
 /*border-radius: 2px;*/
 /*border-color: #4f5b62;*/
-background: #263238;
-background-color: #263238;
+/*background: #263238;*/
+/*background-color: #263238;*/
 /*border: 1px solid #4f5b62;*/
 
 }

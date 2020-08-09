@@ -472,8 +472,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>647</width>
-             <height>252</height>
+             <width>100</width>
+             <height>30</height>
             </rect>
            </property>
            <attribute name="label">
@@ -496,8 +496,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>647</width>
-             <height>252</height>
+             <width>100</width>
+             <height>30</height>
             </rect>
            </property>
            <attribute name="label">
@@ -509,7 +509,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>626</width>
+             <width>747</width>
              <height>292</height>
             </rect>
            </property>
@@ -973,10 +973,23 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="0">
+           <item row="2" column="2">
+            <widget class="QPushButton" name="pushButton_4">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Flat disable</string>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="1">
             <widget class="QPushButton" name="pushButton_5">
              <property name="text">
-              <string>Flat</string>
+              <string>Flat checkeable</string>
              </property>
              <property name="checkable">
               <bool>true</bool>
@@ -989,13 +1002,10 @@
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
-            <widget class="QPushButton" name="pushButton_4">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
+           <item row="2" column="0">
+            <widget class="QPushButton" name="pushButton_11">
              <property name="text">
-              <string>Flat disable</string>
+              <string>Flat</string>
              </property>
              <property name="flat">
               <bool>true</bool>
