@@ -452,7 +452,7 @@
        <enum>QTabWidget::East</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="tabsClosable">
        <bool>true</bool>
@@ -472,8 +472,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>100</width>
-             <height>30</height>
+             <width>747</width>
+             <height>269</height>
             </rect>
            </property>
            <attribute name="label">
@@ -496,8 +496,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>100</width>
-             <height>30</height>
+             <width>747</width>
+             <height>269</height>
             </rect>
            </property>
            <attribute name="label">
@@ -509,7 +509,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>747</width>
+             <width>726</width>
              <height>292</height>
             </rect>
            </property>
@@ -522,26 +522,11 @@
               <item row="3" column="0">
                <widget class="QSpinBox" name="spinBox"/>
               </item>
-              <item row="4" column="0">
-               <widget class="QLineEdit" name="lineEdit">
-                <property name="text">
-                 <string>Lorem ipsum dolor sit amet</string>
-                </property>
-               </widget>
-              </item>
-              <item row="0" column="2">
-               <widget class="QComboBox" name="comboBox_3">
+              <item row="2" column="2">
+               <widget class="QComboBox" name="comboBox_4">
                 <property name="enabled">
                  <bool>false</bool>
                 </property>
-                <property name="editable">
-                 <bool>true</bool>
-                </property>
-                <item>
-                 <property name="text">
-                  <string>New Item</string>
-                 </property>
-                </item>
                 <item>
                  <property name="text">
                   <string>New Item</string>
@@ -579,50 +564,26 @@
                 </property>
                </widget>
               </item>
-              <item row="2" column="0">
-               <widget class="QComboBox" name="comboBox_2">
-                <item>
-                 <property name="text">
-                  <string>New Item1</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>New Item2</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>New Item3</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>New Item4</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>New Item5</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>New Item6</string>
-                 </property>
-                </item>
-                <item>
-                 <property name="text">
-                  <string>New Item7</string>
-                 </property>
-                </item>
+              <item row="4" column="0">
+               <widget class="QLineEdit" name="lineEdit">
+                <property name="text">
+                 <string>Lorem ipsum dolor sit amet</string>
+                </property>
                </widget>
               </item>
-              <item row="2" column="2">
-               <widget class="QComboBox" name="comboBox_4">
+              <item row="0" column="2">
+               <widget class="QComboBox" name="comboBox_3">
                 <property name="enabled">
                  <bool>false</bool>
                 </property>
+                <property name="editable">
+                 <bool>true</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>New Item</string>
+                 </property>
+                </item>
                 <item>
                  <property name="text">
                   <string>New Item</string>
@@ -685,28 +646,8 @@
                 </item>
                </widget>
               </item>
-              <item row="5" column="0">
-               <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
-              </item>
-              <item row="5" column="2">
-               <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="3" column="2">
-               <widget class="QSpinBox" name="spinBox_2">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-               </widget>
-              </item>
-              <item row="1" column="0">
-               <widget class="QComboBox" name="comboBox_5">
-                <property name="frame">
-                 <bool>false</bool>
-                </property>
+              <item row="2" column="0">
+               <widget class="QComboBox" name="comboBox_2">
                 <item>
                  <property name="text">
                   <string>New Item1</string>
@@ -787,6 +728,65 @@
                   <string>New Item7</string>
                  </property>
                 </item>
+               </widget>
+              </item>
+              <item row="5" column="2">
+               <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QComboBox" name="comboBox_5">
+                <property name="frame">
+                 <bool>false</bool>
+                </property>
+                <item>
+                 <property name="text">
+                  <string>New Item1</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>New Item2</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>New Item3</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>New Item4</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>New Item5</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>New Item6</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>New Item7</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item row="5" column="0">
+               <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
+              </item>
+              <item row="3" column="2">
+               <widget class="QSpinBox" name="spinBox_2">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                </widget>
               </item>
              </layout>
@@ -905,17 +905,46 @@
            <string>Buttons</string>
           </property>
           <layout class="QGridLayout" name="gridLayout">
-           <item row="0" column="1">
-            <widget class="QPushButton" name="pushButton_2">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="pushButton">
              <property name="text">
-              <string>No checked</string>
+              <string>PushButton</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="pushButton_3">
+             <property name="text">
+              <string>Checked</string>
              </property>
              <property name="checkable">
               <bool>true</bool>
              </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
-           <item row="1" column="1">
+           <item row="0" column="2">
+            <widget class="QPushButton" name="pushButton_6">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Disabled</string>
+             </property>
+             <property name="checkable">
+              <bool>false</bool>
+             </property>
+             <property name="checked">
+              <bool>false</bool>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
             <widget class="QPushButton" name="pushButton_7">
              <property name="enabled">
               <bool>false</bool>
@@ -934,59 +963,17 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="0">
-            <widget class="QPushButton" name="pushButton">
+           <item row="1" column="1">
+            <widget class="QPushButton" name="pushButton_11">
              <property name="text">
-              <string>PushButton</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QPushButton" name="pushButton_6">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string>Disable</string>
-             </property>
-             <property name="checkable">
-              <bool>false</bool>
-             </property>
-             <property name="checked">
-              <bool>false</bool>
-             </property>
-             <property name="flat">
-              <bool>false</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="2">
-            <widget class="QPushButton" name="pushButton_3">
-             <property name="text">
-              <string>Checked</string>
-             </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="checked">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="QPushButton" name="pushButton_4">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string>Flat disable</string>
+              <string>Flat</string>
              </property>
              <property name="flat">
               <bool>true</bool>
              </property>
             </widget>
            </item>
-           <item row="2" column="1">
+           <item row="1" column="2">
             <widget class="QPushButton" name="pushButton_5">
              <property name="text">
               <string>Flat checkeable</string>
@@ -1003,9 +990,12 @@
             </widget>
            </item>
            <item row="2" column="0">
-            <widget class="QPushButton" name="pushButton_11">
+            <widget class="QPushButton" name="pushButton_4">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
              <property name="text">
-              <string>Flat</string>
+              <string>Flat disabled</string>
              </property>
              <property name="flat">
               <bool>true</bool>
@@ -1157,6 +1147,261 @@
        <attribute name="title">
         <string>Page</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_24">
+        <item row="2" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QRadioButton" name="radioButton_7">
+            <property name="text">
+             <string>RadioButton</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+            <property name="autoExclusive">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_5">
+            <property name="text">
+             <string>RadioButton</string>
+            </property>
+            <property name="autoExclusive">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_6">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>RadioButton</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QRadioButton" name="radioButton_8">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>RadioButton</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0" colspan="2">
+         <spacer name="verticalSpacer_5">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item row="0" column="0" colspan="2">
+         <layout class="QGridLayout" name="gridLayout_27" rowstretch="0,0,0,0">
+          <item row="0" column="0">
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPushButton" name="pushButton_12">
+            <property name="text">
+             <string>Checked</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QPushButton" name="pushButton_17">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Flat disabled</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QPushButton" name="pushButton_14">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Disable checked</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QPushButton" name="pushButton_13">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>Disabled</string>
+            </property>
+            <property name="checkable">
+             <bool>false</bool>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QPushButton" name="pushButton_16">
+            <property name="text">
+             <string>Flat checkeable</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QPushButton" name="pushButton_15">
+            <property name="text">
+             <string>Flat</string>
+            </property>
+            <property name="flat">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="1">
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QCheckBox" name="checkBox_5">
+            <property name="text">
+             <string>CheckBox</string>
+            </property>
+            <property name="tristate">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_6">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>CheckBox</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_7">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>CheckBox</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="checkBox_8">
+            <property name="text">
+             <string>CheckBox</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+            <property name="tristate">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="3" column="0" colspan="2">
+         <spacer name="verticalSpacer_6">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_12">
        <attribute name="title">

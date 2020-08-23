@@ -61,6 +61,8 @@ QPushButton {
     border-radius: 4px;
     padding: 8px 16px ;
     height: 18px;
+    /*min-height: 18px;*/
+    /*max-height: 18px;*/
     font-weight: bold;
 }
 
@@ -69,8 +71,7 @@ QSpinBox:disabled,
 QDoubleSpinBox:disabled,
 QTextEdit:disabled,
 .QLineEdit:disabled,
-QComboBox:disabled,
-QPushButton:disabled
+QComboBox:disabled
 {
 
     color: {{primaryColor|opacity(0.2)}};
@@ -272,12 +273,17 @@ QPushButton:flat:checked {
     /*background-color: {{primaryDarkColor}};*/
 }
 
-QPushButton:flat:disabled,
-QPushButton:disabled {
-    color: {{secondaryLightColor}};
+QPushButton:disabled,
+QPushButton:flat:disabled {
+    color: {{secondaryLightColor|opacity(0.75)}};
     background-color: transparent;
     border-color:  {{secondaryColor}};
 }
+
+QPushButton:disabled {
+    border: 2px solid {{secondaryLightColor|opacity(0.75)}};
+}
+
 
 QPushButton:checked:disabled {
 
@@ -847,7 +853,7 @@ border-color: red;
 QMdiSubWindow{
 
 /*border-radius: 2px;*/
-/*border-color: {{secondaryLightColor}};*/
+/*border-color: {{primaryLightColor}};*/
 /*background: {{secondaryColor}};*/
 /*background-color: {{secondaryColor}};*/
 /*border: 1px solid {{secondaryLightColor}};*/
