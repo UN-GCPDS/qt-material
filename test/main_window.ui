@@ -14,8 +14,8 @@
    <string>MainWindow</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="pyside_material/resources/resource.qrc">
-    <normaloff>:/icon/primary/logo_frame.svg</normaloff>:/icon/primary/logo_frame.svg</iconset>
+   <iconset resource="pyside_material/resources/logos.qrc">
+    <normaloff>:/icon/logo/logo_frame.svg</normaloff>:/icon/logo/logo_frame.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_17">
@@ -225,8 +225,8 @@
                 <string>New Item</string>
                </property>
                <property name="icon">
-                <iconset resource="pyside_material/resources/resource.qrc">
-                 <normaloff>:/icon/primary/logo_frame.svg</normaloff>:/icon/primary/logo_frame.svg</iconset>
+                <iconset resource="pyside_material/resources/logos.qrc">
+                 <normaloff>:/icon/logo/logo_frame.svg</normaloff>:/icon/logo/logo_frame.svg</iconset>
                </property>
               </item>
               <item>
@@ -234,8 +234,8 @@
                 <string>New Item</string>
                </property>
                <property name="icon">
-                <iconset resource="pyside_material/resources/resource.qrc">
-                 <normaloff>:/icon/primary/logo_frame.svg</normaloff>:/icon/primary/logo_frame.svg</iconset>
+                <iconset resource="pyside_material/resources/logos.qrc">
+                 <normaloff>:/icon/logo/logo_frame.svg</normaloff>:/icon/logo/logo_frame.svg</iconset>
                </property>
               </item>
               <item>
@@ -243,8 +243,8 @@
                 <string>New Item</string>
                </property>
                <property name="icon">
-                <iconset resource="pyside_material/resources/resource.qrc">
-                 <normaloff>:/icon/primary/logo_frame.svg</normaloff>:/icon/primary/logo_frame.svg</iconset>
+                <iconset resource="pyside_material/resources/logos.qrc">
+                 <normaloff>:/icon/logo/logo_frame.svg</normaloff>:/icon/logo/logo_frame.svg</iconset>
                </property>
               </item>
              </widget>
@@ -1225,7 +1225,7 @@
          </spacer>
         </item>
         <item row="0" column="0" colspan="2">
-         <layout class="QGridLayout" name="gridLayout_27" rowstretch="0,0,0,0">
+         <layout class="QGridLayout" name="gridLayout_27" rowstretch="0,0,0">
           <item row="0" column="0">
            <widget class="QPushButton" name="pushButton_2">
             <property name="text">
@@ -1469,6 +1469,12 @@
      <string>Menu disabled</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuStyles">
+    <property name="title">
+     <string>Styles</string>
+    </property>
+   </widget>
+   <addaction name="menuStyles"/>
    <addaction name="menumenu"/>
    <addaction name="menumenu2"/>
    <addaction name="menumenu_disabled"/>
@@ -1671,8 +1677,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   </action>
   <action name="actionToolbar">
    <property name="icon">
-    <iconset resource="pyside_material/resources/resource.qrc">
-     <normaloff>:/icon/primary/logo.svg</normaloff>:/icon/primary/logo.svg</iconset>
+    <iconset resource="pyside_material/resources/logos.qrc">
+     <normaloff>:/icon/logo/logo.svg</normaloff>:/icon/logo/logo.svg</iconset>
    </property>
    <property name="text">
     <string>PySide Material Theme</string>
@@ -1714,6 +1720,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
  </customwidgets>
  <resources>
   <include location="pyside_material/resources/resource.qrc"/>
+  <include location="pyside_material/resources/logos.qrc"/>
  </resources>
  <connections/>
 </ui>
