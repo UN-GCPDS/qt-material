@@ -9,19 +9,17 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='pyside-material',
-    version='1.12',
+    version='1.13',
     packages=['pyside_material', 'pyside_material.resources'],
 
     author='Yeison Cardona',
-    author_email='yeisoneng@gmail.com',
+    author_email='yencardonaal@unal.edu.co',
     maintainer='Yeison Cardona',
-    maintainer_email='yeisoneng@gmail.com',
+    maintainer_email='yencardonaal@unal.edu.co',
 
-    # url='http://yeisoncardona.com/',
-    download_url='https://bitbucket.org/gcpds/pyside-material/downloads/',
+    download_url='https://github.com/UN-GCPDS/pyside-material',
 
     install_requires=['pyside2',
-                      # 'python-for-android', #install from git
                       ],
 
     include_package_data=True,
