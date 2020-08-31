@@ -8,6 +8,9 @@
     selection-background-color: {{primaryLightColor}};
     selection-color: {{secondaryColor}};
 
+    /*min-width: 0px;*/
+    /*min-height: 0px;*/
+
 }
 
 
@@ -207,7 +210,7 @@ QSpinBox::up-button {
     subcontrol-position: top right; /* position at the top right corner */
 
     width: 20px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
-    border-image: url(:/icon/primary/uparrow.svg);
+    image: url(:/icon/primary/uparrow.svg);
     border-width: 0px;
     margin-right: 5px;
 
@@ -217,7 +220,7 @@ QSpinBox::up-button {
 
 QDoubleSpinBox::up-button:disabled,
 QSpinBox::up-button:disabled {
-    border-image: url(:/icon/disabled/uparrow.svg);
+    image: url(:/icon/disabled/uparrow.svg);
 }
 
 QDoubleSpinBox::down-button,
@@ -226,17 +229,16 @@ QSpinBox::down-button {
     subcontrol-position: bottom right; /* position at bottom right corner */
 
     width: 20px;
-    border-image: url(:/icon/primary/downarrow.svg);
+    image: url(:/icon/primary/downarrow.svg);
     border-width: 0px;
     border-top-width: 0;
     margin-right: 5px;
 }
 
 
-
 QDoubleSpinBox::down-button:disabled,
 QSpinBox::down-button:disabled {
-    border-image: url(:/icon/disabled/downarrow.svg);
+    image: url(:/icon/disabled/downarrow.svg);
 }
 
 
@@ -710,6 +712,8 @@ QToolBox::tab {
     background-color: {{secondaryColor}};
     color: {{secondaryTextColor}};
     padding-left: 15px;
+    text-transform: uppercase;
+    border-radius: 4px;
 }
 
 
