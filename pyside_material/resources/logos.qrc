@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>logo/logo.svg</file>
+    <file>logo/logo_frame.svg</file>
+  </qresource>
+</RCC>

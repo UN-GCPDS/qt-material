@@ -30,16 +30,12 @@
     <file>primary/checkbox_unchecked.svg</file>
     <file>disabled/radiobutton_checked.svg</file>
     <file>primary/radiobutton_checked.svg</file>
-    <file>disabled/logo_frame.svg</file>
-    <file>primary/logo_frame.svg</file>
     <file>disabled/rightarrow.svg</file>
     <file>primary/rightarrow.svg</file>
     <file>disabled/checkbox_checked.svg</file>
     <file>primary/checkbox_checked.svg</file>
     <file>disabled/sizegrip.svg</file>
     <file>primary/sizegrip.svg</file>
-    <file>disabled/logo.svg</file>
-    <file>primary/logo.svg</file>
     <file>disabled/slider.svg</file>
     <file>primary/slider.svg</file>
   </qresource>
