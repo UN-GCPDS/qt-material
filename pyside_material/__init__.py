@@ -1,21 +1,9 @@
 import os
 import logging
-from PySide2.QtGui import QFontDatabase
-
-import jinja2
-# from jinja2 import Template
-
 from xml.etree import ElementTree
 
-
-# from . import resource_rc
-
-# with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'resource_rc.py'), 'r') as file:
-    # content = file.read()
-    # # content = content.replace("#0000ff", theme['primaryColor'])
-    # # content = content.replace("#ffff00", theme['secondaryColor'])
-    # exec(content)
-
+from PySide2.QtGui import QFontDatabase
+import jinja2
 
 template = 'material.css.template'
 _resource = os.path.join('resources', 'resource_rc.py')
@@ -104,7 +92,10 @@ def apply_stylesheet(app, theme='', style='Fusion', save_as=None, light_secondar
     add_fonts()
 
     if style:
-        app.setStyle(style)
+        try:
+            app.setStyle(style)
+        except:
+            pass
     stylesheet = build_stylesheet(theme, light_secondary, resources, extra)
 
     if save_as:
@@ -124,7 +115,7 @@ def opacity(theme, value=0.5):
 
 
 # ----------------------------------------------------------------------
-def set_icons_theme(theme, resource=None, overwrite=False):
+def set_icons_theme(theme, resource=None):
     """"""
     try:
         theme = get_theme(theme)
@@ -134,8 +125,6 @@ def set_icons_theme(theme, resource=None, overwrite=False):
     if resource is None:
         resource = os.path.join(os.path.dirname(
             os.path.abspath(__file__)), _resource)
-    # else:
-        # rsc =
 
     with open(resource, 'r') as file:
         content = file.read()
@@ -153,13 +142,13 @@ def set_icons_theme(theme, resource=None, overwrite=False):
             for c in colors:
                 content = content.replace(c, theme[replace])
 
-        if not overwrite:
-            exec(content, globals())
-            return
+    try:
+        qCleanupResources()  # this method is created after the first call to resource_rc
+    except:
+        pass
 
-    # if overwrite:
-    with open(resource, 'w') as file:
-        file.write(content)
+    # This is like import resource_rc, load new resources with icons
+    exec(content, globals())
 
 
 # ----------------------------------------------------------------------
