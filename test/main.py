@@ -48,7 +48,7 @@ class RuntimeStylesheets(QtWidgets.QMainWindow):
     # ----------------------------------------------------------------------
     def load_styles_in_menu(self):
         """"""
-        for theme in list_themes():
+        for theme in ['default'] + list_themes():
             action = QAction(self)
             action.setText(theme)
             action.triggered.connect(self.wrapper(theme))
@@ -64,6 +64,10 @@ class RuntimeStylesheets(QtWidgets.QMainWindow):
     # ----------------------------------------------------------------------
     def apply_theme(self, theme):
         """"""
+        if theme == 'default':
+            self.main.setStyleSheet('')
+            return
+
         apply_stylesheet(self.main, theme=theme, light_secondary=theme.startswith(
             'light'), extra=self.extra)
 
