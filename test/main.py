@@ -20,7 +20,6 @@ app.setStyle('Fusion')  # For better looking
 
 
 ########################################################################
-
 class RuntimeStylesheets(QtWidgets.QMainWindow):
     # ----------------------------------------------------------------------
     def __init__(self):

@@ -62,7 +62,7 @@ def get_theme(theme_name, light_secondary=False):
     if light_secondary:
         theme['secondaryColor'], theme['secondaryLightColor'], theme['secondaryDarkColor'] = theme[
             'secondaryColor'], theme['secondaryDarkColor'], theme['secondaryLightColor']
-        # 'secondaryColor': '#fafafa', 'secondaryLightColor': '#ffffff', 'secondaryDarkColor': '#c7c7c7'
+        theme['primaryTextColor'] = theme['secondaryTextColor']
 
     for color in ['primaryColor',
                   'primaryLightColor',

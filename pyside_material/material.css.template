@@ -599,8 +599,8 @@ QMenu::item {
 
 
 
-QMenu::item:selected { /* when user selects item using mouse or keyboard */
-    color: {{secondaryDarkColor}};
+QMenu::item:selected {
+    color: {{primaryTextColor}};
     background-color: {{primaryColor}};
     /*border: 1px solid {{secondaryColor}};*/
     border-radius: 4px;
@@ -608,7 +608,7 @@ QMenu::item:selected { /* when user selects item using mouse or keyboard */
 
 
 QMenuBar::item:disabled,
-QMenu::item:disabled { /* when user selects item using mouse or keyboard */
+QMenu::item:disabled { 
     color: {{secondaryTextColor|opacity(0.3)}};
     /*background-color: {{primaryColor}};*/
 }
@@ -685,23 +685,21 @@ QMenu::indicator:exclusive:checked:selected {
 QMenuBar {
     background-color: {{secondaryColor}};
     color: {{secondaryTextColor}};
-    /*height: 30px;*/
-    /*color: red;*/
 }
 
 
 
 QMenuBar::item {
+    height: 33px;
     spacing: 3px;
     padding: 8px 8px;
     background-color: transparent;
-    /*border-radius: 4px;*/
+    color: {{secondaryTextColor}};
 }
-
 
 QMenuBar::item:selected,
 QMenuBar::item:pressed {
-    color: {{secondaryDarkColor}};
+    color: {{primaryTextColor}};
     background-color: {{primaryColor}};
 
 }
@@ -847,20 +845,20 @@ border-color: red;
 }
 
 
-/*QMdiArea{*/
+QMdiArea{
 
     /*background-color:{{secondaryColor}};*/
     /*background:{{secondaryColor}};*/
 
-/*}*/
+}
 
 QMdiSubWindow{
 
 /*border-radius: 2px;*/
-/*border-color: {{primaryLightColor}};*/
+/*border-color: red;*/
 /*background: {{secondaryColor}};*/
 /*background-color: {{secondaryColor}};*/
-/*border: 1px solid {{secondaryLightColor}};*/
+/*border: 1px solid red;*/
 
 }
 
@@ -1007,6 +1005,20 @@ QTreeView::branch:open:has-children:has-siblings  {
 
 /*Themed*/
 
+.accent{
+    color: {{primaryColor}};
+}
+.danger{
+    color: {{danger}};
+}
+
+.warning{
+    color: {{warning}};
+}
+
+.success{
+    color: {{success}};
+}
 
 QPushButton.danger{
     border-color: {{danger}};
