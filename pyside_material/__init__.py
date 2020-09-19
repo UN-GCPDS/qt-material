@@ -8,11 +8,16 @@ import jinja2
 template = 'material.css.template'
 _resource = os.path.join('resources', 'resource_rc.py')
 
+from PySide2.QtWidgets import QAction
+
 
 # ----------------------------------------------------------------------
 def build_stylesheet(theme='', light_secondary=False, resources=[], extra={}):
     """"""
     theme = get_theme(theme, light_secondary)
+    if theme is None:
+        return None
+
     set_icons_theme(theme)
 
     loader = jinja2.FileSystemLoader(os.path.join(
@@ -33,25 +38,20 @@ def build_stylesheet(theme='', light_secondary=False, resources=[], extra={}):
 
 # ----------------------------------------------------------------------
 def get_theme(theme_name, light_secondary=False):
-    if theme_name in ['default.xml', 'default_dark.xml']:
-        default_theme = os.path.join(os.path.dirname(
+    if theme_name in ['default.xml', 'default_dark.xml', 'default', 'default_dark']:
+        theme = os.path.join(os.path.dirname(
             os.path.abspath(__file__)), 'themes', 'dark_teal.xml')
-    elif theme_name in ['default_light.xml']:
+    elif theme_name in ['default_light.xml', 'default_light']:
         light_secondary = True
-        default_theme = os.path.join(os.path.dirname(
+        theme = os.path.join(os.path.dirname(
             os.path.abspath(__file__)), 'themes', 'light_blue.xml')
-
-    if not os.path.exists(theme_name):
-
+    else:
         theme = os.path.join(os.path.dirname(
             os.path.abspath(__file__)), 'themes', theme_name)
-        if not os.path.exists(theme):
 
-            if theme:
-                logging.warning(
-                    f"{theme} not exist, using {default_theme} by default.")
-
-            theme = default_theme
+    if not os.path.exists(theme):
+        logging.warning(f"{theme} not exist!")
+        return None
 
     tree = ElementTree.parse(theme)
     theme = {child.attrib['name']: child.text for child in tree.getroot()}
@@ -97,6 +97,8 @@ def apply_stylesheet(app, theme='', style='Fusion', save_as=None, light_secondar
         except:
             pass
     stylesheet = build_stylesheet(theme, light_secondary, resources, extra)
+    if stylesheet is None:
+        return
 
     if save_as:
         with open(save_as, 'w') as file:
@@ -115,7 +117,7 @@ def opacity(theme, value=0.5):
 
 
 # ----------------------------------------------------------------------
-def set_icons_theme(theme, resource=None):
+def set_icons_theme(theme, resource=None, output=None):
     """"""
     try:
         theme = get_theme(theme)
@@ -142,6 +144,11 @@ def set_icons_theme(theme, resource=None):
             for c in colors:
                 content = content.replace(c, theme[replace])
 
+    if output:
+        with open(output, 'w') as file:
+            file.write(content)
+        return
+
     try:
         qCleanupResources()  # this method is created after the first call to resource_rc
     except:
@@ -158,3 +165,34 @@ def list_themes():
         os.path.dirname(os.path.abspath(__file__)), 'themes'))
     themes = filter(lambda a: a.endswith('xml'), themes)
     return list(themes)
+
+
+########################################################################
+class PySideStyleSwitcher:
+    """"""
+    # ----------------------------------------------------------------------
+
+    def set_style_switcher(self, parent, menu):
+        """"""
+        for theme in ['default'] + list_themes():
+            action = QAction(self)
+            action.setText(theme)
+            action.triggered.connect(self._wrapper(parent, theme))
+            menu.addAction(action)
+
+    # ----------------------------------------------------------------------
+    def _wrapper(self, parent, theme):
+        """"""
+        def iner():
+            self._apply_theme(parent, theme)
+        return iner
+
+    # ----------------------------------------------------------------------
+    def _apply_theme(self, parent, theme):
+        """"""
+        if theme == 'default':
+            parent.setStyleSheet('')
+            return
+
+        apply_stylesheet(parent, theme=theme, light_secondary=theme.startswith(
+            'light'), extra=self.extra)
