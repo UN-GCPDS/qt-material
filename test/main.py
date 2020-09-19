@@ -1,13 +1,13 @@
 import os
 import sys
 
-from PySide2.QtWidgets import QApplication, QAction
-from PySide2 import QtGui, QtWidgets
+from PySide2.QtWidgets import QApplication
+from PySide2 import QtWidgets
 from PySide2.QtCore import QTimer
 from PySide2.QtUiTools import QUiLoader
 from PySide2.QtCore import Qt, QCoreApplication
 
-from pyside_material import apply_stylesheet, list_themes
+from pyside_material import apply_stylesheet, PySideStyleSwitcher
 
 # To load window icon
 from pyside_material.resources import logos_rc
@@ -20,7 +20,7 @@ app.setStyle('Fusion')  # For better looking
 
 
 ########################################################################
-class RuntimeStylesheets(QtWidgets.QMainWindow):
+class RuntimeStylesheets(QtWidgets.QMainWindow, PySideStyleSwitcher):
     # ----------------------------------------------------------------------
     def __init__(self):
         """Constructor"""
@@ -34,7 +34,7 @@ class RuntimeStylesheets(QtWidgets.QMainWindow):
 
         self.main = QUiLoader().load('main_window.ui', self)
         self.custom_styles()
-        self.load_styles_in_menu()
+        self.set_style_switcher(self.main, self.main.menuStyles)
 
     # ----------------------------------------------------------------------
     def custom_styles(self):
@@ -44,34 +44,6 @@ class RuntimeStylesheets(QtWidgets.QMainWindow):
             tool_button.setMaximumWidth(150)
             tool_button.setMinimumWidth(150)
 
-    # ----------------------------------------------------------------------
-    def load_styles_in_menu(self):
-        """"""
-        for theme in ['default'] + list_themes():
-            action = QAction(self)
-            action.setText(theme)
-            action.triggered.connect(self.wrapper(theme))
-            self.main.menuStyles.addAction(action)
-
-    # ----------------------------------------------------------------------
-    def wrapper(self, theme):
-        """"""
-        def iner():
-            self.apply_theme(theme)
-        return iner
-
-    # ----------------------------------------------------------------------
-    def apply_theme(self, theme):
-        """"""
-        if theme == 'default':
-            self.main.setStyleSheet('')
-            return
-
-        apply_stylesheet(self.main, theme=theme, light_secondary=theme.startswith(
-            'light'), extra=self.extra)
-
-        self.main.statusbar.showMessage(f'Theme: theme')
-
 
 T0 = 1000
 
@@ -79,8 +51,7 @@ if __name__ == "__main__":
 
     # ----------------------------------------------------------------------
     def take_screenshot():
-        """"""
-        pixmap = QtGui.QPixmap.grabWindow(frame.winId())
+        pixmap = frame.main.grab()
         pixmap.save(os.path.join('screenshots', f'{theme}.png'))
         print(f'Saving {theme}')
 
@@ -90,6 +61,9 @@ if __name__ == "__main__":
         QTimer.singleShot(T0 * 2, app.closeAllWindows)
     except:
         theme = 'default'
+
+    # Set theme on in itialization
+    apply_stylesheet(app, theme + '.xml', light_secondary=('light' in theme))
 
     frame = RuntimeStylesheets()
     frame.main.show()
