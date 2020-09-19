@@ -512,6 +512,11 @@ QCheckBox {
     spacing: 5px;
 }
 
+QRadioButton:disabled,
+QCheckBox:disabled {
+    color: {{secondaryTextColor|opacity(0.3)}};
+}
+
 
 QCheckBox::indicator:checked {
     image: url(:/icon/primary/checkbox_checked.svg);
