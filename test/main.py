@@ -61,9 +61,11 @@ if __name__ == "__main__":
         QTimer.singleShot(T0 * 2, app.closeAllWindows)
     except:
         theme = 'default'
+        theme = 'default_light'
 
     # Set theme on in itialization
-    apply_stylesheet(app, theme + '.xml', light_secondary=('light' in theme))
+    apply_stylesheet(app, theme + '.xml',
+                     light_secondary=('light' in theme and 'dark' not in theme))
 
     frame = RuntimeStylesheets()
     frame.main.show()
