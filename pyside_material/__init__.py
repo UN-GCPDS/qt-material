@@ -164,7 +164,7 @@ def list_themes():
     themes = os.listdir(os.path.join(
         os.path.dirname(os.path.abspath(__file__)), 'themes'))
     themes = filter(lambda a: a.endswith('xml'), themes)
-    return list(themes)
+    return sorted(list(themes))
 
 
 ########################################################################
