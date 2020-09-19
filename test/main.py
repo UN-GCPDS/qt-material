@@ -34,7 +34,7 @@ class RuntimeStylesheets(QtWidgets.QMainWindow, PySideStyleSwitcher):
 
         self.main = QUiLoader().load('main_window.ui', self)
         self.custom_styles()
-        self.set_style_switcher(self.main, self.main.menuStyles)
+        self.set_style_switcher(self.main, self.main.menuStyles, self.extra)
 
     # ----------------------------------------------------------------------
     def custom_styles(self):

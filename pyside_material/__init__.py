@@ -172,27 +172,27 @@ class PySideStyleSwitcher:
     """"""
     # ----------------------------------------------------------------------
 
-    def set_style_switcher(self, parent, menu):
+    def set_style_switcher(self, parent, menu, extra={}):
         """"""
         for theme in ['default'] + list_themes():
-            action = QAction(self)
+            action = QAction(parent)
             action.setText(theme)
-            action.triggered.connect(self._wrapper(parent, theme))
+            action.triggered.connect(self._wrapper(parent, theme, extra))
             menu.addAction(action)
 
     # ----------------------------------------------------------------------
-    def _wrapper(self, parent, theme):
+    def _wrapper(self, parent, theme, extra):
         """"""
         def iner():
-            self._apply_theme(parent, theme)
+            self._apply_theme(parent, theme, extra)
         return iner
 
     # ----------------------------------------------------------------------
-    def _apply_theme(self, parent, theme):
+    def _apply_theme(self, parent, theme, extra):
         """"""
         if theme == 'default':
             parent.setStyleSheet('')
             return
 
         apply_stylesheet(parent, theme=theme, light_secondary=theme.startswith(
-            'light'), extra=self.extra)
+            'light'), extra=extra)
