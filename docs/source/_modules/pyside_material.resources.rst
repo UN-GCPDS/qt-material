@@ -13,4 +13,5 @@ Submodules
    :maxdepth: 4
 
    pyside_material.resources.generate
+   pyside_material.resources.logos_rc
    pyside_material.resources.resource_rc

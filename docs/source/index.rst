@@ -58,7 +58,7 @@ Themes
     list_themes()
 
 
-.. code:: raw
+.. code:: bash
 
   light_yellow.xml
   light_teal.xml
@@ -93,14 +93,14 @@ file must look like:
 
   <!--?xml version="1.0" encoding="UTF-8"?-->
   <resources>
-    <color name="primaryColor">#1de9b6</color>
-    <color name="primaryLightColor">#6effe8</color>
-    <color name="primaryDarkColor">#00b686</color>
-    <color name="secondaryColor">#263238</color>
-    <color name="secondaryLightColor">#4f5b62</color>
-    <color name="secondaryDarkColor">#000a12</color>
+    <color name="primaryColor">#00e5ff</color>
+    <color name="primaryLightColor">#6effff</color>
+    <color name="primaryDarkColor">#00b2cc</color>
+    <color name="secondaryColor">#f5f5f5</color>
+    <color name="secondaryLightColor">#ffffff</color>
+    <color name="secondaryDarkColor">#e6e6e6</color>
     <color name="primaryTextColor">#000000</color>
-    <color name="secondaryTextColor">#ffffff</color>
+    <color name="secondaryTextColor">#000000</color>
   </resources>
 
 
