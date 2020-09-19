@@ -81,9 +81,9 @@ file must look like:
   <color name="primaryColor">#1de9b6</color>
   <color name="primaryLightColor">#6effe8</color>
   <color name="primaryDarkColor">#00b686</color>
-  <color name="secondaryColor">#263238</color>
+  <color name="secondaryColor">#232629</color>
   <color name="secondaryLightColor">#4f5b62</color>
-  <color name="secondaryDarkColor">#000a12</color>
+  <color name="secondaryDarkColor">#31363b</color>
   <color name="primaryTextColor">#000000</color>
   <color name="secondaryTextColor">#ffffff</color>
 </resources>

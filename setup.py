@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='pyside-material',
-    version='1.15.1',
+    version='1.16',
     packages=['pyside_material', 'pyside_material.resources'],
 
     author='Yeison Cardona',
