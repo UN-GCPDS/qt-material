@@ -579,8 +579,8 @@ QDockWidget::title {
     /*color: {{secondaryTextColor}};*/
     /*text-transform: uppercase;*/
     /*border-top: 5px solid {{secondaryDarkColor}};*/
+    /*background-color: {{secondaryColor|opacity(0.3)}};*/
     text-align: left;
-    background-color: {{secondaryColor|opacity(0.3)}};
     padding-left: 35px;
     padding: 3px;
     margin-top: 4px;

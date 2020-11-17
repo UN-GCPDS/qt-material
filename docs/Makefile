@@ -18,19 +18,22 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-	
-	
-	
+
+
+
 buildapi:
-	sphinx-apidoc -fMeET -o source/_modules ../pyside_material 
-	
+	sphinx-apidoc -fMeET -o source/_modules ../pyside_material
+
 	#mkdir -p source/_notebooks/images
 
 	#cp ../notebooks/*.ipynb source/_notebooks/
 	#cp ../notebooks/images/* source/_notebooks/images
-	
+
 	#rm source/_notebooks/*.rst
 	#rm source/_notebooks/SANDBOX.ipynb
 	#jupyter nbconvert --to rst source/_notebooks/*.ipynb
 	#rm source/_notebooks/*.ipynb
+
+
+	cp source/index.rst ../README.rst
 

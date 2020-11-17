@@ -22,8 +22,10 @@ setup(
     install_requires=['pyside2',
                       ],
 
+    python_requires='>=3.6',
+
     include_package_data=True,
-    license='BSD License',
+    license='BSD-2-Clause',
     description="PySide2 stylesheet.",
     #    long_description = README,
 

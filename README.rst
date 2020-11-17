@@ -15,12 +15,12 @@ Status|
 
 There is some custom dark themes:
 
-.. image:: images/dark.gif
+.. image:: https://github.com/UN-GCPDS/pyside-material/raw/master/docs/source/images/dark.gif
 
 
 And light:
 
-.. image:: images/light.gif
+.. image:: https://github.com/UN-GCPDS/pyside-material/raw/master/docs/source/images/light.gif
 
 
 Install
