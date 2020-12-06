@@ -1,12 +1,12 @@
 import os
 
-from pyside_material import list_themes
+from qt_material import list_themes
 
 themes = list_themes()
 themes = [t.replace('.xml', '') for t in themes]
 
 for theme in themes:
-    os.system(f'python main.py {theme}')
+    os.system(f'python main.py --pyside {theme}')
 
 os.chdir('screenshots')
 
