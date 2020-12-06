@@ -1,5 +1,6 @@
 import os
 import sys
+from textwrap import wrap
 import logging
 from xml.etree import ElementTree
 
@@ -7,15 +8,16 @@ from xml.etree import ElementTree
 if 'PySide2' in sys.modules:
     from PySide2.QtGui import QFontDatabase
     from PySide2.QtWidgets import QAction
+    _resource = os.path.join('resources', 'resource_pyside2_rc.py')
 elif 'PyQt5' in sys.modules:
     from PyQt5.QtGui import QFontDatabase
     from PyQt5.QtWidgets import QAction
+    _resource = os.path.join('resources', 'resource_pyqt5_rc.py')
 
 
 import jinja2
 
 template = 'material.css.template'
-_resource = os.path.join('resources', 'resource_rc.py')
 
 
 # ----------------------------------------------------------------------
@@ -122,8 +124,16 @@ def opacity(theme, value=0.5):
 
     return f'rgba({r}, {g}, {b}, {value})'
 
+# ----------------------------------------------------------------------
+
+
+def str16b(c):
+    """"""
+    return '\\x' + '\\x'.join(wrap(c.encode().hex(), 2))
 
 # ----------------------------------------------------------------------
+
+
 def set_icons_theme(theme, resource=None, output=None):
     """"""
     try:
@@ -146,10 +156,15 @@ def set_icons_theme(theme, resource=None, output=None):
         )
 
         for color, replace in replaces:
-            colors = [
-                color] + [''.join(list(color)[:i] + ['\\\n'] + list(color)[i:]) for i in range(1, 7)]
-            for c in colors:
-                content = content.replace(c, theme[replace])
+            if 'PySide2' in sys.modules:
+                colors = [
+                    color] + [''.join(list(color)[:i] + ['\\\n'] + list(color)[i:]) for i in range(1, 7)]
+                for c in colors:
+                    content = content.replace(c, theme[replace])
+            elif 'PyQt5' in sys.modules:
+                colors = [str16b(color)] + [str16b(color)[:i] + '\\\n' + str16b(color)[i:] for i in range(4, 28, 4)]
+                for c in colors:
+                    content = content.replace(c, str16b(theme[replace]))
 
     if output:
         with open(output, 'w') as file:
