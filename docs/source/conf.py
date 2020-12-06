@@ -20,7 +20,7 @@ sys.path.insert(0, os.path.abspath('exts'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'PySide Material'
+project = 'Qt Material'
 copyright = '2019, Yeison Cardona'
 author = 'Yeison Cardona'
 
@@ -149,7 +149,7 @@ html_sidebars = {
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'PySideMaterialdoc'
+htmlhelp_basename = 'QtMaterialdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -176,7 +176,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'PySideMaterial.tex', 'PySide Material Documentation',
+    (master_doc, 'QtMaterial.tex', 'Qt Material Documentation',
      'Yeison Cardona', 'manual'),
 ]
 
@@ -186,7 +186,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'pysidematerial', 'PySide Material Documentation',
+    (master_doc, 'qtmaterial', 'Qt Material Documentation',
      [author], 1)
 ]
 
@@ -197,8 +197,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'PySideMaterial', 'PySide Material Documentation',
-     author, 'PySideMaterial', 'One line description of project.',
+    (master_doc, 'QtMaterial', 'Qt Material Documentation',
+     author, 'QtMaterial', 'One line description of project.',
      'Miscellaneous'),
 ]
 

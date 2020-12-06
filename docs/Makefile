@@ -22,7 +22,7 @@ help:
 
 
 buildapi:
-	sphinx-apidoc -fMeET -o source/_modules ../pyside_material
+	sphinx-apidoc -fMeET -o source/_modules ../qt_material
 
 	#mkdir -p source/_notebooks/images
 
