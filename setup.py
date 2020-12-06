@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='qt-material',
-    version='1.17',
+    version='1.18',
     packages=['qt_material', 'qt_material.resources'],
 
     author='Yeison Cardona',
@@ -29,7 +29,12 @@ setup(
     #    long_description = README,
 
     classifiers=[
-
+        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
+        'License :: OSI Approved :: BSD License',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.6',
     ],
 
 )
