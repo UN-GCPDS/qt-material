@@ -1,16 +1,29 @@
 import os
 import sys
 
-from PySide2.QtWidgets import QApplication
-from PySide2 import QtWidgets
-from PySide2.QtCore import QTimer
-from PySide2.QtUiTools import QUiLoader
-from PySide2.QtCore import Qt, QCoreApplication
 
-from pyside_material import apply_stylesheet, PySideStyleSwitcher
+if '--pyside' in sys.argv:
+    from PySide2.QtWidgets import QApplication
+    from PySide2 import QtWidgets
+    from PySide2.QtCore import QTimer
+    from PySide2.QtUiTools import QUiLoader
+    from PySide2.QtCore import Qt, QCoreApplication
+elif '--pyqt5' in sys.argv:
+    from PyQt5.QtWidgets import QApplication
+    from PyQt5 import QtWidgets, uic
+    from PyQt5.QtCore import QTimer
+    from PyQt5.QtCore import Qt, QCoreApplication
+
+
+from qt_material import apply_stylesheet, QtStyleSwitcher
 
 # To load window icon
-from pyside_material.resources import logos_rc
+
+
+if 'PySide2' in sys.modules:
+    from qt_material.resources import logos_pyside2_rc
+elif 'Qt' in sys.modules:
+    from qt_material.resources import logos_pyqt5_rc
 
 QCoreApplication.setAttribute(Qt.AA_ShareOpenGLContexts)
 
@@ -20,7 +33,7 @@ app.setStyle('Fusion')  # For better looking
 
 
 ########################################################################
-class RuntimeStylesheets(QtWidgets.QMainWindow, PySideStyleSwitcher):
+class RuntimeStylesheets(QtWidgets.QMainWindow, QtStyleSwitcher):
     # ----------------------------------------------------------------------
     def __init__(self):
         """Constructor"""
@@ -32,7 +45,13 @@ class RuntimeStylesheets(QtWidgets.QMainWindow, PySideStyleSwitcher):
                       'success': '#17a2b8',
                       }
 
-        self.main = QUiLoader().load('main_window.ui', self)
+        if '--pyside' in sys.argv:
+            self.main = QUiLoader().load('main_window.ui', self)
+            self.main.setWindowTitle(f'{self.main.windowTitle()} - PySide2')
+        elif '--pyqt5' in sys.argv:
+            self.main = uic.loadUi('main_window.ui', self)
+            self.main.setWindowTitle(f'{self.main.windowTitle()} - PyQt5')
+
         self.custom_styles()
         self.set_style_switcher(self.main, self.main.menuStyles, self.extra)
 
@@ -56,7 +75,7 @@ if __name__ == "__main__":
         print(f'Saving {theme}')
 
     try:
-        theme = sys.argv[1]
+        theme = sys.argv[2]
         QTimer.singleShot(T0, take_screenshot)
         QTimer.singleShot(T0 * 2, app.closeAllWindows)
     except:
