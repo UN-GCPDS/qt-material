@@ -1,12 +1,13 @@
-.. PySide Material documentation master file, created by
+.. Qt Material documentation master file, created by
    sphinx-quickstart on Wed Aug  7 20:30:20 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-PySide Material
-===============
+Qt Material
+===========
 
-This is another stylesheet for PySide, this time looks like Material Design.
+This is another stylesheet for **PySide2** and **PyQt5**, this time looks like Material
+Design (close enough).
 
 |GitHub top language| |PyPI - License| |PyPI| |PyPI - Status| |PyPI -
 Python Version| |GitHub last commit| |CodeFactor Grade| |Documentation
@@ -15,12 +16,12 @@ Status|
 
 There is some custom dark themes:
 
-.. image:: https://github.com/UN-GCPDS/pyside-material/raw/master/docs/source/images/dark.gif
+.. image:: images/dark.gif
 
 
 And light:
 
-.. image:: https://github.com/UN-GCPDS/pyside-material/raw/master/docs/source/images/light.gif
+.. image:: images/light.gif
 
 
 Install
@@ -28,7 +29,7 @@ Install
 
 .. code:: bash
 
-  pip install pyside-material
+  pip install qt-material
 
 
 Usage
@@ -38,7 +39,8 @@ Usage
 
   import sys
   from PySide2 import QtWidgets
-  from pyside_material import apply_stylesheet
+  # from PyQt5 import QtWidgets
+  from qt_material import apply_stylesheet
 
   # create the application and the main window
   app = QtWidgets.QApplication(sys.argv)
@@ -57,7 +59,7 @@ Themes
 
 .. code:: python
 
-    from pyside_material import list_themes
+    from qt_material import list_themes
 
     list_themes()
 
@@ -128,13 +130,23 @@ Light will need to add `light_secondary` argument as `True`.
 
 
 
-.. |GitHub top language| image:: https://img.shields.io/github/languages/top/un-gcpds/pyside-material
-.. |PyPI - License| image:: https://img.shields.io/pypi/l/pyside-material
-.. |PyPI| image:: https://img.shields.io/pypi/v/pyside-material
-.. |PyPI - Status| image:: https://img.shields.io/pypi/status/pyside-material
-.. |PyPI - Python Version| image:: https://img.shields.io/pypi/pyversions/pyside-material
-.. |GitHub last commit| image:: https://img.shields.io/github/last-commit/un-gcpds/pyside-material
-.. |CodeFactor Grade| image:: https://img.shields.io/codefactor/grade/github/UN-GCPDS/pyside-material
-.. |Documentation Status| image:: https://readthedocs.org/projects/pyside-material/badge/?version=latest
-   :target: https://pyside-material.readthedocs.io/en/latest/?badge=latest
+.. |GitHub top language| image:: https://img.shields.io/github/languages/top/un-gcpds/qt-material
+.. |PyPI - License| image:: https://img.shields.io/pypi/l/qt-material
+.. |PyPI| image:: https://img.shields.io/pypi/v/qt-material
+.. |PyPI - Status| image:: https://img.shields.io/pypi/status/qt-material
+.. |PyPI - Python Version| image:: https://img.shields.io/pypi/pyversions/qt-material
+.. |GitHub last commit| image:: https://img.shields.io/github/last-commit/un-gcpds/qt-material
+.. |CodeFactor Grade| image:: https://img.shields.io/codefactor/grade/github/UN-GCPDS/qt-material
+.. |Documentation Status| image:: https://readthedocs.org/projects/qt-material/badge/?version=latest
+   :target: https://qt-material.readthedocs.io/en/latest/?badge=latest
 
+
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

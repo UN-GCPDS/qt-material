@@ -6,7 +6,7 @@
 Qt Material
 ===========
 
-This is another stylesheet for PySide2 and PyQt5, this time looks like Material
+This is another stylesheet for **PySide2** and **PyQt5**, this time looks like Material
 Design (close enough).
 
 |GitHub top language| |PyPI - License| |PyPI| |PyPI - Status| |PyPI -
