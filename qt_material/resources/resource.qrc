@@ -1,0 +1,42 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>disabled/float.svg</file>
+    <file>primary/float.svg</file>
+    <file>disabled/base.svg</file>
+    <file>primary/base.svg</file>
+    <file>disabled/close.svg</file>
+    <file>primary/close.svg</file>
+    <file>disabled/downarrow.svg</file>
+    <file>primary/downarrow.svg</file>
+    <file>disabled/tab_close.svg</file>
+    <file>primary/tab_close.svg</file>
+    <file>disabled/checkbox_indeterminate.svg</file>
+    <file>primary/checkbox_indeterminate.svg</file>
+    <file>disabled/radiobutton_unchecked.svg</file>
+    <file>primary/radiobutton_unchecked.svg</file>
+    <file>disabled/splitter-horizontal.svg</file>
+    <file>primary/splitter-horizontal.svg</file>
+    <file>disabled/toolbar-handle-horizontal.svg</file>
+    <file>primary/toolbar-handle-horizontal.svg</file>
+    <file>disabled/uparrow.svg</file>
+    <file>primary/uparrow.svg</file>
+    <file>disabled/splitter-vertical.svg</file>
+    <file>primary/splitter-vertical.svg</file>
+    <file>disabled/leftarrow.svg</file>
+    <file>primary/leftarrow.svg</file>
+    <file>disabled/toolbar-handle-vertical.svg</file>
+    <file>primary/toolbar-handle-vertical.svg</file>
+    <file>disabled/checkbox_unchecked.svg</file>
+    <file>primary/checkbox_unchecked.svg</file>
+    <file>disabled/radiobutton_checked.svg</file>
+    <file>primary/radiobutton_checked.svg</file>
+    <file>disabled/rightarrow.svg</file>
+    <file>primary/rightarrow.svg</file>
+    <file>disabled/checkbox_checked.svg</file>
+    <file>primary/checkbox_checked.svg</file>
+    <file>disabled/sizegrip.svg</file>
+    <file>primary/sizegrip.svg</file>
+    <file>disabled/slider.svg</file>
+    <file>primary/slider.svg</file>
+  </qresource>
+</RCC>
