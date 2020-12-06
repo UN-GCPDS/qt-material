@@ -11,10 +11,10 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Qt Material</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="pyside_material/resources/logos.qrc">
+   <iconset>
     <normaloff>:/icon/logo/logo_frame.svg</normaloff>:/icon/logo/logo_frame.svg</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -225,7 +225,7 @@
                 <string>New Item</string>
                </property>
                <property name="icon">
-                <iconset resource="pyside_material/resources/logos.qrc">
+                <iconset>
                  <normaloff>:/icon/logo/logo_frame.svg</normaloff>:/icon/logo/logo_frame.svg</iconset>
                </property>
               </item>
@@ -234,7 +234,7 @@
                 <string>New Item</string>
                </property>
                <property name="icon">
-                <iconset resource="pyside_material/resources/logos.qrc">
+                <iconset>
                  <normaloff>:/icon/logo/logo_frame.svg</normaloff>:/icon/logo/logo_frame.svg</iconset>
                </property>
               </item>
@@ -243,7 +243,7 @@
                 <string>New Item</string>
                </property>
                <property name="icon">
-                <iconset resource="pyside_material/resources/logos.qrc">
+                <iconset>
                  <normaloff>:/icon/logo/logo_frame.svg</normaloff>:/icon/logo/logo_frame.svg</iconset>
                </property>
               </item>
@@ -472,31 +472,21 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>747</width>
+             <width>680</width>
              <height>269</height>
             </rect>
            </property>
            <attribute name="label">
             <string>Page 1</string>
            </attribute>
-           <layout class="QGridLayout" name="gridLayout_14">
-            <item row="0" column="0">
-             <widget class="QWebEngineView" name="webEngineView">
-              <property name="url">
-               <url>
-                <string>https://www.python.org/</string>
-               </url>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <layout class="QGridLayout" name="gridLayout_14"/>
           </widget>
           <widget class="QWidget" name="page_3">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>747</width>
+             <width>680</width>
              <height>269</height>
             </rect>
            </property>
@@ -509,7 +499,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>726</width>
+             <width>659</width>
              <height>292</height>
             </rect>
            </property>
@@ -1677,11 +1667,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   </action>
   <action name="actionToolbar">
    <property name="icon">
-    <iconset resource="pyside_material/resources/logos.qrc">
+    <iconset>
      <normaloff>:/icon/logo/logo.svg</normaloff>:/icon/logo/logo.svg</iconset>
    </property>
    <property name="text">
-    <string>PySide Material Theme</string>
+    <string>Qt Material Theme</string>
+   </property>
+   <property name="toolTip">
+    <string>Qt Material Theme</string>
    </property>
   </action>
   <action name="actionSelected">
@@ -1711,16 +1704,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
    </property>
   </action>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QWebEngineView</class>
-   <extends>QWidget</extends>
-   <header location="global">QtWebEngineWidgets/QWebEngineView</header>
-  </customwidget>
- </customwidgets>
  <resources>
-  <include location="pyside_material/resources/resource.qrc"/>
-  <include location="pyside_material/resources/logos.qrc"/>
+  <include location="../qt_material/resources/resource.qrc"/>
+  <include location="../qt_material/resources/resource.qrc"/>
  </resources>
  <connections/>
 </ui>
