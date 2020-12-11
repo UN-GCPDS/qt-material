@@ -6,7 +6,7 @@
 Qt Material
 ===========
 
-This is another stylesheet for **PySide2** and **PyQt5**, this time looks like Material
+This is another stylesheet for **PySide6**, ***PySide2* and **PyQt5**, this time looks like Material
 Design (close enough).
 
 |GitHub top language| |PyPI - License| |PyPI| |PyPI - Status| |PyPI -
@@ -16,12 +16,12 @@ Status|
 
 There is some custom dark themes:
 
-.. image:: https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/images/dark.gif
+.. image:: images/dark.gif
 
 
 And light:
 
-.. image:: https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/images/light.gif
+.. image:: images/light.gif
 
 
 Install
@@ -39,6 +39,7 @@ Usage
 
   import sys
   from PySide2 import QtWidgets
+  # from PySide6 import QtWidgets
   # from PyQt5 import QtWidgets
   from qt_material import apply_stylesheet
 
