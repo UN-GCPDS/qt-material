@@ -6,7 +6,7 @@
 Qt Material
 ===========
 
-This is another stylesheet for **PySide6**, ***PySide2* and **PyQt5**, this time looks like Material
+This is another stylesheet for **PySide6**, **PySide2** and **PyQt5**, this time looks like Material
 Design (close enough).
 
 |GitHub top language| |PyPI - License| |PyPI| |PyPI - Status| |PyPI -
@@ -141,3 +141,13 @@ Light will need to add `light_secondary` argument as `True`.
 .. |Documentation Status| image:: https://readthedocs.org/projects/qt-material/badge/?version=latest
    :target: https://qt-material.readthedocs.io/en/latest/?badge=latest
 
+
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
