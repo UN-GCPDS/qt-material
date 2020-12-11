@@ -38,8 +38,8 @@ Usage
 .. code:: python
 
   import sys
-  from PySide2 import QtWidgets
-  # from PySide6 import QtWidgets
+  from PySide6 import QtWidgets
+  # from PySide2 import QtWidgets
   # from PyQt5 import QtWidgets
   from qt_material import apply_stylesheet
 
@@ -141,13 +141,3 @@ Light will need to add `light_secondary` argument as `True`.
 .. |Documentation Status| image:: https://readthedocs.org/projects/qt-material/badge/?version=latest
    :target: https://qt-material.readthedocs.io/en/latest/?badge=latest
 
-
-
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
