@@ -9,11 +9,18 @@ if 'PySide2' in sys.modules:
     from PySide2.QtGui import QFontDatabase
     from PySide2.QtWidgets import QAction
     _resource = os.path.join('resources', 'resource_pyside2_rc.py')
+
+elif 'PySide6' in sys.modules:
+    from PySide6.QtGui import QFontDatabase, QAction
+    _resource = os.path.join('resources', 'resource_pyside6_rc.py')
+
 elif 'PyQt5' in sys.modules:
     from PyQt5.QtGui import QFontDatabase
     from PyQt5.QtWidgets import QAction
     _resource = os.path.join('resources', 'resource_pyqt5_rc.py')
-
+else:
+    logging.error("qt_material must be imported after PySide or PyQt!")
+    sys.exit()
 
 import jinja2
 
@@ -124,16 +131,14 @@ def opacity(theme, value=0.5):
 
     return f'rgba({r}, {g}, {b}, {value})'
 
+
 # ----------------------------------------------------------------------
-
-
 def str16b(c):
     """"""
     return '\\x' + '\\x'.join(wrap(c.encode().hex(), 2))
 
+
 # ----------------------------------------------------------------------
-
-
 def set_icons_theme(theme, resource=None, output=None):
     """"""
     try:
@@ -156,7 +161,7 @@ def set_icons_theme(theme, resource=None, output=None):
         )
 
         for color, replace in replaces:
-            if 'PySide2' in sys.modules:
+            if 'PySide2' in sys.modules or 'PySide6' in sys.modules:
                 colors = [
                     color] + [''.join(list(color)[:i] + ['\\\n'] + list(color)[i:]) for i in range(1, 7)]
                 for c in colors:
