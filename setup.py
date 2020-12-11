@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='qt-material',
-    version='1.18',
+    version='2.0',
     packages=['qt_material', 'qt_material.resources'],
 
     author='Yeison Cardona',
@@ -25,12 +25,12 @@ setup(
 
     include_package_data=True,
     license='BSD-2-Clause',
-    description="Qt Stylesheet for PySide2 and PyQt5.",
+    description="Qt Stylesheet for PySide6, PySide2 and PyQt5.",
     #    long_description = README,
 
     classifiers=[
         'Development Status :: 4 - Beta',
-        'Development Status :: 5 - Production/Stable',
+        # 'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: BSD License',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.7',
