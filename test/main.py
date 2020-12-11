@@ -1,13 +1,22 @@
 import os
 import sys
+import logging
 
 
-if '--pyside' in sys.argv:
+if '--pyside2' in sys.argv:
     from PySide2.QtWidgets import QApplication
     from PySide2 import QtWidgets
     from PySide2.QtCore import QTimer
     from PySide2.QtUiTools import QUiLoader
     from PySide2.QtCore import Qt, QCoreApplication
+
+elif '--pyside6' in sys.argv:
+    from PySide6.QtWidgets import QApplication
+    from PySide6 import QtWidgets
+    from PySide6.QtCore import QTimer
+    from PySide6.QtUiTools import QUiLoader
+    from PySide6.QtCore import Qt, QCoreApplication
+
 elif '--pyqt5' in sys.argv:
     from PyQt5.QtWidgets import QApplication
     from PyQt5 import QtWidgets, uic
@@ -22,6 +31,8 @@ from qt_material import apply_stylesheet, QtStyleSwitcher
 
 if 'PySide2' in sys.modules:
     from qt_material.resources import logos_pyside2_rc
+elif 'PySide6' in sys.modules:
+    from qt_material.resources import logos_pyside6_rc
 elif 'Qt' in sys.modules:
     from qt_material.resources import logos_pyqt5_rc
 
@@ -45,12 +56,21 @@ class RuntimeStylesheets(QtWidgets.QMainWindow, QtStyleSwitcher):
                       'success': '#17a2b8',
                       }
 
-        if '--pyside' in sys.argv:
+        if '--pyside2' in sys.argv:
             self.main = QUiLoader().load('main_window.ui', self)
             self.main.setWindowTitle(f'{self.main.windowTitle()} - PySide2')
+
+        elif'--pyside6' in sys.argv:
+            self.main = QUiLoader().load('main_window.ui', self)
+            self.main.setWindowTitle(f'{self.main.windowTitle()} - PySide6')
+
         elif '--pyqt5' in sys.argv:
             self.main = uic.loadUi('main_window.ui', self)
             self.main.setWindowTitle(f'{self.main.windowTitle()} - PyQt5')
+
+        else:
+            logging.error('must include --pyside2, --pyside6 or --pyqt5 in args!')
+            sys.exit()
 
         self.custom_styles()
         self.set_style_switcher(self.main, self.main.menuStyles, self.extra)
