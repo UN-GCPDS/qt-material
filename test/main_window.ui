@@ -479,7 +479,17 @@
            <attribute name="label">
             <string>Page 1</string>
            </attribute>
-           <layout class="QGridLayout" name="gridLayout_14"/>
+           <layout class="QGridLayout" name="gridLayout_14">
+            <item row="0" column="0">
+             <widget class="QWebEngineView" name="webEngineView">
+              <property name="url">
+               <url>
+                <string>https://www.python.org/</string>
+               </url>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
           <widget class="QWidget" name="page_3">
            <property name="geometry">
@@ -1704,6 +1714,13 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QWebEngineView</class>
+   <extends>QWidget</extends>
+   <header location="global">QtWebEngineWidgets/QWebEngineView</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../qt_material/resources/resource.qrc"/>
   <include location="../qt_material/resources/resource.qrc"/>

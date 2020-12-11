@@ -22,6 +22,7 @@ elif '--pyqt5' in sys.argv:
     from PyQt5 import QtWidgets, uic
     from PyQt5.QtCore import QTimer
     from PyQt5.QtCore import Qt, QCoreApplication
+    from PyQt5 import QtWebEngineWidgets
 
 
 from qt_material import apply_stylesheet, QtStyleSwitcher
