@@ -122,14 +122,31 @@ Save it as `my_theme.xml` or similar and apply the style sheet from Python.
 Light themes
 ------------
 
-Light themes will need to add `light_secondary` argument as `True`.
+Light themes will need to add `invert_secondary` argument as `True`.
 
 .. code:: python
 
-  apply_stylesheet(app, theme='dark_teal.xml', light_secondary=True)
+  apply_stylesheet(app, theme='light_red.xml', invert_secondary=True)
 
 
-New Themes
+Run example
+-----------
+
+A window with almost all widgets (see the previous screenshots) are available to
+test all themes and **create new ones**.
+
+.. code:: bash
+
+  git clone https://github.com/UN-GCPDS/qt-material.git
+  cd qt-material
+  python setup.py install
+  cd test
+  python main.py --PySide6
+
+.. image:: images/theme.gif
+
+
+New themes
 ----------
 
 Do you have a custom theme? it looks good? create a
