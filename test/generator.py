@@ -6,7 +6,7 @@ themes = list_themes()
 themes = [t.replace('.xml', '') for t in themes]
 
 for theme in themes:
-    os.system(f'python main.py --pyside {theme}')
+    os.system(f'python main.py --pyside6 {theme}')
 
 os.chdir('screenshots')
 
@@ -17,6 +17,7 @@ commands = (
     'rm ../../docs/source/images/dark.gif',
     'cp light.gif ../../docs/source/images/light.gif',
     'cp dark.gif ../../docs/source/images/dark.gif',
+    'cp theme.png ../../docs/source/images/theme.png',
 )
 
 for command in commands:
