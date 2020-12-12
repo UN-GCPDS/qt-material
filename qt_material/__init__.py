@@ -28,9 +28,9 @@ template = 'material.css.template'
 
 
 # ----------------------------------------------------------------------
-def build_stylesheet(theme='', light_secondary=False, resources=[], extra={}):
+def build_stylesheet(theme='', invert_secondary=False, resources=[], extra={}):
     """"""
-    theme = get_theme(theme, light_secondary)
+    theme = get_theme(theme, invert_secondary)
     if theme is None:
         return None
 
@@ -53,12 +53,12 @@ def build_stylesheet(theme='', light_secondary=False, resources=[], extra={}):
 
 
 # ----------------------------------------------------------------------
-def get_theme(theme_name, light_secondary=False):
+def get_theme(theme_name, invert_secondary=False):
     if theme_name in ['default.xml', 'default_dark.xml', 'default', 'default_dark']:
         theme = os.path.join(os.path.dirname(
             os.path.abspath(__file__)), 'themes', 'dark_teal.xml')
     elif theme_name in ['default_light.xml', 'default_light']:
-        light_secondary = True
+        invert_secondary = True
         theme = os.path.join(os.path.dirname(
             os.path.abspath(__file__)), 'themes', 'light_blue.xml')
     elif not os.path.exists(theme_name):
@@ -77,14 +77,13 @@ def get_theme(theme_name, light_secondary=False):
     for k in theme:
         os.environ[str(k)] = theme[k]
 
-    if light_secondary:
+    if invert_secondary:
         theme['secondaryColor'], theme['secondaryLightColor'], theme['secondaryDarkColor'] = theme[
             'secondaryColor'], theme['secondaryDarkColor'], theme['secondaryLightColor']
-        theme['primaryTextColor'] = theme['secondaryTextColor']
+        # theme['primaryTextColor'] = theme['secondaryTextColor']
 
     for color in ['primaryColor',
                   'primaryLightColor',
-                  'primaryDarkColor',
                   'secondaryColor',
                   'secondaryLightColor',
                   'secondaryDarkColor',
@@ -105,7 +104,7 @@ def add_fonts():
 
 
 # ----------------------------------------------------------------------
-def apply_stylesheet(app, theme='', style='Fusion', save_as=None, light_secondary=False, resources=[], extra={}):
+def apply_stylesheet(app, theme='', style='Fusion', save_as=None, invert_secondary=False, resources=[], extra={}):
     """"""
     add_fonts()
 
@@ -114,7 +113,7 @@ def apply_stylesheet(app, theme='', style='Fusion', save_as=None, light_secondar
             app.setStyle(style)
         except:
             pass
-    stylesheet = build_stylesheet(theme, light_secondary, resources, extra)
+    stylesheet = build_stylesheet(theme, invert_secondary, resources, extra)
     if stylesheet is None:
         return
 
@@ -201,31 +200,34 @@ class QtStyleSwitcher:
     """"""
 
     # ----------------------------------------------------------------------
-    def set_style_switcher(self, parent, menu, extra={}):
+    def set_style_switcher(self, parent, menu, extra={}, callable_=None):
         """"""
         for theme in ['default'] + list_themes():
             action = QAction(parent)
             action.setText(theme)
-            action.triggered.connect(self._wrapper(parent, theme, extra))
+            action.triggered.connect(self._wrapper(parent, theme, extra, callable_))
             menu.addAction(action)
 
     # ----------------------------------------------------------------------
-    def _wrapper(self, parent, theme, extra):
+    def _wrapper(self, parent, theme, extra, callable_):
         """"""
         def iner():
-            self._apply_theme(parent, theme, extra)
+            self._apply_theme(parent, theme, extra, callable_)
         return iner
 
     # ----------------------------------------------------------------------
-    def _apply_theme(self, parent, theme, extra={}):
+    def _apply_theme(self, parent, theme, extra={}, callable_=None):
         """"""
-        self.apply_stylesheet(parent, theme=theme, light_secondary=theme.startswith(
-            'light'), extra=extra)
+        self.apply_stylesheet(parent, theme=theme, invert_secondary=theme.startswith(
+            'light'), extra=extra, callable_=callable_)
 
     # ----------------------------------------------------------------------
-    def apply_stylesheet(self, parent, theme, light_secondary, extra={}):
+    def apply_stylesheet(self, parent, theme, invert_secondary, extra={}, callable_=None):
         """"""
         if theme == 'default':
             parent.setStyleSheet('')
             return
-        apply_stylesheet(parent, theme=theme, light_secondary=light_secondary, extra=extra)
+        apply_stylesheet(parent, theme=theme, invert_secondary=invert_secondary, extra=extra)
+
+        if callable_:
+            callable_()
