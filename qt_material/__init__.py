@@ -19,8 +19,7 @@ elif 'PyQt5' in sys.modules:
     from PyQt5.QtWidgets import QAction
     _resource = os.path.join('resources', 'resource_pyqt5_rc.py')
 else:
-    logging.error("qt_material must be imported after PySide or PyQt!")
-    sys.exit()
+    logging.warning("qt_material must be imported after PySide or PyQt!")
 
 import jinja2
 
