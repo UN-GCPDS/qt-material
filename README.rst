@@ -143,7 +143,7 @@ test all themes and **create new ones**.
   cd test
   python main.py --PySide6
 
-.. image:: images/theme.gif
+.. image:: https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/images/theme.gif
 
 
 New themes
