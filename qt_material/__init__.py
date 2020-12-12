@@ -61,9 +61,11 @@ def get_theme(theme_name, light_secondary=False):
         light_secondary = True
         theme = os.path.join(os.path.dirname(
             os.path.abspath(__file__)), 'themes', 'light_blue.xml')
-    else:
+    elif not os.path.exists(theme_name):
         theme = os.path.join(os.path.dirname(
             os.path.abspath(__file__)), 'themes', theme_name)
+    else:
+        theme = theme_name
 
     if not os.path.exists(theme):
         logging.warning(f"{theme} not exist!")
@@ -197,8 +199,8 @@ def list_themes():
 ########################################################################
 class QtStyleSwitcher:
     """"""
-    # ----------------------------------------------------------------------
 
+    # ----------------------------------------------------------------------
     def set_style_switcher(self, parent, menu, extra={}):
         """"""
         for theme in ['default'] + list_themes():
@@ -215,11 +217,15 @@ class QtStyleSwitcher:
         return iner
 
     # ----------------------------------------------------------------------
-    def _apply_theme(self, parent, theme, extra):
+    def _apply_theme(self, parent, theme, extra={}):
+        """"""
+        self.apply_stylesheet(parent, theme=theme, light_secondary=theme.startswith(
+            'light'), extra=extra)
+
+    # ----------------------------------------------------------------------
+    def apply_stylesheet(self, parent, theme, light_secondary, extra={}):
         """"""
         if theme == 'default':
             parent.setStyleSheet('')
             return
-
-        apply_stylesheet(parent, theme=theme, light_secondary=theme.startswith(
-            'light'), extra=extra)
+        apply_stylesheet(parent, theme=theme, light_secondary=light_secondary, extra=extra)
