@@ -16,12 +16,12 @@ Status|
 
 There is some custom dark themes:
 
-.. image:: images/dark.gif
+.. image:: https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/images/dark.gif
 
 
 And light:
 
-.. image:: images/light.gif
+.. image:: https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/images/light.gif
 
 
 Install
@@ -140,4 +140,8 @@ Light will need to add `light_secondary` argument as `True`.
 .. |CodeFactor Grade| image:: https://img.shields.io/codefactor/grade/github/UN-GCPDS/qt-material
 .. |Documentation Status| image:: https://readthedocs.org/projects/qt-material/badge/?version=latest
    :target: https://qt-material.readthedocs.io/en/latest/?badge=latest
+
+
+
+
 

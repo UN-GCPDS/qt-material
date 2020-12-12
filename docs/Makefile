@@ -37,3 +37,5 @@ buildapi:
 
 	cp source/index.rst ../README.rst
 
+	python fix_readme.py
+
