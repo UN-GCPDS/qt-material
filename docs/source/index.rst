@@ -6,8 +6,8 @@
 Qt Material
 ===========
 
-This is another stylesheet for **PySide6**, **PySide2** and **PyQt5**, this time looks like Material
-Design (close enough).
+This is another stylesheet for **PySide6**, **PySide2** and **PyQt5**, which
+looks like Material Design (close enough).
 
 |GitHub top language| |PyPI - License| |PyPI| |PyPI - Status| |PyPI -
 Python Version| |GitHub last commit| |CodeFactor Grade| |Documentation
@@ -122,12 +122,20 @@ Save it as `my_theme.xml` or similar and apply the style sheet from Python.
 Light themes
 ------------
 
-Light will need to add `light_secondary` argument as `True`.
+Light themes will need to add `light_secondary` argument as `True`.
 
 .. code:: python
 
   apply_stylesheet(app, theme='dark_teal.xml', light_secondary=True)
 
+
+New Themes
+----------
+
+Do you have a custom theme? it looks good? create a
+`pull request <https://github.com/UN-GCPDS/qt-material/pulls>`_ in
+`<https://github.com/UN-GCPDS/qt-material/tree/master/qt_material/themes>`_  and
+share it with all users.
 
 
 
@@ -140,8 +148,6 @@ Light will need to add `light_secondary` argument as `True`.
 .. |CodeFactor Grade| image:: https://img.shields.io/codefactor/grade/github/UN-GCPDS/qt-material
 .. |Documentation Status| image:: https://readthedocs.org/projects/qt-material/badge/?version=latest
    :target: https://qt-material.readthedocs.io/en/latest/?badge=latest
-
-
 
 
 
