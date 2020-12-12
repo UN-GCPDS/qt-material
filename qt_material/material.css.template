@@ -3,7 +3,7 @@
   font-family: Roboto;
   line-height: 13px;
   selection-background-color: {{primaryLightColor}};
-  selection-color: {{secondaryColor}};
+  selection-color: {{primaryTextColor}};
 }
 
 .QWidget,
@@ -44,11 +44,11 @@ QComboBox,
 QPushButton {
   color: {{primaryColor}};
   background-color: {{secondaryDarkColor}};
+  border: 1px solid {{primaryColor}};
   border-radius: 4px;
   padding: 8px 16px ;
   height: 18px;
   font-weight: bold;
-  border: 1px solid {{secondaryColor}};
 }
 
 QPlainTextEdit {
@@ -56,17 +56,6 @@ QPlainTextEdit {
   padding: 8px 16px;
   background-color: {{secondaryDarkColor}};
   border: 1px solid {{secondaryColor}};
-}
-
-QPushButton {
-  margin: 0px;
-  padding: 0px 16px;
-}
-
-QPushButton {
-  height: 34px;
-  min-height: 34px;
-  max-height: 34px;
 }
 
 QSpinBox:disabled,
@@ -119,13 +108,9 @@ QTextEdit {
   background-color: {{secondaryColor}};
 }
 
-QPushButton{
-  text-transform: uppercase;
-}
-
 QComboBox::drop-down {
   border: none;
-  color: {{primaryDarkColor}};
+  color: {{primaryColor}};
 }
 
 QComboBox::down-arrow {
@@ -139,7 +124,7 @@ QComboBox::down-arrow:disabled {
 }
 
 QComboBox QAbstractItemView {
-  border: 1px solid {{primaryDarkColor}};
+  border: 1px solid {{primaryColor}};
   border-radius: 4px;
 }
 
@@ -192,6 +177,15 @@ QSpinBox::down-button {
 QDoubleSpinBox::down-button:disabled,
 QSpinBox::down-button:disabled {
   image: url(:/icon/disabled/downarrow.svg);
+}
+
+QPushButton {
+  text-transform: uppercase;
+  margin: 0px;
+  padding: 0px 16px;
+  height: 34px;
+  min-height: 34px;
+  max-height: 34px;
 }
 
 QPushButton:checked,
@@ -392,9 +386,12 @@ QRadioButton::indicator:unchecked:disabled {
 }
 
 QDockWidget {
-  border: 2px solid {{secondaryTextColor}};
   color: {{secondaryTextColor}};
   text-transform: uppercase;
+  border: 2px solid {{secondaryColor}};
+  titlebar-close-icon: url(:/icon/primary/close.svg);
+  titlebar-normal-icon: url(:/icon/primary/float.svg);
+  border-radius: 4px;
 }
 
 QDockWidget::title {
@@ -402,12 +399,6 @@ QDockWidget::title {
   padding-left: 35px;
   padding: 3px;
   margin-top: 4px;
-}
-
-QDockWidget {
-  border: 1px solid lightgray;
-  titlebar-close-icon: url(:/icon/primary/close.svg);
-  titlebar-normal-icon: url(:/icon/primary/float.svg);
 }
 
 QMenu {
@@ -425,7 +416,7 @@ QMenu::item {
 
 QMenu::item:selected {
   color: {{primaryTextColor}};
-  background-color: {{primaryColor}};
+  background-color: {{primaryLightColor}};
   border-radius: 4px;
 }
 
@@ -584,6 +575,7 @@ QScrollBar::sub-line:horizontal {
   width: 4px;
   background: #393939;
   margin: 10px 0;
+  border-radius: 20px;
 }
 
 .QSlider::handle:horizontal {
@@ -592,9 +584,10 @@ QScrollBar::sub-line:horizontal {
   height: 20px;
   margin: -20px -10px;
 }
-.QSlider::handle:vertical {
 
+.QSlider::handle:vertical {
   image: url(:/icon/primary/slider.svg);
+  border-radius: 20px;
   width: 20px;
   height: 20px;
   margin: -10px -20px;
@@ -806,3 +799,6 @@ QTableView {
 .success{
   color: {{success}};
 }
+
+
+
