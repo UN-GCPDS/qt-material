@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1403</width>
-    <height>907</height>
+    <width>1329</width>
+    <height>869</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -996,8 +996,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>539</width>
-             <height>451</height>
+             <width>353</width>
+             <height>340</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1020,8 +1020,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>539</width>
-             <height>451</height>
+             <width>353</width>
+             <height>340</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1034,8 +1034,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>539</width>
-             <height>451</height>
+             <width>465</width>
+             <height>413</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1431,7 +1431,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1403</width>
+     <width>1329</width>
      <height>30</height>
     </rect>
    </property>
@@ -1541,78 +1541,6 @@
         </property>
        </item>
       </widget>
-     </item>
-    </layout>
-   </widget>
-  </widget>
-  <widget class="QDockWidget" name="dockWidget_theme">
-   <property name="windowTitle">
-    <string>Change theme</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>2</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents_6">
-    <layout class="QGridLayout" name="gridLayout_9">
-     <item row="1" column="0">
-      <layout class="QFormLayout" name="formLayout">
-       <item row="0" column="1">
-        <widget class="QPushButton" name="pushButton_primaryColor">
-         <property name="text">
-          <string>primaryColor</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QPushButton" name="pushButton_primaryLightColor">
-         <property name="text">
-          <string>primaryLightColor</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QPushButton" name="pushButton_secondaryColor">
-         <property name="text">
-          <string>secondaryColor</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QPushButton" name="pushButton_secondaryLightColor">
-         <property name="text">
-          <string>secondaryLightColor</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QPushButton" name="pushButton_secondaryDarkColor">
-         <property name="text">
-          <string>secondaryDarkColor</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QPushButton" name="pushButton_primaryTextColor">
-         <property name="text">
-          <string>primaryTextColor</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QPushButton" name="pushButton_secondaryTextColor">
-         <property name="text">
-          <string>secondaryTextColor</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QCheckBox" name="checkBox_ligh_theme">
-         <property name="text">
-          <string>Invert secondary colors</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </item>
     </layout>
    </widget>

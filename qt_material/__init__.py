@@ -6,17 +6,24 @@ from xml.etree import ElementTree
 
 
 if 'PySide2' in sys.modules:
-    from PySide2.QtGui import QFontDatabase
-    from PySide2.QtWidgets import QAction
+    from PySide2.QtGui import QFontDatabase, QColor
+    from PySide2.QtWidgets import QAction, QColorDialog
+    from PySide2.QtUiTools import QUiLoader
+    from PySide2.QtCore import Qt
     _resource = os.path.join('resources', 'resource_pyside2_rc.py')
 
 elif 'PySide6' in sys.modules:
-    from PySide6.QtGui import QFontDatabase, QAction
+    from PySide6.QtGui import QFontDatabase, QAction, QColor
+    from PySide6.QtWidgets import QColorDialog
+    from PySide6.QtUiTools import QUiLoader
+    from PySide6.QtCore import Qt
     _resource = os.path.join('resources', 'resource_pyside6_rc.py')
 
 elif 'PyQt5' in sys.modules:
-    from PyQt5.QtGui import QFontDatabase
-    from PyQt5.QtWidgets import QAction
+    from PyQt5.QtGui import QFontDatabase, QColor
+    from PyQt5.QtWidgets import QAction, QColorDialog
+    from PyQt5.QtCore import Qt
+    from PyQt5 import uic
     _resource = os.path.join('resources', 'resource_pyqt5_rc.py')
 else:
     logging.warning("qt_material must be imported after PySide or PyQt!")
@@ -79,7 +86,6 @@ def get_theme(theme_name, invert_secondary=False):
     if invert_secondary:
         theme['secondaryColor'], theme['secondaryLightColor'], theme['secondaryDarkColor'] = theme[
             'secondaryColor'], theme['secondaryDarkColor'], theme['secondaryLightColor']
-        # theme['primaryTextColor'] = theme['secondaryTextColor']
 
     for color in ['primaryColor',
                   'primaryLightColor',
@@ -154,11 +160,8 @@ def set_icons_theme(theme, resource=None, output=None):
         content = file.read()
 
         replaces = (
-
             ["#0000ff", 'primaryColor'],
-            ["#ff0000", 'secondaryLightColor'],
-
-        )
+            ["#ff0000", 'secondaryLightColor'],)
 
         for color, replace in replaces:
             if 'PySide2' in sys.modules or 'PySide6' in sys.modules:
@@ -195,16 +198,24 @@ def list_themes():
 
 
 ########################################################################
-class QtStyleSwitcher:
+class QtStyleTools:
     """"""
+    extra_colors = {}
 
     # ----------------------------------------------------------------------
-    def set_style_switcher(self, parent, menu, extra={}, callable_=None):
+    def set_extra_colors(self, extra):
         """"""
+        self.extra_colors = extra
+
+    # ----------------------------------------------------------------------
+
+    def set_style_switcher(self, parent, menu):
+        """"""
+
         for theme in ['default'] + list_themes():
             action = QAction(parent)
             action.setText(theme)
-            action.triggered.connect(self._wrapper(parent, theme, extra, callable_))
+            action.triggered.connect(self._wrapper(parent, theme, self.extra_colors, self.update_buttons))
             menu.addAction(action)
 
     # ----------------------------------------------------------------------
@@ -230,3 +241,103 @@ class QtStyleSwitcher:
 
         if callable_:
             callable_()
+
+    # ----------------------------------------------------------------------
+    def update_buttons(self):
+        """"""
+        if not hasattr(self, 'colors'):
+            return
+
+        theme = {color_: os.environ[f'PYSIDEMATERIAL_{color_.upper()}'] for color_ in self.colors}
+
+        if 'light' in os.environ['PYSIDEMATERIAL_THEME']:
+            self.dock_theme.checkBox_ligh_theme.setChecked(True)
+        elif 'dark' in os.environ['PYSIDEMATERIAL_THEME']:
+            self.dock_theme.checkBox_ligh_theme.setChecked(False)
+
+        if self.dock_theme.checkBox_ligh_theme.isChecked():
+            theme['secondaryColor'], theme['secondaryLightColor'], theme['secondaryDarkColor'] = theme[
+                'secondaryColor'], theme['secondaryDarkColor'], theme['secondaryLightColor']
+
+        for color_ in self.colors:
+            button = getattr(self.dock_theme, f'pushButton_{color_}')
+
+            color = theme[color_]
+
+            if self.get_color(color).getHsv()[2] < 128:
+                text_color = '#ffffff'
+            else:
+                text_color = '#000000'
+
+            button.setStyleSheet(f"""
+            *{{
+            background-color: {color};
+            color: {text_color};
+            border: none;
+            }}""")
+
+            self.custom_colors[color_] = color
+
+    # ----------------------------------------------------------------------
+    def get_color(self, color):
+        """"""
+        return QColor(*[int(color[s:s + 2], 16) for s in range(1, 6, 2)])
+
+    # ----------------------------------------------------------------------
+    def update_theme(self, parent):
+        """"""
+        with open('my_theme.xml', 'w') as file:
+            file.write("""
+            <resources>
+                <color name="primaryColor">{primaryColor}</color>
+                <color name="primaryLightColor">{primaryLightColor}</color>
+                <color name="secondaryColor">{secondaryColor}</color>
+                <color name="secondaryLightColor">{secondaryLightColor}</color>
+                <color name="secondaryDarkColor">{secondaryDarkColor}</color>
+                <color name="primaryTextColor">{primaryTextColor}</color>
+                <color name="secondaryTextColor">{secondaryTextColor}</color>
+              </resources>
+            """.format(**self.custom_colors))
+        light = self.dock_theme.checkBox_ligh_theme.isChecked()
+        self.apply_stylesheet(parent, 'my_theme.xml', invert_secondary=light, extra=self.extra_colors, callable_=self.update_buttons)
+
+    # ----------------------------------------------------------------------
+    def set_color(self, parent, button_):
+        """"""
+        def iner():
+            initial = self.get_color(self.custom_colors[button_])
+            color_dialog = QColorDialog(parent=parent)
+            color_dialog.setCurrentColor(initial)
+            done = color_dialog.exec_()
+            color_ = color_dialog.currentColor()
+
+            if done and color_.isValid():
+                color = '#' + ''.join([hex(v)[2:].ljust(2, '0') for v in color_.toTuple()[:3]])
+                self.custom_colors[button_] = color
+                self.update_theme(parent)
+
+        return iner
+
+    # ----------------------------------------------------------------------
+    def show_dock_theme(self, parent):
+        """"""
+        self.colors = ['primaryColor',
+                       'primaryLightColor',
+                       'secondaryColor',
+                       'secondaryLightColor',
+                       'secondaryDarkColor',
+                       'primaryTextColor',
+                       'secondaryTextColor']
+
+        self.custom_colors = {v: os.environ[f'PYSIDEMATERIAL_{v.upper()}'] for v in self.colors}
+        self.dock_theme = QUiLoader().load(os.path.join(os.path.dirname(__file__), 'dock_theme.ui'), parent)
+        parent.addDockWidget(Qt.LeftDockWidgetArea, self.dock_theme)
+        self.dock_theme.setFloating(True)
+
+        self.update_buttons()
+        self.dock_theme.checkBox_ligh_theme.clicked.connect(self.update_theme)
+
+        for color in self.colors:
+            button = getattr(self.dock_theme, f'pushButton_{color}')
+            button.clicked.connect(self.set_color(parent, color))
+
