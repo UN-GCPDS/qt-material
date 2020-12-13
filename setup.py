@@ -1,8 +1,8 @@
 import os
 from setuptools import setup, find_packages
 
-# with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
-#    README = readme.read()
+with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
+   README = readme.read()
 
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
@@ -26,7 +26,7 @@ setup(
     include_package_data=True,
     license='BSD-2-Clause',
     description="Qt Stylesheet for PySide6, PySide2 and PyQt5.",
-    #    long_description = README,
+    long_description=README,
 
     classifiers=[
         'Development Status :: 4 - Beta',
