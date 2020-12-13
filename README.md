@@ -163,7 +163,7 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
         # self.apply_stylesheet(self.main, 'light_blue.xml')
 ```
 
-![](_images/runtime.gif)
+![](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/runtime.gif)
 
 ### Integrate stylesheets in a menu
 
@@ -180,7 +180,7 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
         self.add_menu_theme(self.main, self.main.menuStyles)
 ```
 
-![](_images/runtime_menu.gif)
+![](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/runtime_menu.gif)
 
 ## Create new themes
 
@@ -197,6 +197,6 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
         self.show_dock_theme(self.main)
 ```
 
-![](_images/runtime_dock.gif)
+![](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/runtime_dock.gif)
 
 A full set of examples are available in the [exmaples directory](https://github.com/UN-GCPDS/qt-material/blob/master/examples/runtime/)
