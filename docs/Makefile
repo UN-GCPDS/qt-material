@@ -22,20 +22,8 @@ help:
 
 
 buildapi:
+	rm -f source/_modules/*
 	sphinx-apidoc -fMeET -o source/_modules ../qt_material
-
-	#mkdir -p source/_notebooks/images
-
-	#cp ../notebooks/*.ipynb source/_notebooks/
-	#cp ../notebooks/images/* source/_notebooks/images
-
-	#rm source/_notebooks/*.rst
-	#rm source/_notebooks/SANDBOX.ipynb
-	#jupyter nbconvert --to rst source/_notebooks/*.ipynb
-	#rm source/_notebooks/*.ipynb
-
-
-	cp source/index.rst ../README.rst
-
+	jupyter nbconvert --to rst source/notebooks/readme.ipynb
+	jupyter nbconvert --to markdown source/notebooks/readme.ipynb --output ../../../README.md
 	python fix_readme.py
-
