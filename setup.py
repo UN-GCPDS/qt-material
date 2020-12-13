@@ -27,6 +27,7 @@ setup(
     license='BSD-2-Clause',
     description="Qt Stylesheet for PySide6, PySide2 and PyQt5.",
     long_description=README,
+    long_description_content_type='text/markdown',
 
     classifiers=[
         'Development Status :: 4 - Beta',
