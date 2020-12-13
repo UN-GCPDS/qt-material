@@ -208,8 +208,7 @@ class QtStyleTools:
         self.extra_colors = extra
 
     # ----------------------------------------------------------------------
-
-    def set_style_switcher(self, parent, menu):
+    def add_menu_theme(self, parent, menu):
         """"""
 
         for theme in ['default'] + list_themes():
@@ -232,7 +231,7 @@ class QtStyleTools:
             'light'), extra=extra, callable_=callable_)
 
     # ----------------------------------------------------------------------
-    def apply_stylesheet(self, parent, theme, invert_secondary, extra={}, callable_=None):
+    def apply_stylesheet(self, parent, theme, invert_secondary=False, extra={}, callable_=None):
         """"""
         if theme == 'default':
             parent.setStyleSheet('')
