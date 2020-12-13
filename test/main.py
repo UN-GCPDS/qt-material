@@ -43,7 +43,7 @@ app = QApplication([])
 app.processEvents()
 app.setQuitOnLastWindowClosed(False)
 # app.lastWindowClosed.connect(kill_childs)
-# app.lastWindowClosed.connect(lambda: app.quit())
+app.lastWindowClosed.connect(lambda: app.quit())
 
 app.setStyle('Fusion')  # For better looking
 
@@ -105,7 +105,7 @@ class RuntimeStylesheets(QMainWindow, QtStyleSwitcher):
         """"""
         def iner():
             initial = self.get_color(self.custom_colors[button_])
-            color_dialog = QColorDialog(parent=self)
+            color_dialog = QColorDialog(parent=self.main)
             color_dialog.setCurrentColor(initial)
             done = color_dialog.exec_()
             color_ = color_dialog.currentColor()
