@@ -137,7 +137,7 @@ html_sidebars = {
     '**': [
         # 'about.html',
         # 'globaltoc.html',
-        'navigation.html',
+        # 'navigation.html',
         'relations.html',
         # sourcelink.html
         'searchbox.html',

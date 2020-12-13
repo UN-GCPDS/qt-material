@@ -1,4 +1,4 @@
-Qt Material
+Qt-Material
 ===========
 
 This is another stylesheet for **PySide6**, **PySide2** and **PyQt5**,
@@ -22,6 +22,19 @@ There is some custom dark themes: |dark| And light: |light|
 
 .. |dark| image:: _images/dark.gif
 .. |light| image:: _images/light.gif
+
+Navigation
+----------
+
+-  `Install <#install>`__
+-  `Usage <#Usage>`__
+-  `Themes <#Themes>`__
+-  `Custom colors <#Custom-colors>`__
+-  `Usage <#Usage>`__
+-  `Light themes <#Light-themes>`__
+-  `Run examples <#Run-examples>`__
+-  `New themes <#New-themes>`__
+-  `Change theme in runtime <##Change-theme-in-runtime>`__
 
 Install
 -------
@@ -143,9 +156,9 @@ available to test all themes and **create new ones**.
     cd test
     python main.py --PySide6
 
-| |theme|
+|image1|
 
-.. |theme| image:: _images/theme.gif
+.. |image1| image:: _images/theme.gif
 
 New themes
 ----------
@@ -154,3 +167,70 @@ Do you have a custom theme? it looks good? create a `pull
 request <https://github.com/UN-GCPDS/qt-material/pulls>`__ in `themes
 folder <https://github.com/UN-GCPDS/qt-material/tree/master/qt_material/themes%3E>`__
 and share it with all users.
+
+Change theme in runtime
+-----------------------
+
+There is a ``qt_material.QtStyleTools`` class that must be inherited
+along to ``QMainWindow`` for change themes in runtime using the
+``apply_stylesheet()`` method.
+
+.. code:: ipython3
+
+    class RuntimeStylesheets(QMainWindow, QtStyleTools):
+        
+        def __init__(self):
+            super().__init__()
+            self.main = QUiLoader().load('main_window.ui', self)
+            
+            self.apply_stylesheet(self.main, 'dark_teal.xml')
+            # self.apply_stylesheet(self.main, 'light_red.xml')
+            # self.apply_stylesheet(self.main, 'light_blue.xml')
+
+|image1|
+
+.. |image1| image:: _images/runtime.gif
+
+Integrate stylesheets in a menu
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A custom *stylesheets menu* can be added to a project for switching
+across all default available themes.
+
+.. code:: ipython3
+
+    class RuntimeStylesheets(QMainWindow, QtStyleTools):
+        
+        def __init__(self):
+            super().__init__()
+            self.main = QUiLoader().load('main_window.ui', self)
+            
+            self.add_menu_theme(self.main, self.main.menuStyles)
+
+|image1|
+
+.. |image1| image:: _images/runtime_menu.gif
+
+Create new themes
+-----------------
+
+A simple interface is available to modify a theme in runtime, this
+feature can be used to create a new theme, the theme file is created in
+the main directory as ``my_theme.xml``
+
+.. code:: ipython3
+
+    class RuntimeStylesheets(QMainWindow, QtStyleTools):
+        
+        def __init__(self):
+            super().__init__()
+            self.main = QUiLoader().load('main_window.ui', self)
+            
+            self.show_dock_theme(self.main)
+
+|image1|
+
+.. |image1| image:: _images/runtime_dock.gif
+
+A full set of examples are available in the `exmaples
+directory <https://github.com/UN-GCPDS/qt-material/blob/master/examples/runtime/>`__
