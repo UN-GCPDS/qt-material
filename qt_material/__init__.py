@@ -53,6 +53,11 @@ def build_stylesheet(theme='', invert_secondary=False, resources=[], extra={}):
 
     stylesheet = env.get_template(template)
 
+    theme.setdefault('font_family', 'Roboto')
+    theme.setdefault('danger', '#dc3545')
+    theme.setdefault('warning', '#ffc107')
+    theme.setdefault('success', '#17a2b8')
+
     theme.update(extra)
 
     return stylesheet.render(**theme)

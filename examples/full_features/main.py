@@ -41,10 +41,16 @@ app.lastWindowClosed.connect(lambda: app.quit())
 app.setStyle('Fusion')  # For better looking
 
 # Extra stylesheets
-extra = {'danger': '#dc3545',
-         'warning': '#ffc107',
-         'success': '#17a2b8',
-         }
+extra = {
+
+    # Button colors
+    'danger': '#dc3545',
+    'warning': '#ffc107',
+    'success': '#17a2b8',
+
+    # Font
+    'font_family': 'Roboto',
+}
 
 
 ########################################################################
@@ -106,6 +112,8 @@ if __name__ == "__main__":
                      invert_secondary=('light' in theme and 'dark' not in theme),
                      extra=extra)
     # QIcon.setThemeName("breeze-dark")
+
+    # app.setStyleSheet("*{font-family: mono}")
 
     frame = RuntimeStylesheets()
     frame.main.show()
