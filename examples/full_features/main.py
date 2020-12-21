@@ -49,7 +49,7 @@ extra = {
     'success': '#17a2b8',
 
     # Font
-    'font_family': 'Roboto',
+    'font-family': 'CenturyGothic',
 }
 
 
