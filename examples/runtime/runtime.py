@@ -17,10 +17,10 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
         self.main.pushButton_3.clicked.connect(lambda: self.apply_stylesheet(self.main, 'light_blue.xml', extra={'font_family': 'Raleway', }))
 
 
-# Safira-L3ZPW.otf
 if __name__ == "__main__":
     app = QApplication()
 
+    # Local file
     QFontDatabase.addApplicationFont('Raleway-Regular.ttf')
 
     frame = RuntimeStylesheets()
