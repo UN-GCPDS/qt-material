@@ -43,16 +43,28 @@
     <item row="0" column="1">
      <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <widget class="QRadioButton" name="radioButton_2">
+       <widget class="QCheckBox" name="checkBox_2">
         <property name="text">
-         <string>RadioButton</string>
+         <string>CheckBox</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+        <property name="tristate">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="checkBox_2">
+       <widget class="QCheckBox" name="checkBox_3">
         <property name="text">
          <string>CheckBox</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+        <property name="tristate">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -60,6 +72,13 @@
        <widget class="QCheckBox" name="checkBox">
         <property name="text">
          <string>CheckBox</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_2">
+        <property name="text">
+         <string>RadioButton</string>
         </property>
        </widget>
       </item>

@@ -215,7 +215,6 @@ class QtStyleTools:
     # ----------------------------------------------------------------------
     def add_menu_theme(self, parent, menu):
         """"""
-
         for theme in ['default'] + list_themes():
             action = QAction(parent)
             action.setText(theme)
@@ -334,7 +333,12 @@ class QtStyleTools:
                        'secondaryTextColor']
 
         self.custom_colors = {v: os.environ[f'PYSIDEMATERIAL_{v.upper()}'] for v in self.colors}
-        self.dock_theme = QUiLoader().load(os.path.join(os.path.dirname(__file__), 'dock_theme.ui'), parent)
+
+        if 'PySide2' in sys.modules or 'PySide6' in sys.modules:
+            self.dock_theme = QUiLoader().load(os.path.join(os.path.dirname(__file__), 'dock_theme.ui'))
+        elif 'PyQt5' in sys.modules:
+            self.dock_theme = uic.loadUi(os.path.join(os.path.dirname(__file__), 'dock_theme.ui'))
+
         parent.addDockWidget(Qt.LeftDockWidgetArea, self.dock_theme)
         self.dock_theme.setFloating(True)
 

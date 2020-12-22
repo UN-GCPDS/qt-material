@@ -79,11 +79,11 @@ create_qrc(qrc)
 
 for qrc_file in [QRC_FILE, 'logos.qrc']:
 
-    RCC = 'pyside2-rcc -g python --no-compress'
+    RCC = 'pyside2-rcc --no-compress --verbose'
     command_pyside = f"{RCC} {qrc_file}  -o {qrc_file.replace('.qrc', '_pyside2_rc.py')}"
     os.system(command_pyside)
 
-    RCC = 'pyside6-rcc -g python --no-compress'
+    RCC = 'pyside6-rcc --no-compress --verbose'
     command_pyside = f"{RCC} {qrc_file}  -o {qrc_file.replace('.qrc', '_pyside6_rc.py')}"
     os.system(command_pyside)
 

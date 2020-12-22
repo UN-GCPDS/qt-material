@@ -28,7 +28,7 @@ if 'PySide2' in sys.modules:
     from qt_material.resources import logos_pyside2_rc
 elif 'PySide6' in sys.modules:
     from qt_material.resources import logos_pyside6_rc
-elif 'Qt' in sys.modules:
+elif 'PyQt5' in sys.modules:
     from qt_material.resources import logos_pyqt5_rc
 
 freeze_support()
@@ -111,7 +111,6 @@ if __name__ == "__main__":
     apply_stylesheet(app, theme + '.xml',
                      invert_secondary=('light' in theme and 'dark' not in theme),
                      extra=extra)
-    # QIcon.setThemeName("breeze-dark")
 
     # app.setStyleSheet("*{font-family: mono}")
 

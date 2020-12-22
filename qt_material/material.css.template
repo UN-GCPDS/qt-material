@@ -1,6 +1,6 @@
 *{
   color: {{secondaryTextColor}};
-  font-family: {{font-family}};
+  font-family: {{font_family}};
   line-height: 13px;
   selection-background-color: {{primaryLightColor}};
   selection-color: {{primaryTextColor}};
