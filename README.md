@@ -19,14 +19,15 @@ And light:
 ## Navigation
 
   * [Install](#install)
-  * [Usage](#Usage)
-  * [Themes](#Themes)
-  * [Custom colors](#Custom-colors)
-  * [Usage](#Usage)
-  * [Light themes](#Light-themes)
-  * [Run examples](#Run-examples)
-  * [New themes](#New-themes)
-  * [Change theme in runtime](##Change-theme-in-runtime)
+  * [Usage](#usage)
+  * [Themes](#themes)
+  * [Custom colors](#custom-colors)
+  * [Usage](#usage)
+  * [Light themes](#light-themes)
+  * [Extra colors and custom fonts](#extra-colors-and-custom-fonts)
+  * [Run examples](#run-examples)
+  * [New themes](#new-themes)
+  * [Change theme in runtime](#change-theme-in-runtime)
 
 ## Install
 
@@ -127,7 +128,38 @@ Light themes will need to add `invert_secondary` argument as `True`.
 apply_stylesheet(app, theme='light_red.xml', invert_secondary=True)
 ```
 
-## Run example
+## Extra colors and custom fonts
+
+There is an `extra` argument for accent colors and custom fonts. 
+
+
+```python
+extra = {
+
+    # Button colors
+    'danger': '#dc3545',
+    'warning': '#ffc107',
+    'success': '#17a2b8',
+
+    # Font
+    'font-family': 'Roboto',
+}
+
+apply_stylesheet(app, 'light_cyan.xml', invert_secondary=True, extra=extra)
+```
+
+The accent colors are applied to `QPushButton` with the corresponding `class`  property:
+
+
+```python
+pushButton_danger.setProperty('class', 'danger')
+pushButton_warning.setProperty('class', 'warning')
+pushButton_success.setProperty('class', 'success')
+```
+
+![extra](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/extra.png)
+
+## Run examples
 A window with almost all widgets (see the previous screenshots) are available to test all themes and **create new ones**.
 
 
@@ -139,7 +171,7 @@ cd test
 python main.py --PySide6
 ```
 
-![](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/theme.gif)
+![theme](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/theme.gif)
 
 ## New themes
 
@@ -163,7 +195,7 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
         # self.apply_stylesheet(self.main, 'light_blue.xml')
 ```
 
-![](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/runtime.gif)
+![run](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/runtime.gif)
 
 ### Integrate stylesheets in a menu
 
@@ -180,7 +212,7 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
         self.add_menu_theme(self.main, self.main.menuStyles)
 ```
 
-![](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/runtime_menu.gif)
+![menu](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/runtime_menu.gif)
 
 ## Create new themes
 
@@ -197,6 +229,6 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
         self.show_dock_theme(self.main)
 ```
 
-![](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/runtime_dock.gif)
+![dock](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/runtime_dock.gif)
 
 A full set of examples are available in the [exmaples directory](https://github.com/UN-GCPDS/qt-material/blob/master/examples/runtime/)

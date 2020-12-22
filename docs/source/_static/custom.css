@@ -43,3 +43,10 @@ img.logo{
 width: 210px;
 
 }
+
+
+p.caption {
+
+display: none;
+
+}

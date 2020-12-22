@@ -27,14 +27,15 @@ Navigation
 ----------
 
 -  `Install <#install>`__
--  `Usage <#Usage>`__
--  `Themes <#Themes>`__
--  `Custom colors <#Custom-colors>`__
--  `Usage <#Usage>`__
--  `Light themes <#Light-themes>`__
--  `Run examples <#Run-examples>`__
--  `New themes <#New-themes>`__
--  `Change theme in runtime <##Change-theme-in-runtime>`__
+-  `Usage <#usage>`__
+-  `Themes <#themes>`__
+-  `Custom colors <#custom-colors>`__
+-  `Usage <#usage>`__
+-  `Light themes <#light-themes>`__
+-  `Extra colors and custom fonts <#extra-colors-and-custom-fonts>`__
+-  `Run examples <#run-examples>`__
+-  `New themes <#new-themes>`__
+-  `Change theme in runtime <#change-theme-in-runtime>`__
 
 Install
 -------
@@ -142,8 +143,42 @@ Light themes will need to add ``invert_secondary`` argument as ``True``.
 
     apply_stylesheet(app, theme='light_red.xml', invert_secondary=True)
 
-Run example
------------
+Extra colors and custom fonts
+-----------------------------
+
+There is an ``extra`` argument for accent colors and custom fonts.
+
+.. code:: ipython3
+
+    extra = {
+    
+        # Button colors
+        'danger': '#dc3545',
+        'warning': '#ffc107',
+        'success': '#17a2b8',
+    
+        # Font
+        'font-family': 'Roboto',
+    }
+    
+    apply_stylesheet(app, 'light_cyan.xml', invert_secondary=True, extra=extra)
+
+The accent colors are applied to ``QPushButton`` with the corresponding
+``class`` property:
+
+.. code:: ipython3
+
+    pushButton_danger.setProperty('class', 'danger')
+    pushButton_warning.setProperty('class', 'warning')
+    pushButton_success.setProperty('class', 'success')
+
+.. figure:: _images/extra.png
+   :alt: extra
+
+   extra
+
+Run examples
+------------
 
 A window with almost all widgets (see the previous screenshots) are
 available to test all themes and **create new ones**.
@@ -156,9 +191,10 @@ available to test all themes and **create new ones**.
     cd test
     python main.py --PySide6
 
-|image1|
+.. figure:: _images/theme.gif
+   :alt: theme
 
-.. |image1| image:: _images/theme.gif
+   theme
 
 New themes
 ----------
@@ -187,9 +223,10 @@ along to ``QMainWindow`` for change themes in runtime using the
             # self.apply_stylesheet(self.main, 'light_red.xml')
             # self.apply_stylesheet(self.main, 'light_blue.xml')
 
-|image1|
+.. figure:: _images/runtime.gif
+   :alt: run
 
-.. |image1| image:: _images/runtime.gif
+   run
 
 Integrate stylesheets in a menu
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -207,9 +244,10 @@ across all default available themes.
             
             self.add_menu_theme(self.main, self.main.menuStyles)
 
-|image1|
+.. figure:: _images/runtime_menu.gif
+   :alt: menu
 
-.. |image1| image:: _images/runtime_menu.gif
+   menu
 
 Create new themes
 -----------------
@@ -228,9 +266,10 @@ the main directory as ``my_theme.xml``
             
             self.show_dock_theme(self.main)
 
-|image1|
+.. figure:: _images/runtime_dock.gif
+   :alt: dock
 
-.. |image1| image:: _images/runtime_dock.gif
+   dock
 
 A full set of examples are available in the `exmaples
 directory <https://github.com/UN-GCPDS/qt-material/blob/master/examples/runtime/>`__
