@@ -6,6 +6,21 @@
   selection-color: {{primaryTextColor}};
 }
 
+.accent{
+  color: {{primaryColor}};
+}
+.danger{
+  color: {{danger}};
+}
+
+.warning{
+  color: {{warning}};
+}
+
+.success{
+  color: {{success}};
+}
+
 .QWidget,
 QWidget {
   background-color: {{secondaryDarkColor}};
@@ -36,6 +51,7 @@ QSizeGrip {
   height: 16px;
 }
 
+QDateTimeEdit,
 QSpinBox,
 QDoubleSpinBox,
 QTextEdit,
@@ -51,6 +67,23 @@ QPushButton {
   font-weight: bold;
 }
 
+QDateTimeEdit,
+QSpinBox,
+QDoubleSpinBox,
+QTreeView,
+QListView,
+.QLineEdit,
+QComboBox {
+  color: {{primaryColor}};
+  padding-left: 15px;
+  border-radius: 0px;
+  background-color: {{secondaryColor}};
+  border-width: 0 0 2px 0;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+
 QPlainTextEdit {
   border-radius: 4px;
   padding: 8px 16px;
@@ -58,6 +91,7 @@ QPlainTextEdit {
   border: 1px solid {{secondaryColor}};
 }
 
+QDateTimeEdit:disabled,
 QSpinBox:disabled,
 QDoubleSpinBox:disabled,
 QTextEdit:disabled,
@@ -70,21 +104,6 @@ QComboBox:disabled {
   border-radius: 4px;
   padding: 8px 16px ;
   font-weight: bold;
-}
-
-QTreeView,
-QListView,
-QSpinBox,
-QDoubleSpinBox,
-.QLineEdit,
-QComboBox {
-  color: {{primaryColor}};
-  padding-left: 15px;
-  border-radius: 0px;
-  background-color: {{secondaryColor}};
-  border-width: 0 0 2px 0;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
 }
 
 QComboBox[frame='false'] {
@@ -148,6 +167,7 @@ QComboBox::item:selected:disabled {
   background-color: {{primaryColor}};
 }
 
+QDateTimeEdit::up-button,
 QDoubleSpinBox::up-button,
 QSpinBox::up-button {
   subcontrol-origin: border;
@@ -158,11 +178,13 @@ QSpinBox::up-button {
   margin-right: 5px;
 }
 
+QDateTimeEdit::up-button:disabled,
 QDoubleSpinBox::up-button:disabled,
 QSpinBox::up-button:disabled {
   image: url(:/icon/disabled/uparrow.svg);
 }
 
+QDateTimeEdit::down-button,
 QDoubleSpinBox::down-button,
 QSpinBox::down-button {
   subcontrol-origin: border;
@@ -174,6 +196,7 @@ QSpinBox::down-button {
   margin-right: 5px;
 }
 
+QDateTimeEdit::down-button:disabled,
 QDoubleSpinBox::down-button:disabled,
 QSpinBox::down-button:disabled {
   image: url(:/icon/disabled/downarrow.svg);
@@ -401,6 +424,7 @@ QDockWidget::title {
   margin-top: 4px;
 }
 
+QCalendarWidget QMenu,
 QMenu {
   background-color: {{secondaryColor}};
   border: 2px solid {{secondaryLightColor}};
@@ -408,23 +432,25 @@ QMenu {
   margin-top: 3px;
 }
 
+QCalendarWidget QMenu::item,
 QMenu::item {
   padding: 2px 25px 2px 20px;
   border: 8px solid transparent; /* reserve space for selection border */
   color: {{secondaryTextColor}};
 }
 
+QCalendarWidget QMenu::item:selected,
 QMenu::item:selected {
   color: {{primaryTextColor}};
   background-color: {{primaryLightColor}};
   border-radius: 4px;
 }
 
+QCalendarWidget QMenu::item:disabled,
 QMenuBar::item:disabled,
 QMenu::item:disabled {
   color: {{secondaryTextColor|opacity(0.3)}};
 }
-
 
 QMenu::separator {
   height: 2px;
@@ -699,11 +725,6 @@ QToolButton:checked {
 QAbstractScrollArea {
 }
 
-QLineEdit {
-  border: 1px solid {{primaryColor}};
-  border-radius: 2px;
-}
-
 QTreeView,
 QListView {
   border-radius: 4px;
@@ -785,20 +806,17 @@ QTableView {
   alternate-background-color: {{secondaryColor|opacity(0.7)}};
 }
 
-.accent{
+QLCDNumber {
   color: {{primaryColor}};
-}
-.danger{
-  color: {{danger}};
-}
-
-.warning{
-  color: {{warning}};
+  background-color:{{primaryColor|opacity(0.1)}};
+  border: 1px solid {{primaryColor|opacity(0.3)}};
+  border-radius: 2px;
 }
 
-.success{
-  color: {{success}};
+#qt_calendar_prevmonth {
+    qproperty-icon: url(:/icon/primary/leftarrow.svg);
 }
 
-
-
+#qt_calendar_nextmonth {
+  qproperty-icon: url(:/icon/primary/rightarrow.svg);
+}

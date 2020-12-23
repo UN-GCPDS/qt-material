@@ -6,21 +6,21 @@ from xml.etree import ElementTree
 
 
 if 'PySide2' in sys.modules:
-    from PySide2.QtGui import QFontDatabase, QColor
+    from PySide2.QtGui import QFontDatabase, QColor, QGuiApplication, QPalette
     from PySide2.QtWidgets import QAction, QColorDialog
     from PySide2.QtUiTools import QUiLoader
     from PySide2.QtCore import Qt
     _resource = os.path.join('resources', 'resource_pyside2_rc.py')
 
 elif 'PySide6' in sys.modules:
-    from PySide6.QtGui import QFontDatabase, QAction, QColor
+    from PySide6.QtGui import QFontDatabase, QAction, QColor, QGuiApplication, QPalette
     from PySide6.QtWidgets import QColorDialog
     from PySide6.QtUiTools import QUiLoader
     from PySide6.QtCore import Qt
     _resource = os.path.join('resources', 'resource_pyside6_rc.py')
 
 elif 'PyQt5' in sys.modules:
-    from PyQt5.QtGui import QFontDatabase, QColor
+    from PyQt5.QtGui import QFontDatabase, QColor, QGuiApplication, QPalette
     from PyQt5.QtWidgets import QAction, QColorDialog
     from PyQt5.QtCore import Qt
     from PyQt5 import uic
@@ -59,6 +59,10 @@ def build_stylesheet(theme='', invert_secondary=False, resources=[], extra={}):
     theme.setdefault('success', '#17a2b8')
 
     theme.update(extra)
+
+    default_palette = QGuiApplication.palette()
+    default_palette.setColor(QPalette.PlaceholderText, QColor(*[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
+    QGuiApplication.setPalette(default_palette)
 
     return stylesheet.render(**theme)
 
