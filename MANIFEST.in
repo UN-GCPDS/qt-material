@@ -2,7 +2,7 @@ exclude qt_material/resources/generate.py
 recursive-include qt_material *.css.template
 recursive-include qt_material *.ui
 recursive-include qt_material/themes *.xml
-recursive-include qt_material/fonts *.ttf
+recursive-include qt_material/fonts/roboto *.ttf
 recursive-include * *.csv
 recursive-include * *.ttf
 recursive-exclude * __pycache__
