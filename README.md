@@ -24,7 +24,9 @@ And light:
   * [Custom colors](#custom-colors)
   * [Usage](#usage)
   * [Light themes](#light-themes)
+  * [Environ variables](#environ-variables)
   * [Extra colors and custom fonts](#extra-colors-and-custom-fonts)
+  * [Custom stylesheets](#custom-stylesheets)
   * [Run examples](#run-examples)
   * [New themes](#new-themes)
   * [Change theme in runtime](#change-theme-in-runtime)
@@ -128,6 +130,20 @@ Light themes will need to add `invert_secondary` argument as `True`.
 apply_stylesheet(app, theme='light_red.xml', invert_secondary=True)
 ```
 
+## Environ variables
+There is a environ variables related with the current theme used.
+
+| Environ variable               | Description                              | Example        |
+|--------------------------------|------------------------------------------|----------------|
+| QTMATERIAL_PRIMARYCOLOR        | Primary color                            | #2979ff        |
+| QTMATERIAL_PRIMARYLIGHTCOLOR   | A bright version of the primary color    | #75a7ff        |
+| QTMATERIAL_SECONDARYCOLOR      | Secondary color                          | #f5f5f5        |
+| QTMATERIAL_SECONDARYLIGHTCOLOR | A bright version of the secondary color  | #ffffff        |
+| QTMATERIAL_SECONDARYDARKCOLOR  | A dark version of the primary color      | #e6e6e6        |
+| QTMATERIAL_PRIMARYTEXTCOLOR    | Color for text over primary background   | #000000        |
+| QTMATERIAL_SECONDARYTEXTCOLOR  | Color for text over secondary background | #000000        |
+| QTMATERIAL_THEME               | Name of theme used                       | light_blue.xml |
+
 ## Extra colors and custom fonts
 
 There is an `extra` argument for accent colors and custom fonts. 
@@ -158,6 +174,30 @@ pushButton_success.setProperty('class', 'success')
 ```
 
 ![extra](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/extra.png)
+
+## Custom stylesheets
+
+Custom changes can be performed by overwriting the stylesheets, for example:
+
+
+```python
+QPushButton {{
+  color: {QTMATERIAL_SECONDARYCOLOR};
+  text-transform: none;
+  background-color: {QTMATERIAL_PRIMARYCOLOR};
+}}
+```
+
+
+```python
+apply_stylesheet(app, theme='light_blue.xml')
+
+stylesheet = app.styleSheet()
+with open('custom.css') as file:
+    app.setStyleSheet(stylesheet + file.read().format(**os.environ))
+```
+
+![extra](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/custom.png)
 
 ## Run examples
 A window with almost all widgets (see the previous screenshots) are available to test all themes and **create new ones**.

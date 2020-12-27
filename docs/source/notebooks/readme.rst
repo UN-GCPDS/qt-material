@@ -32,7 +32,9 @@ Navigation
 -  `Custom colors <#custom-colors>`__
 -  `Usage <#usage>`__
 -  `Light themes <#light-themes>`__
+-  `Environ variables <#environ-variables>`__
 -  `Extra colors and custom fonts <#extra-colors-and-custom-fonts>`__
+-  `Custom stylesheets <#custom-stylesheets>`__
 -  `Run examples <#run-examples>`__
 -  `New themes <#new-themes>`__
 -  `Change theme in runtime <#change-theme-in-runtime>`__
@@ -143,6 +145,39 @@ Light themes will need to add ``invert_secondary`` argument as ``True``.
 
     apply_stylesheet(app, theme='light_red.xml', invert_secondary=True)
 
+Environ variables
+-----------------
+
+There is a environ variables related with the current theme used.
+
++------------------------+--------------------------------+-----------+
+| Environ variable       | Description                    | Example   |
++========================+================================+===========+
+| Q                      | Primary color                  | #2979ff   |
+| TMATERIAL_PRIMARYCOLOR |                                |           |
++------------------------+--------------------------------+-----------+
+| QTMATE                 | A bright version of the        | #75a7ff   |
+| RIAL_PRIMARYLIGHTCOLOR | primary color                  |           |
++------------------------+--------------------------------+-----------+
+| QTM                    | Secondary color                | #f5f5f5   |
+| ATERIAL_SECONDARYCOLOR |                                |           |
++------------------------+--------------------------------+-----------+
+| QTMATERI               | A bright version of the        | #ffffff   |
+| AL_SECONDARYLIGHTCOLOR | secondary color                |           |
++------------------------+--------------------------------+-----------+
+| QTMATER                | A dark version of the primary  | #e6e6e6   |
+| IAL_SECONDARYDARKCOLOR | color                          |           |
++------------------------+--------------------------------+-----------+
+| QTMAT                  | Color for text over primary    | #000000   |
+| ERIAL_PRIMARYTEXTCOLOR | background                     |           |
++------------------------+--------------------------------+-----------+
+| QTMATER                | Color for text over secondary  | #000000   |
+| IAL_SECONDARYTEXTCOLOR | background                     |           |
++------------------------+--------------------------------+-----------+
+| QTMATERIAL_THEME       | Name of theme used             | light     |
+|                        |                                | _blue.xml |
++------------------------+--------------------------------+-----------+
+
 Extra colors and custom fonts
 -----------------------------
 
@@ -173,6 +208,33 @@ The accent colors are applied to ``QPushButton`` with the corresponding
     pushButton_success.setProperty('class', 'success')
 
 .. figure:: _images/extra.png
+   :alt: extra
+
+   extra
+
+Custom stylesheets
+------------------
+
+Custom changes can be performed by overwriting the stylesheets, for
+example:
+
+.. code:: ipython3
+
+    QPushButton {{
+      color: {QTMATERIAL_SECONDARYCOLOR};
+      text-transform: none;
+      background-color: {QTMATERIAL_PRIMARYCOLOR};
+    }}
+
+.. code:: ipython3
+
+    apply_stylesheet(app, theme='light_blue.xml')
+    
+    stylesheet = app.styleSheet()
+    with open('custom.css') as file:
+        app.setStyleSheet(stylesheet + file.read().format(**os.environ))
+
+.. figure:: _images/custom.png
    :alt: extra
 
    extra
