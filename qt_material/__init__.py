@@ -103,8 +103,8 @@ def get_theme(theme_name, invert_secondary=False):
                   'secondaryDarkColor',
                   'primaryTextColor',
                   'secondaryTextColor']:
-        os.environ[f'PYSIDEMATERIAL_{color.upper()}'] = theme[color]
-    os.environ['PYSIDEMATERIAL_THEME'] = theme_name
+        os.environ[f'QTMATERIAL_{color.upper()}'] = theme[color]
+    os.environ['QTMATERIAL_THEME'] = theme_name
 
     return theme
 
@@ -257,11 +257,11 @@ class QtStyleTools:
         if not hasattr(self, 'colors'):
             return
 
-        theme = {color_: os.environ[f'PYSIDEMATERIAL_{color_.upper()}'] for color_ in self.colors}
+        theme = {color_: os.environ[f'QTMATERIAL_{color_.upper()}'] for color_ in self.colors}
 
-        if 'light' in os.environ['PYSIDEMATERIAL_THEME']:
+        if 'light' in os.environ['QTMATERIAL_THEME']:
             self.dock_theme.checkBox_ligh_theme.setChecked(True)
-        elif 'dark' in os.environ['PYSIDEMATERIAL_THEME']:
+        elif 'dark' in os.environ['QTMATERIAL_THEME']:
             self.dock_theme.checkBox_ligh_theme.setChecked(False)
 
         if self.dock_theme.checkBox_ligh_theme.isChecked():
@@ -338,7 +338,7 @@ class QtStyleTools:
                        'primaryTextColor',
                        'secondaryTextColor']
 
-        self.custom_colors = {v: os.environ[f'PYSIDEMATERIAL_{v.upper()}'] for v in self.colors}
+        self.custom_colors = {v: os.environ[f'QTMATERIAL_{v.upper()}'] for v in self.colors}
 
         if 'PySide2' in sys.modules or 'PySide6' in sys.modules:
             self.dock_theme = QUiLoader().load(os.path.join(os.path.dirname(__file__), 'dock_theme.ui'))
