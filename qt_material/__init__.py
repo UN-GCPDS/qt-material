@@ -30,11 +30,11 @@ else:
 
 import jinja2
 
-template = 'material.css.template'
+default_template = 'material.css.template'
 
 
 # ----------------------------------------------------------------------
-def build_stylesheet(theme='', invert_secondary=False, resources=[], extra={}):
+def build_stylesheet(theme='', invert_secondary=False, resources=[], extra={}, template=None):
     """"""
     theme = get_theme(theme, invert_secondary)
     if theme is None:
@@ -42,8 +42,13 @@ def build_stylesheet(theme='', invert_secondary=False, resources=[], extra={}):
 
     set_icons_theme(theme)
 
-    loader = jinja2.FileSystemLoader(os.path.join(
-        os.path.dirname(os.path.abspath(__file__))))
+    if template is None:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)))
+        template = default_template
+    else:
+        path = os.path.dirname(template)
+        template = os.path.basename(template)
+    loader = jinja2.FileSystemLoader(path)
     env = jinja2.Environment(autoescape=True, loader=loader)
 
     theme['icon'] = None
@@ -118,7 +123,7 @@ def add_fonts():
 
 
 # ----------------------------------------------------------------------
-def apply_stylesheet(app, theme='', style='Fusion', save_as=None, invert_secondary=False, resources=[], extra={}):
+def apply_stylesheet(app, theme='', style='Fusion', save_as=None, invert_secondary=False, resources=[], extra={}, template=None):
     """"""
     add_fonts()
 
@@ -127,7 +132,8 @@ def apply_stylesheet(app, theme='', style='Fusion', save_as=None, invert_seconda
             app.setStyle(style)
         except:
             pass
-    stylesheet = build_stylesheet(theme, invert_secondary, resources, extra)
+
+    stylesheet = build_stylesheet(theme, invert_secondary, resources, extra, template)
     if stylesheet is None:
         return
 
