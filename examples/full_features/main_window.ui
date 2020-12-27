@@ -1238,7 +1238,7 @@
               <item row="6" column="0">
                <widget class="QLineEdit" name="lineEdit_3">
                 <property name="placeholderText">
-                 <string>Name</string>
+                 <string>Placeholder text</string>
                 </property>
                </widget>
               </item>
@@ -1248,7 +1248,7 @@
                  <bool>false</bool>
                 </property>
                 <property name="placeholderText">
-                 <string>Name</string>
+                 <string>Placeholder text</string>
                 </property>
                </widget>
               </item>
