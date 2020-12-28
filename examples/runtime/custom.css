@@ -3,3 +3,7 @@ QPushButton {{
   text-transform: none;
   background-color: {QTMATERIAL_PRIMARYCOLOR};
 }}
+
+.big_button {{
+  height: 64px;
+}}

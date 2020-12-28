@@ -12,6 +12,7 @@ class RuntimeStylesheets(QMainWindow):
         """"""
         super().__init__()
         self.main = QUiLoader().load('main_window.ui', self)
+        self.main.pushButton_2.setProperty('class', 'big_button')
 
 
 if __name__ == "__main__":
