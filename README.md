@@ -25,7 +25,7 @@ And light:
   * [Usage](#usage)
   * [Light themes](#light-themes)
   * [Environ variables](#environ-variables)
-  * [Extra colors and custom fonts](#extra-colors-and-custom-fonts)
+  * [Alternative QPushButtons and custom fonts](#alternative-qpushbuttons-and-custom-fonts)
   * [Custom stylesheets](#custom-stylesheets)
   * [Run examples](#run-examples)
   * [New themes](#new-themes)
@@ -144,7 +144,7 @@ There is a environ variables related with the current theme used.
 | QTMATERIAL_SECONDARYTEXTCOLOR  | Color for text over secondary background | #000000        |
 | QTMATERIAL_THEME               | Name of theme used                       | light_blue.xml |
 
-## Extra colors and custom fonts
+## Alternative QPushButtons and custom fonts
 
 There is an `extra` argument for accent colors and custom fonts. 
 
@@ -186,7 +186,13 @@ QPushButton {{
   text-transform: none;
   background-color: {QTMATERIAL_PRIMARYCOLOR};
 }}
+
+.big_button {{
+  height: 64px;
+}}
 ```
+
+Then, the current stylesheet can be extended just with:
 
 
 ```python
@@ -195,6 +201,13 @@ apply_stylesheet(app, theme='light_blue.xml')
 stylesheet = app.styleSheet()
 with open('custom.css') as file:
     app.setStyleSheet(stylesheet + file.read().format(**os.environ))
+```
+
+And the class style can be applied with the `setProperty` method:
+
+
+```python
+self.main.pushButton.setProperty('class', 'big_button')
 ```
 
 ![extra](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/custom.png)

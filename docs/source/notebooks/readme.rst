@@ -33,7 +33,8 @@ Navigation
 -  `Usage <#usage>`__
 -  `Light themes <#light-themes>`__
 -  `Environ variables <#environ-variables>`__
--  `Extra colors and custom fonts <#extra-colors-and-custom-fonts>`__
+-  `Alternative QPushButtons and custom
+   fonts <#alternative-qpushbuttons-and-custom-fonts>`__
 -  `Custom stylesheets <#custom-stylesheets>`__
 -  `Run examples <#run-examples>`__
 -  `New themes <#new-themes>`__
@@ -178,8 +179,8 @@ There is a environ variables related with the current theme used.
 |                        |                                | _blue.xml |
 +------------------------+--------------------------------+-----------+
 
-Extra colors and custom fonts
------------------------------
+Alternative QPushButtons and custom fonts
+-----------------------------------------
 
 There is an ``extra`` argument for accent colors and custom fonts.
 
@@ -225,6 +226,12 @@ example:
       text-transform: none;
       background-color: {QTMATERIAL_PRIMARYCOLOR};
     }}
+    
+    .big_button {{
+      height: 64px;
+    }}
+
+Then, the current stylesheet can be extended just with:
 
 .. code:: ipython3
 
@@ -233,6 +240,12 @@ example:
     stylesheet = app.styleSheet()
     with open('custom.css') as file:
         app.setStyleSheet(stylesheet + file.read().format(**os.environ))
+
+And the class style can be applied with the ``setProperty`` method:
+
+.. code:: ipython3
+
+    self.main.pushButton.setProperty('class', 'big_button')
 
 .. figure:: _images/custom.png
    :alt: extra
