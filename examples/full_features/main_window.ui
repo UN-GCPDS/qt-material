@@ -13,10 +13,6 @@
   <property name="windowTitle">
    <string>Qt Material</string>
   </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>:/icon/logo/logo_frame.svg</normaloff>:/icon/logo/logo_frame.svg</iconset>
-  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_17">
     <item row="1" column="0" colspan="2">
@@ -224,27 +220,15 @@
                <property name="text">
                 <string>New Item</string>
                </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>:/icon/logo/logo_frame.svg</normaloff>:/icon/logo/logo_frame.svg</iconset>
-               </property>
               </item>
               <item>
                <property name="text">
                 <string>New Item</string>
                </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>:/icon/logo/logo_frame.svg</normaloff>:/icon/logo/logo_frame.svg</iconset>
-               </property>
               </item>
               <item>
                <property name="text">
                 <string>New Item</string>
-               </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>:/icon/logo/logo_frame.svg</normaloff>:/icon/logo/logo_frame.svg</iconset>
                </property>
               </item>
              </widget>
@@ -1735,10 +1719,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
    </property>
   </action>
   <action name="actionToolbar">
-   <property name="icon">
-    <iconset>
-     <normaloff>:/icon/logo/logo.svg</normaloff>:/icon/logo/logo.svg</iconset>
-   </property>
    <property name="text">
     <string>Qt Material Theme</string>
    </property>

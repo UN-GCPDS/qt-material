@@ -25,5 +25,6 @@ if __name__ == "__main__":
 
     frame = RuntimeStylesheets()
     frame.main.show()
+
     app.exec_()
 

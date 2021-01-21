@@ -4,32 +4,34 @@ import logging
 from multiprocessing import freeze_support
 import psutil
 import signal
+import importlib.resources
 
 if '--pyside2' in sys.argv:
     from PySide2.QtWidgets import QApplication, QMainWindow
     from PySide2.QtCore import QTimer, Qt, QCoreApplication
+    from PySide2.QtGui import QIcon
     from PySide2.QtUiTools import QUiLoader
 
 elif '--pyside6' in sys.argv:
     from PySide6.QtWidgets import QApplication, QMainWindow
     from PySide6.QtCore import QTimer, Qt, QCoreApplication
+    from PySide6.QtGui import QIcon, QPixmap
     from PySide6.QtUiTools import QUiLoader
 
 elif '--pyqt5' in sys.argv:
     from PyQt5.QtWidgets import QApplication, QMainWindow
     from PyQt5.QtCore import QTimer, Qt, QCoreApplication
     from PyQt5 import uic, QtWebEngineWidgets
+    from PyQt5.QtGui import QIcon
+
+elif '--pyqt6' in sys.argv:
+    from PyQt6.QtWidgets import QApplication, QMainWindow
+    from PyQt6.QtCore import QTimer, Qt, QCoreApplication
+    from PyQt6.QtGui import QIcon
+    from PyQt6 import uic, QtWebEngineWidgets
 
 
 from qt_material import apply_stylesheet, QtStyleTools
-
-# To load window icon
-if 'PySide2' in sys.modules:
-    from qt_material.resources import logos_pyside2_rc
-elif 'PySide6' in sys.modules:
-    from qt_material.resources import logos_pyside6_rc
-elif 'PyQt5' in sys.modules:
-    from qt_material.resources import logos_pyqt5_rc
 
 freeze_support()
 QCoreApplication.setAttribute(Qt.AA_ShareOpenGLContexts)
@@ -72,6 +74,10 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
             self.main = uic.loadUi('main_window.ui', self)
             self.main.setWindowTitle(f'{self.main.windowTitle()} - PyQt5')
 
+        elif '--pyqt6' in sys.argv:
+            self.main = uic.loadUi('main_window.ui', self)
+            self.main.setWindowTitle(f'{self.main.windowTitle()} - PyQt6')
+
         else:
             logging.error('must include --pyside2, --pyside6 or --pyqt5 in args!')
             sys.exit()
@@ -80,6 +86,13 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
         self.set_extra_colors(extra)
         self.add_menu_theme(self.main, self.main.menuStyles)
         self.show_dock_theme(self.main)
+
+        logo = QIcon("qt_material:/logo/logo.svg")
+        logo_frame = QIcon("qt_material:/logo/logo_frame.svg")
+
+        self.main.setWindowIcon(logo)
+        self.main.actionToolbar.setIcon(logo)
+        [self.main.listWidget_2.item(i).setIcon(logo_frame) for i in range(self.main.listWidget_2.count())]
 
     # ----------------------------------------------------------------------
     def custom_styles(self):
@@ -111,8 +124,6 @@ if __name__ == "__main__":
     apply_stylesheet(app, theme + '.xml',
                      invert_secondary=('light' in theme and 'dark' not in theme),
                      extra=extra)
-
-    # app.setStyleSheet("*{font-family: mono}")
 
     frame = RuntimeStylesheets()
     frame.main.show()
