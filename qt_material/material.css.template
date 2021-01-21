@@ -226,11 +226,12 @@ QPushButton:flat {
 }
 
 QPushButton:flat:hover {
+  background-color: {{primaryColor|opacity(0.2)}};
 }
 
 QPushButton:flat:pressed,
 QPushButton:flat:checked {
-  color: {{primaryLightColor}};
+  background-color: {{primaryColor|opacity(0.1)}};
 }
 
 QPushButton:disabled,
