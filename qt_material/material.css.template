@@ -45,7 +45,7 @@ QFrame {
 }
 
 QSizeGrip {
-  image: url(:/icon/primary/sizegrip.svg);
+  image: url(icon:/primary/sizegrip.svg);
   background-color: transparent;
   width: 16px;
   height: 16px;
@@ -133,12 +133,12 @@ QComboBox::drop-down {
 }
 
 QComboBox::down-arrow {
-  image: url(:/icon/primary/downarrow.svg);
+  image: url(icon:/primary/downarrow.svg);
   margin-right: 10px;
 }
 
 QComboBox::down-arrow:disabled {
-  image: url(:/icon/disabled/downarrow.svg);
+  image: url(icon:/disabled/downarrow.svg);
   margin-right: 10px;
 }
 
@@ -173,7 +173,7 @@ QSpinBox::up-button {
   subcontrol-origin: border;
   subcontrol-position: top right;
   width: 20px; /* 16 + 2*1px border-width = 15px padding + 3px parent border */
-  image: url(:/icon/primary/uparrow.svg);
+  image: url(icon:/primary/uparrow.svg);
   border-width: 0px;
   margin-right: 5px;
 }
@@ -181,7 +181,7 @@ QSpinBox::up-button {
 QDateTimeEdit::up-button:disabled,
 QDoubleSpinBox::up-button:disabled,
 QSpinBox::up-button:disabled {
-  image: url(:/icon/disabled/uparrow.svg);
+  image: url(icon:/disabled/uparrow.svg);
 }
 
 QDateTimeEdit::down-button,
@@ -190,7 +190,7 @@ QSpinBox::down-button {
   subcontrol-origin: border;
   subcontrol-position: bottom right;
   width: 20px;
-  image: url(:/icon/primary/downarrow.svg);
+  image: url(icon:/primary/downarrow.svg);
   border-width: 0px;
   border-top-width: 0;
   margin-right: 5px;
@@ -199,7 +199,7 @@ QSpinBox::down-button {
 QDateTimeEdit::down-button:disabled,
 QDoubleSpinBox::down-button:disabled,
 QSpinBox::down-button:disabled {
-  image: url(:/icon/disabled/downarrow.svg);
+  image: url(icon:/disabled/downarrow.svg);
 }
 
 QPushButton {
@@ -307,27 +307,27 @@ QTabBar QToolButton {
 }
 
 QTabBar QToolButton::up-arrow {
-  image: url(:/icon/primary/uparrow.svg);
+  image: url(icon:/primary/uparrow.svg);
 }
 
 QTabBar QToolButton::down-arrow {
-  image: url(:/icon/primary/downarrow.svg);
+  image: url(icon:/primary/downarrow.svg);
 }
 
 QTabBar QToolButton::right-arrow {
-  image: url(:/icon/primary/rightarrow.svg);
+  image: url(icon:/primary/rightarrow.svg);
 }
 
 QTabBar QToolButton::left-arrow {
-  image: url(:/icon/primary/leftarrow.svg);
+  image: url(icon:/primary/leftarrow.svg);
 }
 
 QTabBar::close-button {
-  image: url(:/icon/disabled/tab_close.svg);
+  image: url(icon:/disabled/tab_close.svg);
 }
 
 QTabBar::close-button:hover {
-  image: url(:/icon/primary/tab_close.svg);
+  image: url(icon:/primary/tab_close.svg);
 }
 
 QGroupBox {
@@ -367,51 +367,51 @@ QCheckBox:disabled {
 }
 
 QCheckBox::indicator:checked {
-  image: url(:/icon/primary/checkbox_checked.svg);
+  image: url(icon:/primary/checkbox_checked.svg);
 }
 
 QCheckBox::indicator:unchecked {
-  image: url(:/icon/primary/checkbox_unchecked.svg);
+  image: url(icon:/primary/checkbox_unchecked.svg);
 }
 
 QCheckBox::indicator:indeterminate {
-  image: url(:/icon/primary/checkbox_indeterminate.svg);
+  image: url(icon:/primary/checkbox_indeterminate.svg);
 }
 
 QCheckBox::indicator:checked:disabled {
-  image: url(:/icon/disabled/checkbox_checked.svg);
+  image: url(icon:/disabled/checkbox_checked.svg);
 }
 
 QCheckBox::indicator:unchecked:disabled {
-  image: url(:/icon/disabled/checkbox_unchecked.svg);
+  image: url(icon:/disabled/checkbox_unchecked.svg);
 }
 
 QCheckBox::indicator:indeterminate:disabled {
-  image: url(:/icon/disabled/checkbox_indeterminate.svg);
+  image: url(icon:/disabled/checkbox_indeterminate.svg);
 }
 
 QRadioButton::indicator:checked {
-  image: url(:/icon/primary/radiobutton_checked.svg);
+  image: url(icon:/primary/radiobutton_checked.svg);
 }
 
 QRadioButton::indicator:unchecked {
-  image: url(:/icon/primary/radiobutton_unchecked.svg);
+  image: url(icon:/primary/radiobutton_unchecked.svg);
 }
 
 QRadioButton::indicator:checked:disabled {
-  image: url(:/icon/disabled/radiobutton_checked.svg);
+  image: url(icon:/disabled/radiobutton_checked.svg);
 }
 
 QRadioButton::indicator:unchecked:disabled {
-  image: url(:/icon/disabled/radiobutton_unchecked.svg);
+  image: url(icon:/disabled/radiobutton_unchecked.svg);
 }
 
 QDockWidget {
   color: {{secondaryTextColor}};
   text-transform: uppercase;
   border: 2px solid {{secondaryColor}};
-  titlebar-close-icon: url(:/icon/primary/close.svg);
-  titlebar-normal-icon: url(:/icon/primary/float.svg);
+  titlebar-close-icon: url(icon:/primary/close.svg);
+  titlebar-normal-icon: url(icon:/primary/float.svg);
   border-radius: 4px;
 }
 
@@ -458,13 +458,13 @@ QMenu::separator {
 }
 
 QMenu::right-arrow{
-  image: url(:/icon/primary/rightarrow.svg);
+  image: url(icon:/primary/rightarrow.svg);
   width: 15px;
   height: 15px;
 }
 
 QMenu::right-arrow:selected{
-  image: url(:/icon/disabled/rightarrow.svg);
+  image: url(icon:/disabled/rightarrow.svg);
 }
 
 QMenu::indicator{
@@ -473,35 +473,35 @@ QMenu::indicator{
 }
 
 QMenu::indicator:non-exclusive:unchecked {
-  image: url(:/icon/primary/checkbox_unchecked.svg);
+  image: url(icon:/primary/checkbox_unchecked.svg);
 }
 
 QMenu::indicator:non-exclusive:unchecked:selected {
-  image: url(:/icon/disabled/checkbox_unchecked.svg);
+  image: url(icon:/disabled/checkbox_unchecked.svg);
 }
 
 QMenu::indicator:non-exclusive:checked {
-  image: url(:/icon/primary/checkbox_checked.svg);
+  image: url(icon:/primary/checkbox_checked.svg);
 }
 
 QMenu::indicator:non-exclusive:checked:selected {
-  image: url(:/icon/disabled/checkbox_checked.svg);
+  image: url(icon:/disabled/checkbox_checked.svg);
 }
 
 QMenu::indicator:exclusive:unchecked {
-  image: url(:/icon/primary/radiobutton_unchecked.svg);
+  image: url(icon:/primary/radiobutton_unchecked.svg);
 }
 
 QMenu::indicator:exclusive:unchecked:selected {
-  image: url(:/icon/disabled/radiobutton_unchecked.svg);
+  image: url(icon:/disabled/radiobutton_unchecked.svg);
 }
 
 QMenu::indicator:exclusive:checked {
-  image: url(:/icon/primary/radiobutton_checked.svg);
+  image: url(icon:/primary/radiobutton_checked.svg);
 }
 
 QMenu::indicator:exclusive:checked:selected {
-  image: url(:/icon/disabled/radiobutton_checked.svg);
+  image: url(icon:/disabled/radiobutton_checked.svg);
 }
 
 QMenuBar {
@@ -603,14 +603,14 @@ QScrollBar::sub-line:horizontal {
 }
 
 .QSlider::handle:horizontal {
-  image: url(:/icon/primary/slider.svg);
+  image: url(icon:/primary/slider.svg);
   width: 20px;
   height: 20px;
   margin: -20px -10px;
 }
 
 .QSlider::handle:vertical {
-  image: url(:/icon/primary/slider.svg);
+  image: url(icon:/primary/slider.svg);
   border-radius: 20px;
   width: 20px;
   height: 20px;
@@ -651,12 +651,12 @@ QMdiSubWindow:title{
 
 QMainWindow::separator:vertical,
 QSplitter::handle:horizontal {
-  image: url(:/icon/primary/splitter-horizontal.svg);
+  image: url(icon:/primary/splitter-horizontal.svg);
 }
 
 QMainWindow::separator:horizontal,
 QSplitter::handle:vertical {
-  image: url(:/icon/primary/splitter-vertical.svg);
+  image: url(icon:/primary/splitter-vertical.svg);
 }
 
 QToolBar {
@@ -673,11 +673,11 @@ QToolBar:vertical {
 }
 
 QToolBar::handle:horizontal {
-  image: url(:/icon/primary/toolbar-handle-horizontal.svg);
+  image: url(icon:/primary/toolbar-handle-horizontal.svg);
 }
 
 QToolBar::handle:vertical {
-  image: url(:/icon/primary/toolbar-handle-vertical.svg);
+  image: url(icon:/primary/toolbar-handle-vertical.svg);
 }
 
 QToolBar::separator:horizontal {
@@ -750,13 +750,13 @@ QTableCornerButton::section {
 QTreeView::branch:has-children:!has-siblings:closed,
 QTreeView::branch:closed:has-children:has-siblings {
   border-image: none;
-  image: url(:/icon/primary/rightarrow.svg);
+  image: url(icon:/primary/rightarrow.svg);
 }
 
 QTreeView::branch:open:has-children:!has-siblings,
 QTreeView::branch:open:has-children:has-siblings  {
   border-image: none;
-  image: url(:/icon/primary/downarrow.svg);
+  image: url(icon:/primary/downarrow.svg);
 }
 
 QPushButton.danger{
@@ -812,9 +812,9 @@ QLCDNumber {
 }
 
 #qt_calendar_prevmonth {
-    qproperty-icon: url(:/icon/primary/leftarrow.svg);
+    qproperty-icon: url(icon:/primary/leftarrow.svg);
 }
 
 #qt_calendar_nextmonth {
-  qproperty-icon: url(:/icon/primary/rightarrow.svg);
+  qproperty-icon: url(icon:/primary/rightarrow.svg);
 }

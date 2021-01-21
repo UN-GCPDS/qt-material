@@ -1,30 +1,33 @@
 import os
 import sys
-from textwrap import wrap
 import logging
 from xml.etree import ElementTree
 
+from qt_material.resources import ResourseGenerator
 
 if 'PySide2' in sys.modules:
     from PySide2.QtGui import QFontDatabase, QColor, QGuiApplication, QPalette
     from PySide2.QtWidgets import QAction, QColorDialog
     from PySide2.QtUiTools import QUiLoader
-    from PySide2.QtCore import Qt
-    _resource = os.path.join('resources', 'resource_pyside2_rc.py')
+    from PySide2.QtCore import Qt, QDir
 
 elif 'PySide6' in sys.modules:
     from PySide6.QtGui import QFontDatabase, QAction, QColor, QGuiApplication, QPalette
     from PySide6.QtWidgets import QColorDialog
     from PySide6.QtUiTools import QUiLoader
-    from PySide6.QtCore import Qt
-    _resource = os.path.join('resources', 'resource_pyside6_rc.py')
+    from PySide6.QtCore import Qt, QDir
 
 elif 'PyQt5' in sys.modules:
     from PyQt5.QtGui import QFontDatabase, QColor, QGuiApplication, QPalette
     from PyQt5.QtWidgets import QAction, QColorDialog
-    from PyQt5.QtCore import Qt
+    from PyQt5.QtCore import Qt, QDir
     from PyQt5 import uic
-    _resource = os.path.join('resources', 'resource_pyqt5_rc.py')
+
+elif 'PyQt6' in sys.modules:
+    from PyQt5.QtGui import QFontDatabase, QColor, QGuiApplication, QPalette
+    from PyQt5.QtWidgets import QAction, QColorDialog
+    from PyQt5.QtCore import Qt, QDir
+    from PyQt5 import uic
 else:
     logging.warning("qt_material must be imported after PySide or PyQt!")
 
@@ -128,6 +131,7 @@ def apply_stylesheet(app, theme='', style='Fusion', save_as=None, invert_seconda
         try:
             app.setStyle(style)
         except:
+            logging.error(f"The style '{style}' does not exist.")
             pass
     stylesheet = build_stylesheet(theme, invert_secondary, resources, extra)
     if stylesheet is None:
@@ -150,53 +154,12 @@ def opacity(theme, value=0.5):
 
 
 # ----------------------------------------------------------------------
-def str16b(c):
-    """"""
-    return '\\x' + '\\x'.join(wrap(c.encode().hex(), 2))
-
-
-# ----------------------------------------------------------------------
 def set_icons_theme(theme, resource=None, output=None):
     """"""
-    try:
-        theme = get_theme(theme)
-    except:
-        pass
-
-    if resource is None:
-        resource = os.path.join(os.path.dirname(
-            os.path.abspath(__file__)), _resource)
-
-    with open(resource, 'r') as file:
-        content = file.read()
-
-        replaces = (
-            ["#0000ff", 'primaryColor'],
-            ["#ff0000", 'secondaryLightColor'],)
-
-        for color, replace in replaces:
-            if 'PySide2' in sys.modules or 'PySide6' in sys.modules:
-                colors = [
-                    color] + [''.join(list(color)[:i] + ['\\\n'] + list(color)[i:]) for i in range(1, 7)]
-                for c in colors:
-                    content = content.replace(c, theme[replace])
-            elif 'PyQt5' in sys.modules:
-                colors = [str16b(color)] + [str16b(color)[:i] + '\\\n' + str16b(color)[i:] for i in range(4, 28, 4)]
-                for c in colors:
-                    content = content.replace(c, str16b(theme[replace]))
-
-    if output:
-        with open(output, 'w') as file:
-            file.write(content)
-        return
-
-    try:
-        qCleanupResources()  # this method is created after the first call to resource_rc
-    except:
-        pass
-
-    # This is like import resource_rc, load new resources with icons
-    exec(content, globals())
+    resources = ResourseGenerator(primary=theme['primaryColor'], disabled=theme['secondaryLightColor'])
+    resources.generate()
+    QDir.addSearchPath('icon', resources.index)
+    QDir.addSearchPath('qt_material', os.path.join(os.path.dirname(__file__), 'resources'))
 
 
 # ----------------------------------------------------------------------

@@ -1,1 +1,1 @@
- 
+from .generate import ResourseGenerator
