@@ -9,7 +9,18 @@
 .accent{
   color: {{primaryColor}};
 }
+
 .danger{
+  color: {{danger}};
+}
+
+QPushButton.danger:flat:hover {
+  background-color: {{danger|opacity(0.2)}};
+}
+
+QPushButton.danger:flat:pressed,
+QPushButton.danger:flat:checked {
+  background-color: {{danger|opacity(0.1)}};
   color: {{danger}};
 }
 
@@ -17,10 +28,28 @@
   color: {{warning}};
 }
 
+QPushButton.warning:flat:hover {
+  background-color: {{warning|opacity(0.2)}};
+}
+
+QPushButton.warning:flat:pressed,
+QPushButton.warning:flat:checked {
+  background-color: {{warning|opacity(0.1)}};
+  color: {{warning}};
+}
 .success{
   color: {{success}};
 }
 
+QPushButton.success:flat:hover {
+  background-color: {{success|opacity(0.2)}};
+}
+
+QPushButton.success:flat:pressed,
+QPushButton.success:flat:checked {
+  background-color: {{success|opacity(0.1)}};
+  color: {{success}};
+}
 .QWidget,
 QWidget {
   background-color: {{secondaryDarkColor}};
