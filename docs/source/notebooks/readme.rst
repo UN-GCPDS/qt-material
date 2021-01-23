@@ -57,14 +57,14 @@ Usage
     # from PySide2 import QtWidgets
     # from PyQt5 import QtWidgets
     from qt_material import apply_stylesheet
-    
+
     # create the application and the main window
     app = QtWidgets.QApplication(sys.argv)
     window = QtWidgets.QMainWindow()
-    
+
     # setup stylesheet
     apply_stylesheet(app, theme='dark_teal.xml')
-    
+
     # run
     window.show()
     app.exec_()
@@ -75,7 +75,7 @@ Themes
 .. code:: ipython3
 
     from qt_material import list_themes
-    
+
     list_themes()
 
 
@@ -126,8 +126,8 @@ the theme file must look like:
     <color name="secondaryColor">#f5f5f5</color>
     <color name="secondaryLightColor">#ffffff</color>
     <color name="secondaryDarkColor">#e6e6e6</color>
-    <color name="primaryTextColor">#000000</color>
-    <color name="secondaryTextColor">#000000</color>
+    <color name="primaryTextColor">#555555</color>
+    <color name="secondaryTextColor">#3c3c3c</color>
     </resources>
 
 Save it as ``my_theme.xml`` or similar and apply the style sheet from
@@ -187,16 +187,16 @@ There is an ``extra`` argument for accent colors and custom fonts.
 .. code:: ipython3
 
     extra = {
-    
+
         # Button colors
         'danger': '#dc3545',
         'warning': '#ffc107',
         'success': '#17a2b8',
-    
+
         # Font
         'font-family': 'Roboto',
     }
-    
+
     apply_stylesheet(app, 'light_cyan.xml', invert_secondary=True, extra=extra)
 
 The accent colors are applied to ``QPushButton`` with the corresponding
@@ -226,7 +226,7 @@ example:
       text-transform: none;
       background-color: {QTMATERIAL_PRIMARYCOLOR};
     }}
-    
+
     .big_button {{
       height: 64px;
     }}
@@ -236,7 +236,7 @@ Then, the current stylesheet can be extended just with:
 .. code:: ipython3
 
     apply_stylesheet(app, theme='light_blue.xml')
-    
+
     stylesheet = app.styleSheet()
     with open('custom.css') as file:
         app.setStyleSheet(stylesheet + file.read().format(**os.environ))
@@ -289,11 +289,11 @@ along to ``QMainWindow`` for change themes in runtime using the
 .. code:: ipython3
 
     class RuntimeStylesheets(QMainWindow, QtStyleTools):
-        
+
         def __init__(self):
             super().__init__()
             self.main = QUiLoader().load('main_window.ui', self)
-            
+
             self.apply_stylesheet(self.main, 'dark_teal.xml')
             # self.apply_stylesheet(self.main, 'light_red.xml')
             # self.apply_stylesheet(self.main, 'light_blue.xml')
@@ -312,11 +312,11 @@ across all default available themes.
 .. code:: ipython3
 
     class RuntimeStylesheets(QMainWindow, QtStyleTools):
-        
+
         def __init__(self):
             super().__init__()
             self.main = QUiLoader().load('main_window.ui', self)
-            
+
             self.add_menu_theme(self.main, self.main.menuStyles)
 
 .. figure:: _images/runtime_menu.gif
@@ -334,11 +334,11 @@ the main directory as ``my_theme.xml``
 .. code:: ipython3
 
     class RuntimeStylesheets(QMainWindow, QtStyleTools):
-        
+
         def __init__(self):
             super().__init__()
             self.main = QUiLoader().load('main_window.ui', self)
-            
+
             self.show_dock_theme(self.main)
 
 .. figure:: _images/runtime_dock.gif

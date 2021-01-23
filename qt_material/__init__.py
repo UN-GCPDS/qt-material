@@ -156,7 +156,8 @@ def opacity(theme, value=0.5):
 # ----------------------------------------------------------------------
 def set_icons_theme(theme, resource=None, output=None):
     """"""
-    resources = ResourseGenerator(primary=theme['primaryColor'], disabled=theme['secondaryLightColor'])
+    source = os.path.join(os.path.dirname(__file__), 'resources', 'source')
+    resources = ResourseGenerator(primary=theme['primaryColor'], secondary=theme['secondaryColor'], disabled=theme['secondaryLightColor'], source=source)
     resources.generate()
     QDir.addSearchPath('icon', resources.index)
     QDir.addSearchPath('qt_material', os.path.join(os.path.dirname(__file__), 'resources'))

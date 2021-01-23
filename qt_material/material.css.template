@@ -415,26 +415,32 @@ QCheckBox:disabled {
   color: {{secondaryTextColor|opacity(0.3)}};
 }
 
+QListView::indicator:checked,
 QCheckBox::indicator:checked {
   image: url(icon:/primary/checkbox_checked.svg);
 }
 
+QListView::indicator:unchecked,
 QCheckBox::indicator:unchecked {
   image: url(icon:/primary/checkbox_unchecked.svg);
 }
 
+QListView::indicator:indeterminate,
 QCheckBox::indicator:indeterminate {
   image: url(icon:/primary/checkbox_indeterminate.svg);
 }
 
+QListView::indicator:checked:disabled,
 QCheckBox::indicator:checked:disabled {
   image: url(icon:/disabled/checkbox_checked.svg);
 }
 
+QListView::indicator:unchecked:disabled,
 QCheckBox::indicator:unchecked:disabled {
   image: url(icon:/disabled/checkbox_unchecked.svg);
 }
 
+QListView::indicator:indeterminate:disabled,
 QCheckBox::indicator:indeterminate:disabled {
   image: url(icon:/disabled/checkbox_indeterminate.svg);
 }
@@ -788,7 +794,11 @@ QListView::item {
 QTableView::item,
 QTreeView::item,
 QListView::item{
-  color: {{secondaryTextColor}};;
+  color: {{secondaryTextColor}};
+}
+
+QListView::item:selected {
+  color: {{primaryTextColor}};
 }
 
 QTableView::item:disabled,

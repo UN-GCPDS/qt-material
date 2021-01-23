@@ -2,14 +2,8 @@ import os
 import shutil
 from pathlib import Path
 
-
 HOME = Path.home()
 RESOURCES_PATH = os.path.join(HOME, '.qt_material')
-SOURCE = os.path.join(os.path.dirname(__file__), 'source')
-
-
-if not os.path.exists(RESOURCES_PATH):
-    os.mkdir(RESOURCES_PATH)
 
 
 ########################################################################
@@ -17,13 +11,16 @@ class ResourseGenerator:
     """"""
 
     # ----------------------------------------------------------------------
-    def __init__(self, primary, disabled, parent='theme'):
+    def __init__(self, primary, secondary, disabled, source, parent='theme'):
         """Constructor"""
 
         self.contex = [
             (os.path.join(RESOURCES_PATH, parent, 'disabled'), disabled),
             (os.path.join(RESOURCES_PATH, parent, 'primary'), primary),
         ]
+
+        self.source = source
+        self.secondary = secondary
 
         for folder, _ in self.contex:
             shutil.rmtree(folder, ignore_errors=True)
@@ -34,15 +31,17 @@ class ResourseGenerator:
     # ----------------------------------------------------------------------
     def generate(self):
         """"""
-        for icon in os.listdir(SOURCE):
+        for icon in os.listdir(self.source):
             if not icon.endswith('.svg'):
                 continue
 
-            with open(os.path.join(SOURCE, icon), 'r') as file_input:
-                original = file_input.read()
+            with open(os.path.join(self.source, icon), 'r') as file_input:
+                content_original = file_input.read()
 
                 for folder, color in self.contex:
-                    new_content = self.replace_color(original, color)
+                    new_content = self.replace_color(content_original, color)
+                    new_content = self.replace_color(new_content, self.secondary, '#ff0000')
+
                     file_to_write = os.path.join(folder, icon)
                     with open(file_to_write, 'w') as file_output:
                         file_output.write(new_content)

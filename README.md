@@ -110,8 +110,8 @@ list_themes()
 <color name="secondaryColor">#f5f5f5</color>
 <color name="secondaryLightColor">#ffffff</color>
 <color name="secondaryDarkColor">#e6e6e6</color>
-<color name="primaryTextColor">#000000</color>
-<color name="secondaryTextColor">#000000</color>
+<color name="primaryTextColor">#555555</color>
+<color name="secondaryTextColor">#3c3c3c</color>
 </resources>
 ```
 
@@ -146,7 +146,7 @@ There is a environ variables related with the current theme used.
 
 ## Alternative QPushButtons and custom fonts
 
-There is an `extra` argument for accent colors and custom fonts. 
+There is an `extra` argument for accent colors and custom fonts.
 
 
 ```python
@@ -238,11 +238,11 @@ There is a `qt_material.QtStyleTools` class that must be inherited along to `QMa
 
 ```python
 class RuntimeStylesheets(QMainWindow, QtStyleTools):
-    
+
     def __init__(self):
         super().__init__()
         self.main = QUiLoader().load('main_window.ui', self)
-        
+
         self.apply_stylesheet(self.main, 'dark_teal.xml')
         # self.apply_stylesheet(self.main, 'light_red.xml')
         # self.apply_stylesheet(self.main, 'light_blue.xml')
@@ -257,11 +257,11 @@ A custom _stylesheets menu_ can be added to a project for switching across all d
 
 ```python
 class RuntimeStylesheets(QMainWindow, QtStyleTools):
-    
+
     def __init__(self):
         super().__init__()
         self.main = QUiLoader().load('main_window.ui', self)
-        
+
         self.add_menu_theme(self.main, self.main.menuStyles)
 ```
 
@@ -274,11 +274,11 @@ A simple interface is available to modify a theme in runtime, this feature can b
 
 ```python
 class RuntimeStylesheets(QMainWindow, QtStyleTools):
-    
+
     def __init__(self):
         super().__init__()
         self.main = QUiLoader().load('main_window.ui', self)
-        
+
         self.show_dock_theme(self.main)
 ```
 

@@ -151,16 +151,6 @@
                       </property>
                      </spacer>
                     </item>
-                    <item row="0" column="2">
-                     <widget class="QSlider" name="verticalSlider_2">
-                      <property name="value">
-                       <number>50</number>
-                      </property>
-                      <property name="orientation">
-                       <enum>Qt::Vertical</enum>
-                      </property>
-                     </widget>
-                    </item>
                     <item row="0" column="1">
                      <widget class="QScrollBar" name="verticalScrollBar_2">
                       <property name="value">
@@ -171,15 +161,38 @@
                       </property>
                      </widget>
                     </item>
+                    <item row="0" column="2">
+                     <spacer name="horizontalSpacer_3">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>8</width>
+                        <height>108</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
                     <item row="0" column="3">
+                     <widget class="QSlider" name="verticalSlider_2">
+                      <property name="value">
+                       <number>50</number>
+                      </property>
+                      <property name="orientation">
+                       <enum>Qt::Vertical</enum>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="4">
                      <spacer name="horizontalSpacer_2">
                       <property name="orientation">
                        <enum>Qt::Horizontal</enum>
                       </property>
                       <property name="sizeHint" stdset="0">
                        <size>
-                        <width>114</width>
-                        <height>107</height>
+                        <width>32</width>
+                        <height>20</height>
                        </size>
                       </property>
                      </spacer>
@@ -253,11 +266,16 @@
                 <property name="text">
                  <string>Subitem #2</string>
                 </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>Subitem #3</string>
-                </property>
+                <item>
+                 <property name="text">
+                  <string>New Subitem</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>New Item</string>
+                 </property>
+                </item>
                </item>
               </item>
               <item>
@@ -306,7 +324,7 @@
                <bool>true</bool>
               </attribute>
               <attribute name="verticalHeaderVisible">
-               <bool>true</bool>
+               <bool>false</bool>
               </attribute>
               <row>
                <property name="text">
@@ -391,11 +409,35 @@
             </item>
            </layout>
           </widget>
+          <widget class="QWidget" name="tab_15">
+           <attribute name="title">
+            <string>Page</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tab_16">
+           <attribute name="title">
+            <string>Page</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tab_18">
+           <attribute name="title">
+            <string>Page</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tab_19">
+           <attribute name="title">
+            <string>Page</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tab_14">
+           <attribute name="title">
+            <string>Page</string>
+           </attribute>
+          </widget>
           <widget class="QWidget" name="tab_4">
            <attribute name="title">
             <string>Page</string>
            </attribute>
-           <layout class="QGridLayout" name="gridLayout_7"/>
           </widget>
           <widget class="QWidget" name="tab_5">
            <attribute name="title">
@@ -407,11 +449,148 @@
            <attribute name="title">
             <string>Page</string>
            </attribute>
-           <layout class="QGridLayout" name="gridLayout_10"/>
+           <layout class="QGridLayout" name="gridLayout_10">
+            <item row="0" column="0">
+             <widget class="QTabWidget" name="tabWidget_5">
+              <property name="tabPosition">
+               <enum>QTabWidget::East</enum>
+              </property>
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+              <widget class="QWidget" name="tab_20">
+               <attribute name="title">
+                <string>Tab 1</string>
+               </attribute>
+               <layout class="QGridLayout" name="gridLayout_25">
+                <item row="0" column="0">
+                 <widget class="QTabWidget" name="tabWidget_6">
+                  <property name="tabPosition">
+                   <enum>QTabWidget::South</enum>
+                  </property>
+                  <property name="currentIndex">
+                   <number>0</number>
+                  </property>
+                  <widget class="QWidget" name="tab_22">
+                   <attribute name="title">
+                    <string>Tab 1</string>
+                   </attribute>
+                   <layout class="QGridLayout" name="gridLayout_28">
+                    <item row="0" column="0">
+                     <widget class="QTabWidget" name="tabWidget_7">
+                      <property name="tabPosition">
+                       <enum>QTabWidget::West</enum>
+                      </property>
+                      <widget class="QWidget" name="tab_24">
+                       <attribute name="title">
+                        <string>Tab 1</string>
+                       </attribute>
+                      </widget>
+                      <widget class="QWidget" name="tab_38">
+                       <attribute name="title">
+                        <string>Page</string>
+                       </attribute>
+                      </widget>
+                      <widget class="QWidget" name="tab_39">
+                       <attribute name="title">
+                        <string>Page</string>
+                       </attribute>
+                      </widget>
+                      <widget class="QWidget" name="tab_25">
+                       <attribute name="title">
+                        <string>Tab 2</string>
+                       </attribute>
+                      </widget>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="tab_23">
+                   <attribute name="title">
+                    <string>Tab 2</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab_28">
+                   <attribute name="title">
+                    <string>Page</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab_29">
+                   <attribute name="title">
+                    <string>Page</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab_30">
+                   <attribute name="title">
+                    <string>Page</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab_31">
+                   <attribute name="title">
+                    <string>Page</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab_32">
+                   <attribute name="title">
+                    <string>Page</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab_33">
+                   <attribute name="title">
+                    <string>Page</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab_34">
+                   <attribute name="title">
+                    <string>Page</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab_35">
+                   <attribute name="title">
+                    <string>Page</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab_36">
+                   <attribute name="title">
+                    <string>Page</string>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="tab_37">
+                   <attribute name="title">
+                    <string>Page</string>
+                   </attribute>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="tab_26">
+               <attribute name="title">
+                <string>Page</string>
+               </attribute>
+              </widget>
+              <widget class="QWidget" name="tab_21">
+               <attribute name="title">
+                <string>Tab 2</string>
+               </attribute>
+              </widget>
+              <widget class="QWidget" name="tab_27">
+               <attribute name="title">
+                <string>Page</string>
+               </attribute>
+              </widget>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </widget>
         </item>
        </layout>
+      </widget>
+      <widget class="QWidget" name="tab_17">
+       <attribute name="title">
+        <string>Page</string>
+       </attribute>
       </widget>
       <widget class="QWidget" name="tab_8">
        <attribute name="title">
@@ -981,7 +1160,7 @@
              <x>0</x>
              <y>0</y>
              <width>465</width>
-             <height>413</height>
+             <height>337</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1005,7 +1184,7 @@
              <x>0</x>
              <y>0</y>
              <width>465</width>
-             <height>413</height>
+             <height>337</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1050,8 +1229,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>465</width>
-             <height>413</height>
+             <width>444</width>
+             <height>370</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1349,6 +1528,19 @@
               </item>
              </layout>
             </item>
+            <item row="0" column="1">
+             <widget class="QLabel" name="label_3">
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Material theme</string>
+              </property>
+             </widget>
+            </item>
             <item row="0" column="0">
              <widget class="QLabel" name="label_2">
               <property name="text">
@@ -1366,40 +1558,6 @@
               </property>
              </widget>
             </item>
-            <item row="1" column="0" colspan="4">
-             <layout class="QHBoxLayout" name="horizontalLayout">
-              <item>
-               <widget class="QPushButton" name="pushButton_8">
-                <property name="text">
-                 <string>Danger</string>
-                </property>
-                <property name="class" stdset="0">
-                 <string>danger</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_9">
-                <property name="text">
-                 <string>Warning</string>
-                </property>
-                <property name="class" stdset="0">
-                 <string>warning</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="pushButton_10">
-                <property name="text">
-                 <string>Success</string>
-                </property>
-                <property name="class" stdset="0">
-                 <string>success</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
             <item row="0" column="3">
              <spacer name="horizontalSpacer_4">
               <property name="orientation">
@@ -1413,18 +1571,78 @@
               </property>
              </spacer>
             </item>
-            <item row="0" column="1">
-             <widget class="QLabel" name="label_3">
-              <property name="font">
-               <font>
-                <weight>75</weight>
-                <bold>true</bold>
-               </font>
-              </property>
-              <property name="text">
-               <string>Material theme</string>
-              </property>
-             </widget>
+            <item row="1" column="0" colspan="4">
+             <layout class="QGridLayout" name="gridLayout_7">
+              <item row="0" column="0">
+               <widget class="QPushButton" name="pushButton_18">
+                <property name="text">
+                 <string>Danger</string>
+                </property>
+                <property name="class" stdset="0">
+                 <string>danger</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="2">
+               <widget class="QPushButton" name="pushButton_19">
+                <property name="text">
+                 <string>Warning</string>
+                </property>
+                <property name="class" stdset="0">
+                 <string>warning</string>
+                </property>
+               </widget>
+              </item>
+              <item row="0" column="1">
+               <widget class="QPushButton" name="pushButton_20">
+                <property name="text">
+                 <string>Success</string>
+                </property>
+                <property name="class" stdset="0">
+                 <string>success</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QPushButton" name="pushButton_23">
+                <property name="text">
+                 <string>Danger</string>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+                <property name="class" stdset="0">
+                 <string>danger</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <widget class="QPushButton" name="pushButton_22">
+                <property name="text">
+                 <string>Success</string>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+                <property name="class" stdset="0">
+                 <string>success</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="2">
+               <widget class="QPushButton" name="pushButton_21">
+                <property name="text">
+                 <string>Warning</string>
+                </property>
+                <property name="flat">
+                 <bool>true</bool>
+                </property>
+                <property name="class" stdset="0">
+                 <string>warning</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
@@ -1541,7 +1759,21 @@
          <string>New Item</string>
         </property>
         <property name="checkState">
-         <enum>Checked</enum>
+         <enum>Unchecked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled|ItemIsTristate</set>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>New Item</string>
+        </property>
+        <property name="checkState">
+         <enum>PartiallyChecked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled|ItemIsTristate</set>
         </property>
        </item>
        <item>
@@ -1551,11 +1783,6 @@
         <property name="checkState">
          <enum>Checked</enum>
         </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>New Item</string>
-        </property>
         <property name="flags">
          <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
         </property>
@@ -1564,13 +1791,35 @@
         <property name="text">
          <string>New Item</string>
         </property>
+        <property name="checkState">
+         <enum>Unchecked</enum>
+        </property>
         <property name="flags">
-         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsTristate</set>
         </property>
        </item>
        <item>
         <property name="text">
          <string>New Item</string>
+        </property>
+        <property name="checkState">
+         <enum>PartiallyChecked</enum>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsTristate</set>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>New Item</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>New Item</string>
+        </property>
+        <property name="flags">
+         <set>ItemIsSelectable|ItemIsDragEnabled|ItemIsUserCheckable</set>
         </property>
        </item>
       </widget>
