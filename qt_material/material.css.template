@@ -897,3 +897,11 @@ QLCDNumber {
 #qt_calendar_nextmonth {
   qproperty-icon: url(icon:/primary/rightarrow.svg);
 }
+
+QToolTip {
+  padding: 5px;
+  border: 1px solid {{secondaryDarkColor}};
+  border-radius: 2px;
+  color: {{secondaryTextColor}};
+  background-color: {{secondaryLightColor}};
+}

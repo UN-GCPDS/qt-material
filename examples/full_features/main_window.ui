@@ -630,6 +630,9 @@
           <layout class="QGridLayout" name="gridLayout">
            <item row="0" column="0">
             <widget class="QPushButton" name="pushButton">
+             <property name="toolTip">
+              <string>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+             </property>
              <property name="text">
               <string>PushButton</string>
              </property>
