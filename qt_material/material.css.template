@@ -93,7 +93,7 @@ QPushButton {
   border-radius: 4px;
   padding: 8px 16px ;
   height: 18px;
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
 
 QDateTimeEdit,
@@ -132,7 +132,7 @@ QComboBox:disabled {
   border-width: 0 0 2px 0;
   border-radius: 4px;
   padding: 8px 16px ;
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
 
 QComboBox[frame='false'] {
@@ -238,6 +238,7 @@ QPushButton {
   height: 34px;
   min-height: 34px;
   max-height: 34px;
+  font-weight: bold;
 }
 
 QPushButton:checked,
@@ -332,24 +333,42 @@ QTabBar::tab:left:hover {
   border-right: 2px solid {{primaryColor}};
 }
 
+QTabBar QToolButton:hover,
 QTabBar QToolButton {
-  border: 0px;
+  border: 20px;
+  background-color: {{secondaryDarkColor}};
 }
 
 QTabBar QToolButton::up-arrow {
-  image: url(icon:/primary/uparrow.svg);
+  image: url(icon:/disabled/uparrow2.svg);
+}
+
+QTabBar QToolButton::up-arrow:hover {
+  image: url(icon:/primary/uparrow2.svg);
 }
 
 QTabBar QToolButton::down-arrow {
-  image: url(icon:/primary/downarrow.svg);
+  image: url(icon:/disabled/downarrow2.svg);
+}
+
+QTabBar QToolButton::down-arrow:hover {
+  image: url(icon:/primary/downarrow2.svg);
 }
 
 QTabBar QToolButton::right-arrow {
-  image: url(icon:/primary/rightarrow.svg);
+  image: url(icon:/primary/rightarrow2.svg);
+}
+
+QTabBar QToolButton::right-arrow:hover {
+  image: url(icon:/disabled/rightarrow2.svg);
 }
 
 QTabBar QToolButton::left-arrow {
-  image: url(icon:/primary/leftarrow.svg);
+  image: url(icon:/primary/leftarrow2.svg);
+}
+
+QTabBar QToolButton::left-arrow:hover {
+  image: url(icon:/disabled/leftarrow2.svg);
 }
 
 QTabBar::close-button {
@@ -766,6 +785,12 @@ QListView::item {
   min-height: 25px;
 }
 
+QTableView::item,
+QTreeView::item,
+QListView::item{
+  color: {{secondaryTextColor}};;
+}
+
 QTableView::item:disabled,
 QTreeView::item:disabled,
 QListView::item:disabled{
@@ -774,22 +799,36 @@ QListView::item:disabled{
 
 QTableCornerButton::section {
   background-color: {{secondaryDarkColor}};
-  border: none;
 }
 
-QTreeView::branch:has-children:!has-siblings:closed,
-QTreeView::branch:closed:has-children:has-siblings {
-  border-image: none;
-  image: url(icon:/primary/rightarrow.svg);
+QTreeView::branch{
+  background-color: {{secondaryColor}};
+}
+
+QTreeView::branch:closed:has-children:has-siblings,
+QTreeView::branch:closed:has-children:!has-siblings {
+  image: url(icon:/primary/branch-closed.svg);
 }
 
 QTreeView::branch:open:has-children:!has-siblings,
-QTreeView::branch:open:has-children:has-siblings  {
-  border-image: none;
-  image: url(icon:/primary/downarrow.svg);
+QTreeView::branch:open:has-children:has-siblings {
+  image: url(icon:/primary/branch-open.svg);
 }
 
-QPushButton.danger{
+QTreeView::branch:has-siblings:!adjoins-item {
+  border-image: url(icon:/disabled/vline.svg) 0;
+}
+
+QTreeView::branch:has-siblings:adjoins-item {
+    border-image: url(icon:/disabled/branch-more.svg) 0;
+}
+
+QTreeView::branch:!has-children:!has-siblings:adjoins-item,
+QTreeView::branch:has-children:!has-siblings:adjoins-item {
+    border-image: url(icon:/disabled/branch-end.svg) 0;
+}
+
+QPushButton.danger {
   border-color: {{danger}};
   color: {{danger}};
 }
@@ -811,7 +850,7 @@ QPushButton.warning:pressed {
   background-color: {{warning}};
 }
 
-QPushButton.success{
+QPushButton.success {
   border-color: {{success}};
   color: {{success}};
 }
