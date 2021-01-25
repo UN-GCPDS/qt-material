@@ -37,13 +37,13 @@ template = 'material.css.template'
 
 
 # ----------------------------------------------------------------------
-def build_stylesheet(theme='', invert_secondary=False, resources=[], extra={}):
+def build_stylesheet(theme='', invert_secondary=False, resources=[], extra={}, parent='theme'):
     """"""
     theme = get_theme(theme, invert_secondary)
     if theme is None:
         return None
 
-    set_icons_theme(theme)
+    set_icons_theme(theme, parent=parent)
 
     loader = jinja2.FileSystemLoader(os.path.join(
         os.path.dirname(os.path.abspath(__file__))))
@@ -123,7 +123,7 @@ def add_fonts():
 
 
 # ----------------------------------------------------------------------
-def apply_stylesheet(app, theme='', style='Fusion', save_as=None, invert_secondary=False, resources=[], extra={}):
+def apply_stylesheet(app, theme='', style='Fusion', save_as=None, invert_secondary=False, resources=[], extra={}, parent='theme'):
     """"""
     add_fonts()
 
@@ -133,7 +133,7 @@ def apply_stylesheet(app, theme='', style='Fusion', save_as=None, invert_seconda
         except:
             logging.error(f"The style '{style}' does not exist.")
             pass
-    stylesheet = build_stylesheet(theme, invert_secondary, resources, extra)
+    stylesheet = build_stylesheet(theme, invert_secondary, resources, extra, parent)
     if stylesheet is None:
         return
 
@@ -154,10 +154,10 @@ def opacity(theme, value=0.5):
 
 
 # ----------------------------------------------------------------------
-def set_icons_theme(theme, resource=None, output=None):
+def set_icons_theme(theme, parent='theme'):
     """"""
     source = os.path.join(os.path.dirname(__file__), 'resources', 'source')
-    resources = ResourseGenerator(primary=theme['primaryColor'], secondary=theme['secondaryColor'], disabled=theme['secondaryLightColor'], source=source)
+    resources = ResourseGenerator(primary=theme['primaryColor'], secondary=theme['secondaryColor'], disabled=theme['secondaryLightColor'], source=source, parent=parent)
     resources.generate()
     QDir.addSearchPath('icon', resources.index)
     QDir.addSearchPath('qt_material', os.path.join(os.path.dirname(__file__), 'resources'))
