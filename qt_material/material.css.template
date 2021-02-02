@@ -6,10 +6,6 @@
   selection-color: {{primaryTextColor}};
 }
 
-.accent{
-  color: {{primaryColor}};
-}
-
 .danger{
   color: {{danger}};
 }
