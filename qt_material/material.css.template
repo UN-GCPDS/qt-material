@@ -69,7 +69,6 @@ QFrame {
 .QStatusBar {
   color: {{secondaryTextColor}};
   background-color: {{secondaryDarkColor}};
-  border: 0px solid {{secondaryDarkColor}};
   border-radius: 0px;
 }
 
@@ -142,7 +141,7 @@ QComboBox[frame='false'] {
 }
 
 QHeaderView::section {
-  color: {{secondaryTextColor|opacity(0.4)}};
+  color: {{secondaryTextColor|opacity(0.5)}};
   text-transform: uppercase;
   background-color: {{secondaryColor}};
   border-radius: 0px;
@@ -583,7 +582,11 @@ QToolBox::tab {
   color: {{secondaryTextColor}};
   padding-left: 15px;
   text-transform: uppercase;
-  border-radius: 4px;
+  border-radius: 2px;
+}
+
+QToolBox::tab:hover {
+  background-color: {{primaryColor|opacity(0.2)}};
 }
 
 QProgressBar {
