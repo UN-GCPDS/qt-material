@@ -64,7 +64,8 @@ def build_stylesheet(theme='', invert_secondary=False, resources=[], extra={}, p
     theme.update(extra)
 
     default_palette = QGuiApplication.palette()
-    default_palette.setColor(QPalette.PlaceholderText, QColor(*[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
+    default_palette.setColor(QPalette.PlaceholderText, QColor(
+        *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
     QGuiApplication.setPalette(default_palette)
 
     return stylesheet.render(**theme)
@@ -123,7 +124,7 @@ def add_fonts():
 
 
 # ----------------------------------------------------------------------
-def apply_stylesheet(app, theme='', style='Fusion', save_as=None, invert_secondary=False, resources=[], extra={}, parent='theme'):
+def apply_stylesheet(app, theme='', style=None, save_as=None, invert_secondary=False, resources=[], extra={}, parent='theme'):
     """"""
     add_fonts()
 
@@ -133,7 +134,8 @@ def apply_stylesheet(app, theme='', style='Fusion', save_as=None, invert_seconda
         except:
             logging.error(f"The style '{style}' does not exist.")
             pass
-    stylesheet = build_stylesheet(theme, invert_secondary, resources, extra, parent)
+    stylesheet = build_stylesheet(
+        theme, invert_secondary, resources, extra, parent)
     if stylesheet is None:
         return
 
@@ -157,10 +159,12 @@ def opacity(theme, value=0.5):
 def set_icons_theme(theme, parent='theme'):
     """"""
     source = os.path.join(os.path.dirname(__file__), 'resources', 'source')
-    resources = ResourseGenerator(primary=theme['primaryColor'], secondary=theme['secondaryColor'], disabled=theme['secondaryLightColor'], source=source, parent=parent)
+    resources = ResourseGenerator(primary=theme['primaryColor'], secondary=theme['secondaryColor'],
+                                  disabled=theme['secondaryLightColor'], source=source, parent=parent)
     resources.generate()
     QDir.addSearchPath('icon', resources.index)
-    QDir.addSearchPath('qt_material', os.path.join(os.path.dirname(__file__), 'resources'))
+    QDir.addSearchPath('qt_material', os.path.join(
+        os.path.dirname(__file__), 'resources'))
 
 
 # ----------------------------------------------------------------------
@@ -188,7 +192,8 @@ class QtStyleTools:
         for theme in ['default'] + list_themes():
             action = QAction(parent)
             action.setText(theme)
-            action.triggered.connect(self._wrapper(parent, theme, self.extra_colors, self.update_buttons))
+            action.triggered.connect(self._wrapper(
+                parent, theme, self.extra_colors, self.update_buttons))
             menu.addAction(action)
 
     # ----------------------------------------------------------------------
@@ -210,7 +215,8 @@ class QtStyleTools:
         if theme == 'default':
             parent.setStyleSheet('')
             return
-        apply_stylesheet(parent, theme=theme, invert_secondary=invert_secondary, extra=extra)
+        apply_stylesheet(parent, theme=theme,
+                         invert_secondary=invert_secondary, extra=extra)
 
         if callable_:
             callable_()
@@ -221,7 +227,8 @@ class QtStyleTools:
         if not hasattr(self, 'colors'):
             return
 
-        theme = {color_: os.environ[f'QTMATERIAL_{color_.upper()}'] for color_ in self.colors}
+        theme = {color_: os.environ[f'QTMATERIAL_{color_.upper()}']
+                 for color_ in self.colors}
 
         if 'light' in os.environ['QTMATERIAL_THEME']:
             self.dock_theme.checkBox_ligh_theme.setChecked(True)
@@ -272,7 +279,8 @@ class QtStyleTools:
               </resources>
             """.format(**self.custom_colors))
         light = self.dock_theme.checkBox_ligh_theme.isChecked()
-        self.apply_stylesheet(parent, 'my_theme.xml', invert_secondary=light, extra=self.extra_colors, callable_=self.update_buttons)
+        self.apply_stylesheet(parent, 'my_theme.xml', invert_secondary=light,
+                              extra=self.extra_colors, callable_=self.update_buttons)
 
     # ----------------------------------------------------------------------
     def set_color(self, parent, button_):
@@ -285,7 +293,8 @@ class QtStyleTools:
             color_ = color_dialog.currentColor()
 
             if done and color_.isValid():
-                color = '#' + ''.join([hex(v)[2:].ljust(2, '0') for v in color_.toTuple()[:3]])
+                color = '#' + ''.join([hex(v)[2:].ljust(2, '0')
+                                       for v in color_.toTuple()[:3]])
                 self.custom_colors[button_] = color
                 self.update_theme(parent)
 
@@ -302,18 +311,22 @@ class QtStyleTools:
                        'primaryTextColor',
                        'secondaryTextColor']
 
-        self.custom_colors = {v: os.environ[f'QTMATERIAL_{v.upper()}'] for v in self.colors}
+        self.custom_colors = {
+            v: os.environ[f'QTMATERIAL_{v.upper()}'] for v in self.colors}
 
         if 'PySide2' in sys.modules or 'PySide6' in sys.modules:
-            self.dock_theme = QUiLoader().load(os.path.join(os.path.dirname(__file__), 'dock_theme.ui'))
+            self.dock_theme = QUiLoader().load(os.path.join(
+                os.path.dirname(__file__), 'dock_theme.ui'))
         elif 'PyQt5' in sys.modules:
-            self.dock_theme = uic.loadUi(os.path.join(os.path.dirname(__file__), 'dock_theme.ui'))
+            self.dock_theme = uic.loadUi(os.path.join(
+                os.path.dirname(__file__), 'dock_theme.ui'))
 
         parent.addDockWidget(Qt.LeftDockWidgetArea, self.dock_theme)
         self.dock_theme.setFloating(True)
 
         self.update_buttons()
-        self.dock_theme.checkBox_ligh_theme.clicked.connect(lambda: self.update_theme(self.main))
+        self.dock_theme.checkBox_ligh_theme.clicked.connect(
+            lambda: self.update_theme(self.main))
 
         for color in self.colors:
             button = getattr(self.dock_theme, f'pushButton_{color}')

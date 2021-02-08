@@ -40,7 +40,6 @@ app = QApplication([])
 app.processEvents()
 app.setQuitOnLastWindowClosed(False)
 app.lastWindowClosed.connect(lambda: app.quit())
-app.setStyle('Fusion')  # For better looking
 
 # Extra stylesheets
 extra = {
@@ -79,7 +78,8 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
             self.main.setWindowTitle(f'{self.main.windowTitle()} - PyQt6')
 
         else:
-            logging.error('must include --pyside2, --pyside6 or --pyqt5 in args!')
+            logging.error(
+                'must include --pyside2, --pyside6 or --pyqt5 in args!')
             sys.exit()
         self.custom_styles()
 
@@ -92,7 +92,8 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
 
         self.main.setWindowIcon(logo)
         self.main.actionToolbar.setIcon(logo)
-        [self.main.listWidget_2.item(i).setIcon(logo_frame) for i in range(self.main.listWidget_2.count())]
+        [self.main.listWidget_2.item(i).setIcon(logo_frame)
+         for i in range(self.main.listWidget_2.count())]
 
     # ----------------------------------------------------------------------
     def custom_styles(self):
@@ -122,7 +123,8 @@ if __name__ == "__main__":
 
     # Set theme on in itialization
     apply_stylesheet(app, theme + '.xml',
-                     invert_secondary=('light' in theme and 'dark' not in theme),
+                     invert_secondary=(
+                         'light' in theme and 'dark' not in theme),
                      extra=extra)
 
     frame = RuntimeStylesheets()
