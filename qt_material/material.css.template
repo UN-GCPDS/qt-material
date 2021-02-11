@@ -282,6 +282,7 @@ QTabWidget::pane {
 QTabWidget::tab-bar {
 }
 
+QScrollArea,
 QStackedWidget,
 QWidget > QToolBox,
 QToolBox > QWidget,
