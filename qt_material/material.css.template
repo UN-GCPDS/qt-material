@@ -282,6 +282,7 @@ QTabWidget::pane {
 QTabWidget::tab-bar {
 }
 
+QStackedWidget,
 QWidget > QToolBox,
 QToolBox > QWidget,
 QTabWidget > QWidget {
