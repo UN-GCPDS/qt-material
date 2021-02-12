@@ -3,6 +3,7 @@ recursive-include qt_material *.ui
 recursive-include qt_material/themes *.xml
 recursive-include qt_material/fonts/roboto *.ttf
 recursive-include qt_material/resources/ *
+recursive-include qt_material/resources/source *
 recursive-include * *.csv
 recursive-include * *.ttf
 recursive-exclude * __pycache__

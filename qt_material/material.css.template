@@ -79,7 +79,7 @@ QDateTimeEdit,
 QSpinBox,
 QDoubleSpinBox,
 QTextEdit,
-QLineEdit,
+.QLineEdit,
 QComboBox,
 QPushButton {
   color: {{primaryColor}};
@@ -96,7 +96,7 @@ QSpinBox,
 QDoubleSpinBox,
 QTreeView,
 QListView,
-QLineEdit,
+.QLineEdit,
 QComboBox {
   color: {{primaryColor}};
   padding-left: 15px;
@@ -119,7 +119,7 @@ QDateTimeEdit:disabled,
 QSpinBox:disabled,
 QDoubleSpinBox:disabled,
 QTextEdit:disabled,
-QLineEdit:disabled,
+.QLineEdit:disabled,
 QComboBox:disabled {
   color: {{primaryColor|opacity(0.2)}};
   background-color: {{secondaryColor|opacity(0.75)}};
