@@ -80,7 +80,6 @@ QSpinBox,
 QDoubleSpinBox,
 QTextEdit,
 QLineEdit,
-QComboBox,
 QPushButton {
   color: {{primaryColor}};
   background-color: {{secondaryDarkColor}};
@@ -88,6 +87,30 @@ QPushButton {
   border-radius: 4px;
   padding: 8px 16px ;
   height: 18px;
+}
+
+QDateTimeEdit:disabled,
+QSpinBox:disabled,
+QDoubleSpinBox:disabled,
+QTextEdit:disabled,
+QLineEdit:disabled {
+  color: {{primaryColor|opacity(0.2)}};
+  background-color: {{secondaryColor|opacity(0.75)}};
+  border: 2px solid {{primaryColor|opacity(0.2)}};
+}
+
+QComboBox {
+  color: {{primaryColor}};
+  background-color: {{secondaryDarkColor}};
+  border: 1px solid {{primaryColor}};
+  border-radius: 4px;
+  height: 36px;
+}
+
+QComboBox:disabled {
+  color: {{primaryColor|opacity(0.2)}};
+  background-color: {{secondaryColor|opacity(0.75)}};
+  border-bottom: 2px solid {{primaryColor|opacity(0.2)}};
 }
 
 QDateTimeEdit,
@@ -117,8 +140,7 @@ QDateTimeEdit:disabled,
 QSpinBox:disabled,
 QDoubleSpinBox:disabled,
 QTextEdit:disabled,
-QLineEdit:disabled,
-QComboBox:disabled {
+QLineEdit:disabled {
   color: {{primaryColor|opacity(0.2)}};
   background-color: {{secondaryColor|opacity(0.75)}};
   border: 2px solid {{primaryColor|opacity(0.2)}};
@@ -135,7 +157,7 @@ QComboBox[frame='false'] {
 }
 
 QHeaderView::section {
-  color: {{secondaryTextColor|opacity(0.5)}};
+  color: {{secondaryTextColor|opacity(0.7)}};
   text-transform: uppercase;
   background-color: {{secondaryColor}};
   border-radius: 0px;
@@ -165,28 +187,9 @@ QComboBox::down-arrow:disabled {
 }
 
 QComboBox QAbstractItemView {
-  border: 1px solid {{primaryColor}};
-  border-radius: 4px;
-}
-
-QComboBox::item {
-  color: {{secondaryTextColor}};
-  background: {{secondaryColor}};
-}
-
-QComboBox::item:disabled {
-  color: {{secondaryTextColor|opacity(0.3)}};
-  background: {{secondaryColor}};
-}
-
-QComboBox::item:selected {
-  color: {{secondaryDarkColor}};
-  background-color: {{primaryColor}};
-}
-
-QComboBox::item:selected:disabled {
-  color: {{secondaryDarkColor|opacity(0.3)}};
-  background-color: {{primaryColor}};
+  background-color: {{secondaryColor}};
+  border: 2px solid {{secondaryLightColor}};
+  border-radius: 2px;
 }
 
 QDateTimeEdit::up-button,
@@ -416,12 +419,15 @@ QCheckBox:disabled {
   color: {{secondaryTextColor|opacity(0.3)}};
 }
 
+QMenu::indicator,
 QListView::indicator,
 QTableWidget::indicator,
 QRadioButton::indicator,
 QCheckBox::indicator {
   width: 24px;
   height: 24px;
+  background-color: {{secondaryColor}};
+  border-radius: 4px;
  }
 
 QTableWidget::indicator:checked,
@@ -434,6 +440,7 @@ QTableView::indicator:unchecked,
 QListView::indicator:unchecked,
 QCheckBox::indicator:unchecked {
   image: url(icon:/primary/checkbox_unchecked.svg);
+
 }
 
 QTableView::indicator:indeterminate,
@@ -500,13 +507,20 @@ QMenu {
   margin-top: 3px;
 }
 
+QComboBox::item,
 QCalendarWidget QMenu::item,
 QMenu::item {
-  padding: 2px 25px 2px 20px;
-  border: 8px solid transparent; /* reserve space for selection border */
+  height: 26px;
+  border: 8px solid transparent;
   color: {{secondaryTextColor}};
 }
 
+QCalendarWidget QMenu::item,
+QMenu::item {
+  padding: 0px 25px 0px 20px;
+}
+
+QComboBox::item:selected,
 QCalendarWidget QMenu::item:selected,
 QMenu::item:selected {
   color: {{primaryTextColor}};
@@ -514,8 +528,8 @@ QMenu::item:selected {
   border-radius: 4px;
 }
 
+QComboBox::item:disabled,
 QCalendarWidget QMenu::item:disabled,
-QMenuBar::item:disabled,
 QMenu::item:disabled {
   color: {{secondaryTextColor|opacity(0.3)}};
 }
@@ -537,17 +551,12 @@ QMenu::right-arrow:selected{
   image: url(icon:/disabled/rightarrow.svg);
 }
 
-QMenu::indicator{
-  width: 15px;
-  height: 15px;
-}
-
 QMenu::indicator:non-exclusive:unchecked {
   image: url(icon:/primary/checkbox_unchecked.svg);
 }
 
 QMenu::indicator:non-exclusive:unchecked:selected {
-  image: url(icon:/disabled/checkbox_unchecked.svg);
+  image: url(icon:/primary/checkbox_unchecked.svg);
 }
 
 QMenu::indicator:non-exclusive:checked {
@@ -555,7 +564,7 @@ QMenu::indicator:non-exclusive:checked {
 }
 
 QMenu::indicator:non-exclusive:checked:selected {
-  image: url(icon:/disabled/checkbox_checked.svg);
+  image: url(icon:/primary/checkbox_checked.svg);
 }
 
 QMenu::indicator:exclusive:unchecked {
@@ -563,7 +572,7 @@ QMenu::indicator:exclusive:unchecked {
 }
 
 QMenu::indicator:exclusive:unchecked:selected {
-  image: url(icon:/disabled/radiobutton_unchecked.svg);
+  image: url(icon:/primary/radiobutton_unchecked.svg);
 }
 
 QMenu::indicator:exclusive:checked {
@@ -571,7 +580,7 @@ QMenu::indicator:exclusive:checked {
 }
 
 QMenu::indicator:exclusive:checked:selected {
-  image: url(icon:/disabled/radiobutton_checked.svg);
+  image: url(icon:/primary/radiobutton_checked.svg);
 }
 
 QMenuBar {
@@ -580,9 +589,8 @@ QMenuBar {
 }
 
 QMenuBar::item {
-  height: 33px;
-  spacing: 3px;
-  padding: 8px 8px;
+  height: 30px;
+  padding: 8px;
   background-color: transparent;
   color: {{secondaryTextColor}};
 }
@@ -590,7 +598,7 @@ QMenuBar::item {
 QMenuBar::item:selected,
 QMenuBar::item:pressed {
   color: {{primaryTextColor}};
-  background-color: {{primaryColor}};
+  background-color: {{primaryLightColor}};
 }
 
 QToolBox::tab {
@@ -823,6 +831,7 @@ QListView::item{
   color: {{secondaryTextColor}};
 }
 
+QTableView::item:selected,
 QListView::item:selected {
   color: {{primaryTextColor}};
 }
@@ -935,7 +944,7 @@ QToolTip {
 QTreeView QLineEdit,
 QTableView QLineEdit,
 QListView QLineEdit {
-  color: unset;
+  color: {{secondaryTextColor}};
   background-color: unset;
   border: 1px solid unset;
   border-radius: unset;
