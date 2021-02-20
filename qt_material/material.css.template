@@ -79,7 +79,7 @@ QDateTimeEdit,
 QSpinBox,
 QDoubleSpinBox,
 QTextEdit,
-.QLineEdit,
+QLineEdit,
 QComboBox,
 QPushButton {
   color: {{primaryColor}};
@@ -88,7 +88,6 @@ QPushButton {
   border-radius: 4px;
   padding: 8px 16px ;
   height: 18px;
-  /*font-weight: bold;*/
 }
 
 QDateTimeEdit,
@@ -96,7 +95,7 @@ QSpinBox,
 QDoubleSpinBox,
 QTreeView,
 QListView,
-.QLineEdit,
+QLineEdit,
 QComboBox {
   color: {{primaryColor}};
   padding-left: 15px;
@@ -106,7 +105,6 @@ QComboBox {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
-
 
 QPlainTextEdit {
   border-radius: 4px;
@@ -119,7 +117,7 @@ QDateTimeEdit:disabled,
 QSpinBox:disabled,
 QDoubleSpinBox:disabled,
 QTextEdit:disabled,
-.QLineEdit:disabled,
+QLineEdit:disabled,
 QComboBox:disabled {
   color: {{primaryColor|opacity(0.2)}};
   background-color: {{secondaryColor|opacity(0.75)}};
@@ -418,31 +416,45 @@ QCheckBox:disabled {
   color: {{secondaryTextColor|opacity(0.3)}};
 }
 
+QListView::indicator,
+QTableWidget::indicator,
+QRadioButton::indicator,
+QCheckBox::indicator {
+  width: 24px;
+  height: 24px;
+ }
+
+QTableWidget::indicator:checked,
 QListView::indicator:checked,
 QCheckBox::indicator:checked {
   image: url(icon:/primary/checkbox_checked.svg);
 }
 
+QTableView::indicator:unchecked,
 QListView::indicator:unchecked,
 QCheckBox::indicator:unchecked {
   image: url(icon:/primary/checkbox_unchecked.svg);
 }
 
+QTableView::indicator:indeterminate,
 QListView::indicator:indeterminate,
 QCheckBox::indicator:indeterminate {
   image: url(icon:/primary/checkbox_indeterminate.svg);
 }
 
+QTableView::indicator:checked:disabled,
 QListView::indicator:checked:disabled,
 QCheckBox::indicator:checked:disabled {
   image: url(icon:/disabled/checkbox_checked.svg);
 }
 
+QTableView::indicator:unchecked:disabled,
 QListView::indicator:unchecked:disabled,
 QCheckBox::indicator:unchecked:disabled {
   image: url(icon:/disabled/checkbox_unchecked.svg);
 }
 
+QTableView::indicator:indeterminate:disabled,
 QListView::indicator:indeterminate:disabled,
 QCheckBox::indicator:indeterminate:disabled {
   image: url(icon:/disabled/checkbox_indeterminate.svg);
@@ -798,6 +810,7 @@ QListView {
   margin: 0px;
 }
 
+QTableWidget:item,
 QTreeView::item,
 QListView::item {
   padding: 5px;
@@ -917,4 +930,19 @@ QToolTip {
   border-radius: 2px;
   color: {{secondaryTextColor}};
   background-color: {{secondaryLightColor}};
+}
+
+QTreeView QLineEdit,
+QTableView QLineEdit,
+QListView QLineEdit {
+  color: unset;
+  background-color: unset;
+  border: 1px solid unset;
+  border-radius: unset;
+  padding: unset;
+  padding-left: unset;
+  height: unset;
+  border-width: unset;
+  border-top-left-radius: unset;
+  border-top-right-radius: unset;
 }
