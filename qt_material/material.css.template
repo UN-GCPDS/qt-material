@@ -945,7 +945,7 @@ QTreeView QLineEdit,
 QTableView QLineEdit,
 QListView QLineEdit {
   color: {{secondaryTextColor}};
-  background-color: unset;
+  background-color: {{secondaryColor}};
   border: 1px solid unset;
   border-radius: unset;
   padding: unset;
