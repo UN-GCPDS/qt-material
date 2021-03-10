@@ -7,25 +7,25 @@ import signal
 import importlib.resources
 
 if '--pyside2' in sys.argv:
-    from PySide2.QtWidgets import QApplication, QMainWindow
+    from PySide2.QtWidgets import QApplication, QMainWindow, QFileDialog
     from PySide2.QtCore import QTimer, Qt, QCoreApplication
     from PySide2.QtGui import QIcon
     from PySide2.QtUiTools import QUiLoader
 
 elif '--pyside6' in sys.argv:
-    from PySide6.QtWidgets import QApplication, QMainWindow
+    from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
     from PySide6.QtCore import QTimer, Qt, QCoreApplication
     from PySide6.QtGui import QIcon, QPixmap
     from PySide6.QtUiTools import QUiLoader
 
 elif '--pyqt5' in sys.argv:
-    from PyQt5.QtWidgets import QApplication, QMainWindow
+    from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
     from PyQt5.QtCore import QTimer, Qt, QCoreApplication
     from PyQt5 import uic, QtWebEngineWidgets
     from PyQt5.QtGui import QIcon
 
 elif '--pyqt6' in sys.argv:
-    from PyQt6.QtWidgets import QApplication, QMainWindow
+    from PyQt6.QtWidgets import QApplication, QMainWindow, QFileDialog
     from PyQt6.QtCore import QTimer, Qt, QCoreApplication
     from PyQt6.QtGui import QIcon
     from PyQt6 import uic, QtWebEngineWidgets

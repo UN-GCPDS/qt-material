@@ -955,3 +955,16 @@ QListView QLineEdit {
   border-top-left-radius: unset;
   border-top-right-radius: unset;
 }
+
+QDialog QToolButton,
+QDialog QToolButton:hover,
+QDialog QToolButton:pressed,
+QDialog QToolButton:checked {
+  background-color: unset;
+  border: 0px;
+  height: unset;
+  margin: unset;
+  padding: unset;
+  border-right: unset;
+  border-left: unset;
+}
