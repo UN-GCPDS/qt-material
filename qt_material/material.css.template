@@ -64,7 +64,7 @@ QSplitter {
 
 QStatusBar {
   color: {{secondaryTextColor}};
-  background-color: {{secondaryDarkColor}};
+  background-color: {{secondaryLightColor|opacity(0.2)}};
   border-radius: 0px;
 }
 
