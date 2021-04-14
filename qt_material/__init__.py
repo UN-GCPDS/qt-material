@@ -118,9 +118,10 @@ def add_fonts():
     """"""
     fonts_path = os.path.join(os.path.dirname(__file__), 'fonts')
 
-    for font in ['roboto']:
-        for font in filter(lambda s: s.endswith('.ttf'), os.listdir(os.path.join(fonts_path, font))):
-            QFontDatabase.addApplicationFont(os.path.join(fonts_path, font))
+    for font_dir in ['roboto']:
+        for font in filter(lambda s: s.endswith('.ttf'), os.listdir(os.path.join(fonts_path, font_dir))):
+            QFontDatabase.addApplicationFont(
+                os.path.join(fonts_path, font_dir, font))
 
 
 # ----------------------------------------------------------------------
