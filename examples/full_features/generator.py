@@ -13,11 +13,11 @@ os.chdir('screenshots')
 commands = (
     'convert -delay 100 light_* light.gif',
     'convert -delay 100 dark_* dark.gif',
-    'rm ../../../docs/source/images/light.gif',
-    'rm ../../../docs/source/images/dark.gif',
-    'cp light.gif ../../../docs/source/images/light.gif',
-    'cp dark.gif ../../../docs/source/images/dark.gif',
-    'cp theme.png ../../../docs/source/images/theme.png',
+    # 'rm ../../../docs/source/images/light.gif',
+    # 'rm ../../../docs/source/images/dark.gif',
+    # 'cp light.gif ../../../docs/source/images/light.gif',
+    # 'cp dark.gif ../../../docs/source/images/dark.gif',
+    # 'cp theme.png ../../../docs/source/images/theme.png',
 )
 
 for command in commands:
