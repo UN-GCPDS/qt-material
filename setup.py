@@ -12,7 +12,7 @@ with open('requirements.txt') as f:
 
 setup(
     name='qt-material',
-    version='2.8.4',
+    version='2.8.5',
     packages=['qt_material',
               'qt_material.resources',
               'qt_material.resources.source'],
