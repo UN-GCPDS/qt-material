@@ -13,7 +13,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
-   sodipodi:docname="leftarrow.svg"
+   sodipodi:docname="checklist.svg"
    inkscape:export-filename="/home/yeison/Development/piton/art/icon_lite.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
@@ -26,11 +26,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="47.93292"
-     inkscape:cx="11.339872"
-     inkscape:cy="9.5896099"
+     inkscape:zoom="18.137025"
+     inkscape:cx="0.96646233"
+     inkscape:cy="16.895778"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g858"
      showgrid="true"
      inkscape:window-width="1920"
      inkscape:window-height="1004"
@@ -170,22 +170,22 @@
        d="m 50.206421,401.67683 c 110.217209,0.71279 55.108609,0.3564 0,0 z"
        id="rect997"
        inkscape:connector-curvature="0" />
-    <path
-       sodipodi:type="star"
-       style="fill:#0000ff;stroke:none;stroke-width:0.529167;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
-       id="path853"
-       sodipodi:sides="3"
-       sodipodi:cx="-2.6458302"
-       sodipodi:cy="-294.35419"
-       sodipodi:r1="1.3229166"
-       sodipodi:r2="0.66145831"
-       sodipodi:arg1="-1.5707963"
-       sodipodi:arg2="-0.52359878"
-       inkscape:flatsided="true"
-       inkscape:rounded="0"
-       inkscape:randomized="0"
-       d="m -2.6458301,-295.6771 1.1456793,1.98437 -2.2913588,0 z"
-       transform="rotate(-90,294.35419,-2.6458332)"
-       inkscape:transform-center-x="0.33072619" />
+    <g
+       style="fill:#4caf50"
+       id="g858"
+       transform="matrix(0.26458332,0,0,0.26458332,-6.0854164,290.12085)">
+      <g
+         id="g870"
+         transform="translate(-0.18646985,-1.3911317)">
+        <path
+           d="M 31,19.069357 28.155201,16.22456 27.18647,17.186471 31,21 l 8.18647,-8.186469 -0.96191,-0.96191 z"
+           id="path846"
+           style="fill:#0000ff;stroke-width:0.682206" />
+        <path
+           d="M 31,21 28.155201,18.155203 27.18647,19.117114 31,22.930643 l 8.18647,-8.186469 -0.96191,-0.96191 z"
+           id="path846-3"
+           style="fill:#ff0000;stroke-width:0.682206" />
+      </g>
+    </g>
   </g>
 </svg>

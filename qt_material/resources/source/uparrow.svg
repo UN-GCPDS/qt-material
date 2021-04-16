@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -14,7 +12,7 @@
    viewBox="0 0 5.2916664 5.2916664"
    version="1.1"
    id="svg8"
-   inkscape:version="0.92.4 5da689c313, 2019-01-14"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
    sodipodi:docname="uparrow.svg"
    inkscape:export-filename="/home/yeison/Development/piton/art/icon_lite.png"
    inkscape:export-xdpi="96"
@@ -28,9 +26,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="28.704913"
-     inkscape:cx="4.6862968"
-     inkscape:cy="5.0026685"
+     inkscape:zoom="47.93292"
+     inkscape:cx="11.339872"
+     inkscape:cy="9.5896099"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -58,7 +56,8 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:guide-bbox="true">
+     inkscape:guide-bbox="true"
+     inkscape:document-rotation="0">
     <inkscape:grid
        type="xygrid"
        id="grid974"
@@ -80,7 +79,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -172,10 +171,21 @@
        id="rect997"
        inkscape:connector-curvature="0" />
     <path
-       style="fill:none;stroke:#0000ff;stroke-width:0.52916664;stroke-linecap:butt;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 3.6919632,295.17947 -1.04613,-1.65058 -1.04613,1.65058"
-       id="path827"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccc" />
+       sodipodi:type="star"
+       style="fill:#0000ff;stroke:none;stroke-width:0.529167;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none"
+       id="path853"
+       sodipodi:sides="3"
+       sodipodi:cx="2.6458392"
+       sodipodi:cy="294.35419"
+       sodipodi:r1="1.3229166"
+       sodipodi:r2="0.66145831"
+       sodipodi:arg1="-1.5707963"
+       sodipodi:arg2="-0.52359878"
+       inkscape:flatsided="true"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 2.6458392,293.03127 1.1456794,1.98438 -2.2913588,0 z"
+       inkscape:transform-center-y="-0.33072915"
+       inkscape:transform-center-x="-5.9534991e-06" />
   </g>
 </svg>
