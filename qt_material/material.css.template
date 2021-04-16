@@ -1,7 +1,8 @@
 *{
   color: {{secondaryTextColor}};
   font-family: {{font_family}};
-  line-height: 13px;
+  line-height: {{line_height}};
+  font-size: {{font_size}};
   selection-background-color: {{primaryLightColor}};
   selection-color: {{primaryTextColor}};
 }
@@ -174,6 +175,7 @@ QTextEdit {
 QComboBox::drop-down {
   border: none;
   color: {{primaryColor}};
+  width: 20px;
 }
 
 QComboBox::down-arrow {
@@ -426,45 +428,61 @@ QRadioButton::indicator,
 QCheckBox::indicator {
   width: 24px;
   height: 24px;
-  background-color: {{secondaryColor}};
   border-radius: 4px;
  }
 
-QTableWidget::indicator:checked,
-QListView::indicator:checked,
-QCheckBox::indicator:checked {
+QCheckBox::indicator:checked,
+QTableWidget::indicator:checked {
   image: url(icon:/primary/checkbox_checked.svg);
 }
 
-QTableView::indicator:unchecked,
-QListView::indicator:unchecked,
-QCheckBox::indicator:unchecked {
-  image: url(icon:/primary/checkbox_unchecked.svg);
-
+QListView::indicator:checked {
+  image: url(icon:/primary/checklist.svg);
 }
 
-QTableView::indicator:indeterminate,
-QListView::indicator:indeterminate,
-QCheckBox::indicator:indeterminate {
+QCheckBox::indicator:unchecked,
+QTableView::indicator:unchecked {
+  image: url(icon:/primary/checkbox_unchecked.svg);
+}
+
+QListView::indicator:unchecked {
+  image: url(icon:/primary/checklist.svg);
+}
+
+QCheckBox::indicator:indeterminate,
+QTableView::indicator:indeterminate {
   image: url(icon:/primary/checkbox_indeterminate.svg);
 }
 
-QTableView::indicator:checked:disabled,
-QListView::indicator:checked:disabled,
-QCheckBox::indicator:checked:disabled {
+QListView::indicator:indeterminate {
+  image: url(icon:/primary/checklist_indeterminate.svg);
+}
+
+QCheckBox::indicator:checked:disabled,
+QTableView::indicator:checked:disabled {
   image: url(icon:/disabled/checkbox_checked.svg);
 }
 
-QTableView::indicator:unchecked:disabled,
-QListView::indicator:unchecked:disabled,
-QCheckBox::indicator:unchecked:disabled {
+QListView::indicator:checked:disabled {
+  image: url(icon:/disabled/checklist.svg);
+}
+
+QCheckBox::indicator:unchecked:disabled,
+QTableView::indicator:unchecked:disabled {
   image: url(icon:/disabled/checkbox_unchecked.svg);
 }
 
-QTableView::indicator:indeterminate:disabled,
-QListView::indicator:indeterminate:disabled,
-QCheckBox::indicator:indeterminate:disabled {
+QListView::indicator:unchecked:disabled {
+  image: url(icon:/disabled/checklist.svg);
+}
+
+QCheckBox::indicator:indeterminate:disabled,
+QTableView::indicator:indeterminate:disabled {
   image: url(icon:/disabled/checkbox_indeterminate.svg);
+}
+
+QListView::indicator:indeterminate:disabled {
+  image: url(icon:/disabled/checklist_indeterminate.svg);
 }
 
 QRadioButton::indicator:checked {
@@ -505,6 +523,14 @@ QMenu {
   border: 2px solid {{secondaryLightColor}};
   border-radius: 2px;
   margin-top: 3px;
+}
+
+QComboBox::indicator:checked {
+  image: url(icon:/primary/checklist.svg);
+}
+
+QComboBox::indicator:hover:checked {
+  image: url(icon:/disabled/checklist.svg);
 }
 
 QComboBox::item,
@@ -717,9 +743,19 @@ QLabel:disabled {
   color: {{secondaryTextColor|opacity(0.2)}}
 }
 
-QLine {
-  border: none;
-  border-color: red;
+QFrame[frameShape="4"] {
+    border-width: 1px 0 0 0;
+    background: none;
+}
+
+QFrame[frameShape="5"] {
+    border-width: 0 1px 0 0;
+    background: none;
+}
+
+QFrame[frameShape="4"],
+QFrame[frameShape="5"] {
+  border-color: {{secondaryLightColor}};
 }
 
 QMdiArea{
