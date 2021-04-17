@@ -841,7 +841,7 @@ QToolButton:checked {
 QAbstractScrollArea {
 }
 
-QTableWidget {
+QTableView {
   background-color: {{secondaryDarkColor}};
   border: 1px solid {{secondaryColor}};
   border-radius: 4px;
@@ -854,20 +854,16 @@ QListView {
   margin: 0px;
 }
 
-QTableWidget:item,
+QTableView:item,
 QTreeView::item,
 QListView::item {
   padding: 5px;
   min-height: 25px;
-}
-
-QTableView::item,
-QTreeView::item,
-QListView::item{
   color: {{secondaryTextColor}};
 }
 
 QTableView::item:selected,
+QTreeView::item:disabled,
 QListView::item:selected {
   color: {{primaryTextColor}};
 }
