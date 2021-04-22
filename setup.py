@@ -7,12 +7,9 @@ with open(os.path.join(os.path.dirname(__file__), 'README.md')) as readme:
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
-with open('requirements.txt') as f:
-   requirements = f.read().splitlines()
-
 setup(
     name='qt-material',
-    version='2.8.5',
+    version='2.8.6',
     packages=['qt_material',
               'qt_material.resources',
               'qt_material.resources.source'],
@@ -24,7 +21,7 @@ setup(
 
     download_url='https://github.com/UN-GCPDS/qt-material',
 
-    install_requires=requirements,
+    install_requires=['Jinja2'],
 
     python_requires='>=3.7',
 

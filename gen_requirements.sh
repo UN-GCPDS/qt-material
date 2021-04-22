@@ -1,16 +1,8 @@
-pipreqs --savepath requirements.tmp --force qt_material
 rm requirements.txt
-
-sed '/PyQt5/d' requirements.tmp >> requirements.txt
-mv requirements.txt requirements.tmp
-
-sed '/PyQt6/d' requirements.tmp >> requirements.txt
-mv requirements.txt requirements.tmp
-
-sed '/PySide2/d' requirements.tmp >> requirements.txt
-mv requirements.txt requirements.tmp
-
-sed '/PySide6/d' requirements.tmp >> requirements.txt
-
-rm requirements.tmp
-cat requirements.txt
+pipreqs --savepath requirements.txt --force qt_material
+sed -i '/PyQt5/d' requirements.txt
+sed -i '/PyQt6/d' requirements.txt
+sed -i '/PySide2/d' requirements.txt
+sed -i '/PySide6/d' requirements.txt
+sed -i 's/==.*//' requirements.txt
+python -c "[print(f'\'{line[:-1]}\',') for line in open('requirements.txt').readlines()]"

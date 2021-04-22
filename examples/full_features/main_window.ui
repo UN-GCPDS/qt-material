@@ -1512,7 +1512,9 @@
            </attribute>
            <layout class="QGridLayout" name="gridLayout_29">
             <item row="0" column="0">
-             <widget class="QWidget" name="widget" native="true"/>
+             <widget class="QWidget" name="widget" native="true">
+              <layout class="QGridLayout" name="gridLayout_34"/>
+             </widget>
             </item>
            </layout>
           </widget>
