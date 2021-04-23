@@ -1,9 +1,11 @@
 import os
 import sys
 import logging
+import base64
 from xml.etree import ElementTree
 
-from qt_material.resources import ResourseGenerator
+from qt_material.resources import ResourseGenerator, RESOURCES_PATH
+GUI = True
 
 if 'PySide2' in sys.modules:
     from PySide2.QtGui import QFontDatabase, QColor, QGuiApplication, QPalette
@@ -29,6 +31,7 @@ elif 'PyQt6' in sys.modules:
     from PyQt5.QtCore import Qt, QDir
     from PyQt5 import uic
 else:
+    GUI = False
     logging.warning("qt_material must be imported after PySide or PyQt!")
 
 import jinja2
@@ -37,7 +40,20 @@ template = 'material.css.template'
 
 
 # ----------------------------------------------------------------------
-def build_stylesheet(theme='', invert_secondary=False, resources=[], extra={}, parent='theme'):
+def export_theme(theme='', qss=None, invert_secondary=False, extra={}, output='theme', prefix='icon:/'):
+    """"""
+    if not os.path.isabs(output) and not output.startswith('.'):
+            output = f'.{output}'
+
+    stylesheet = build_stylesheet(
+        theme, invert_secondary, extra, output)
+
+    with open(qss, 'w') as file:
+        file.writelines(stylesheet.replace('icon:/', prefix))
+
+
+# ----------------------------------------------------------------------
+def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme'):
     """"""
     theme = get_theme(theme, invert_secondary)
     if theme is None:
@@ -47,11 +63,12 @@ def build_stylesheet(theme='', invert_secondary=False, resources=[], extra={}, p
 
     loader = jinja2.FileSystemLoader(os.path.join(
         os.path.dirname(os.path.abspath(__file__))))
-    env = jinja2.Environment(autoescape=True, loader=loader)
+    env = jinja2.Environment(autoescape=False, loader=loader)
 
     theme['icon'] = None
 
     env.filters['opacity'] = opacity
+    # env.filters['as_base64'] = as_base64
     # env.filters['load'] = load
 
     stylesheet = env.get_template(template)
@@ -63,10 +80,11 @@ def build_stylesheet(theme='', invert_secondary=False, resources=[], extra={}, p
 
     theme.update(extra)
 
-    default_palette = QGuiApplication.palette()
-    default_palette.setColor(QPalette.PlaceholderText, QColor(
-        *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
-    QGuiApplication.setPalette(default_palette)
+    if GUI:
+        default_palette = QGuiApplication.palette()
+        default_palette.setColor(QPalette.PlaceholderText, QColor(
+            *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
+        QGuiApplication.setPalette(default_palette)
 
     return stylesheet.render(**theme)
 
@@ -125,10 +143,8 @@ def add_fonts():
 
 
 # ----------------------------------------------------------------------
-def apply_stylesheet(app, theme='', style=None, save_as=None, invert_secondary=False, resources=[], extra={}, parent='theme'):
+def apply_stylesheet(app, theme='', style=None, save_as=None, invert_secondary=False, extra={}, parent='theme'):
     """"""
-    add_fonts()
-
     if style:
         try:
             app.setStyle(style)
@@ -136,7 +152,7 @@ def apply_stylesheet(app, theme='', style=None, save_as=None, invert_secondary=F
             logging.error(f"The style '{style}' does not exist.")
             pass
     stylesheet = build_stylesheet(
-        theme, invert_secondary, resources, extra, parent)
+        theme, invert_secondary, extra, parent)
     if stylesheet is None:
         return
 
@@ -163,9 +179,11 @@ def set_icons_theme(theme, parent='theme'):
     resources = ResourseGenerator(primary=theme['primaryColor'], secondary=theme['secondaryColor'],
                                   disabled=theme['secondaryLightColor'], source=source, parent=parent)
     resources.generate()
-    QDir.addSearchPath('icon', resources.index)
-    QDir.addSearchPath('qt_material', os.path.join(
-        os.path.dirname(__file__), 'resources'))
+
+    if GUI:
+        QDir.addSearchPath('icon', resources.index)
+        QDir.addSearchPath('qt_material', os.path.join(
+            os.path.dirname(__file__), 'resources'))
 
 
 # ----------------------------------------------------------------------

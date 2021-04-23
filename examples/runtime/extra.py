@@ -11,7 +11,9 @@ extra = {
     'success': '#17a2b8',
 
     # Font
-    'font_family': 'mono',
+    'font_family': 'monoespace',
+    'font_size': 'mono',
+    'line_height': '14px',
 }
 
 
