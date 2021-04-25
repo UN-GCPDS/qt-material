@@ -41,8 +41,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>457</width>
-             <height>329</height>
+             <width>96</width>
+             <height>26</height>
             </rect>
            </property>
            <attribute name="label">
@@ -65,8 +65,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>457</width>
-             <height>329</height>
+             <width>404</width>
+             <height>328</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1411,9 +1411,6 @@
               <attribute name="horizontalHeaderStretchLastSection">
                <bool>true</bool>
               </attribute>
-              <attribute name="verticalHeaderVisible">
-               <bool>false</bool>
-              </attribute>
               <row>
                <property name="text">
                 <string>Row-1</string>
@@ -1425,7 +1422,7 @@
                </property>
                <property name="icon">
                 <iconset theme="media-playback-start">
-                 <normaloff>.</normaloff>.</iconset>
+                 <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
                </property>
               </row>
               <row>
@@ -1491,15 +1488,24 @@
                <property name="checkState">
                 <enum>Checked</enum>
                </property>
+               <property name="flags">
+                <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable</set>
+               </property>
               </item>
               <item row="2" column="1">
                <property name="text">
                 <string>2020-04-27 17:31:34</string>
                </property>
+               <property name="flags">
+                <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable</set>
+               </property>
               </item>
               <item row="2" column="2">
                <property name="text">
                 <string>Unamed-3</string>
+               </property>
+               <property name="flags">
+                <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable</set>
                </property>
               </item>
              </widget>
@@ -1539,6 +1545,115 @@
            <attribute name="title">
             <string>Page</string>
            </attribute>
+           <layout class="QGridLayout" name="gridLayout_35">
+            <item row="0" column="0">
+             <widget class="QTableWidget" name="tableWidget_2">
+              <property name="alternatingRowColors">
+               <bool>true</bool>
+              </property>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>true</bool>
+              </attribute>
+              <row>
+               <property name="text">
+                <string>Row-1</string>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset theme="media-playback-start">
+                 <normaloff>../../../../../../.designer/backup</normaloff>../../../../../../.designer/backup</iconset>
+               </property>
+              </row>
+              <row>
+               <property name="text">
+                <string>Row-3</string>
+               </property>
+              </row>
+              <column>
+               <property name="text">
+                <string>Duration</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Datetime</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Name</string>
+               </property>
+              </column>
+              <item row="0" column="0">
+               <property name="text">
+                <string>00:05:02</string>
+               </property>
+               <property name="checkState">
+                <enum>Checked</enum>
+               </property>
+              </item>
+              <item row="0" column="1">
+               <property name="text">
+                <string>2020-04-27 17:31:34</string>
+               </property>
+              </item>
+              <item row="0" column="2">
+               <property name="text">
+                <string>Unamed-1</string>
+               </property>
+              </item>
+              <item row="1" column="0">
+               <property name="text">
+                <string>00:01:02</string>
+               </property>
+               <property name="checkState">
+                <enum>Checked</enum>
+               </property>
+              </item>
+              <item row="1" column="1">
+               <property name="text">
+                <string>2020-04-27 17:31:34</string>
+               </property>
+              </item>
+              <item row="1" column="2">
+               <property name="text">
+                <string>Unamed-2</string>
+               </property>
+              </item>
+              <item row="2" column="0">
+               <property name="text">
+                <string>00:07:02</string>
+               </property>
+               <property name="checkState">
+                <enum>Checked</enum>
+               </property>
+               <property name="flags">
+                <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable</set>
+               </property>
+              </item>
+              <item row="2" column="1">
+               <property name="text">
+                <string>2020-04-27 17:31:34</string>
+               </property>
+               <property name="flags">
+                <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable</set>
+               </property>
+              </item>
+              <item row="2" column="2">
+               <property name="text">
+                <string>Unamed-3</string>
+               </property>
+               <property name="flags">
+                <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsDropEnabled|ItemIsUserCheckable</set>
+               </property>
+              </item>
+             </widget>
+            </item>
+           </layout>
           </widget>
           <widget class="QWidget" name="tab_19">
            <attribute name="title">
