@@ -30,7 +30,7 @@
      inkscape:cx="0.96646233"
      inkscape:cy="16.895778"
      inkscape:document-units="px"
-     inkscape:current-layer="g858"
+     inkscape:current-layer="g870"
      showgrid="true"
      inkscape:window-width="1920"
      inkscape:window-height="1004"
@@ -178,13 +178,9 @@
          id="g870"
          transform="translate(-0.18646985,-1.3911317)">
         <path
-           d="M 31,19.069357 28.155201,16.22456 27.18647,17.186471 31,21 l 8.18647,-8.186469 -0.96191,-0.96191 z"
+           d="M 31,20.034679 28.155201,17.189882 27.18647,18.151793 31,21.965322 l 8.18647,-8.186469 -0.96191,-0.96191 z"
            id="path846"
            style="fill:#0000ff;stroke-width:0.682206" />
-        <path
-           d="M 31,21 28.155201,18.155203 27.18647,19.117114 31,22.930643 l 8.18647,-8.186469 -0.96191,-0.96191 z"
-           id="path846-3"
-           style="fill:#ff0000;stroke-width:0.682206" />
       </g>
     </g>
   </g>
