@@ -6,6 +6,15 @@ qt\_material.resources package
    :no-undoc-members:
    :no-show-inheritance:
 
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   qt_material.resources.logo
+   qt_material.resources.source
+
 Submodules
 ----------
 
@@ -13,9 +22,3 @@ Submodules
    :maxdepth: 4
 
    qt_material.resources.generate
-   qt_material.resources.logos_pyqt5_rc
-   qt_material.resources.logos_pyside2_rc
-   qt_material.resources.logos_pyside6_rc
-   qt_material.resources.resource_pyqt5_rc
-   qt_material.resources.resource_pyside2_rc
-   qt_material.resources.resource_pyside6_rc
