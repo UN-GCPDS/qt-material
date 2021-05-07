@@ -40,4 +40,10 @@ setup(
         'Programming Language :: Python :: 3.7',
     ],
 
+    entry_points={
+        "pyinstaller40": [
+            "hook-dirs = qt_material:get_hook_dirs"
+        ]
+    },
+
 )

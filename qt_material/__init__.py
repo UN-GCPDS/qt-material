@@ -3,6 +3,7 @@ import sys
 import logging
 import base64
 from xml.etree import ElementTree
+from pathlib import Path
 
 from qt_material.resources import ResourseGenerator, RESOURCES_PATH
 GUI = True
@@ -351,3 +352,8 @@ class QtStyleTools:
             button = getattr(self.dock_theme, f'pushButton_{color}')
             button.clicked.connect(self.set_color(parent, color))
 
+
+# ----------------------------------------------------------------------
+def get_hook_dirs():
+    package_folder = Path(__file__).parent
+    return [str(package_folder.absolute())]
