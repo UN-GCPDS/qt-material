@@ -14,8 +14,8 @@ extra = {
 }
 
 
-export_theme(theme='dark_teal.xml', qss='dark_teal.qss', output='theme', prefix='icon:/',
-             invert_secondary=False, extra=extra, rcc='resources.rcc')
+export_theme(theme='dark_teal.xml', qss='dark_teal.qss', rcc='resources.rcc',
+             output='theme', prefix='icon:/', invert_secondary=False, extra=extra)
 
 
 

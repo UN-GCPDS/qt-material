@@ -40,7 +40,7 @@ template = 'material.css.template'
 
 
 # ----------------------------------------------------------------------
-def export_theme(theme='', qss=None, invert_secondary=False, extra={}, output='theme', prefix='icon:/', rcc=None):
+def export_theme(theme='', qss=None, rcc=None, invert_secondary=False, extra={}, output='theme', prefix='icon:/'):
     """"""
     if not os.path.isabs(output) and not output.startswith('.'):
             output = f'.{output}'
