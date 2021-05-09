@@ -40,7 +40,7 @@ template = 'material.css.template'
 
 
 # ----------------------------------------------------------------------
-def export_theme(theme='', qss=None, invert_secondary=False, extra={}, output='theme', prefix='icon:/'):
+def export_theme(theme='', qss=None, invert_secondary=False, extra={}, output='theme', prefix='icon:/', rcc=None):
     """"""
     if not os.path.isabs(output) and not output.startswith('.'):
             output = f'.{output}'
@@ -50,6 +50,32 @@ def export_theme(theme='', qss=None, invert_secondary=False, extra={}, output='t
 
     with open(qss, 'w') as file:
         file.writelines(stylesheet.replace('icon:/', prefix))
+
+    if rcc:
+
+        with open(rcc, 'w') as file:
+            file.write('<RCC>\n')
+            file.write(f'  <qresource prefix="{prefix[:-2]}">\n')
+
+            if output.startswith('.'):
+                output = output[1:]
+
+            for subfolder in ['disabled', 'primary']:
+                files = os.listdir(os.path.join(
+                    os.path.abspath(output), subfolder))
+                files = filter(lambda s: s.endswith('svg'), files)
+                for filename in files:
+                    file.write(
+                        f'    <file>{output}/{subfolder}/{filename}</file>\n')
+
+            file.write('  </qresource\n')
+
+            file.write(f'  <qresource prefix="file">\n')
+            if qss:
+                file.write(f'    <file>{qss}</file>\n')
+            file.write('  </qresource\n')
+
+            file.write('</RCC>\n')
 
 
 # ----------------------------------------------------------------------
