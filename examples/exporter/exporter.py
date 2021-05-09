@@ -15,7 +15,7 @@ extra = {
 
 
 export_theme(theme='dark_teal.xml', qss='dark_teal.qss', output='theme', prefix='icon:/',
-             invert_secondary=False, extra=extra,)
+             invert_secondary=False, extra=extra, rcc='resources.rcc')
 
 
 
