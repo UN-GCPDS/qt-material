@@ -265,7 +265,7 @@ available to test all themes and **create new ones**.
     cd qt-material
     python setup.py install
     cd test
-    python main.py --PySide6
+    python main.py --pyside6
 
 .. figure:: _images/theme.gif
    :alt: theme

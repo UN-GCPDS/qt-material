@@ -13,3 +13,11 @@ Subpackages
    :maxdepth: 4
 
    qt_material.resources
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 4
+
+   qt_material.hook-qt_material

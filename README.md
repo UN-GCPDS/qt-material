@@ -223,7 +223,7 @@ git clone https://github.com/UN-GCPDS/qt-material.git
 cd qt-material
 python setup.py install
 cd test
-python main.py --PySide6
+python main.py --pyside6
 ```
 
 ![theme](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/theme.gif)
