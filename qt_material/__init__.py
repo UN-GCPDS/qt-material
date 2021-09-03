@@ -82,6 +82,8 @@ def export_theme(theme='', qss=None, rcc=None, invert_secondary=False, extra={},
 # ----------------------------------------------------------------------
 def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme'):
     """"""
+    add_fonts()
+
     theme = get_theme(theme, invert_secondary)
     if theme is None:
         return None

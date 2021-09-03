@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='qt-material',
-    version='2.8.9',
+    version='2.8.10',
     packages=['qt_material',
               'qt_material.resources',
               'qt_material.resources.source'],
