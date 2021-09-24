@@ -286,4 +286,4 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
 
 ![dock](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/runtime_dock.gif)
 
-A full set of examples are available in the [exmaples directory](https://github.com/UN-GCPDS/qt-material/blob/master/examples/runtime/)
+A full set of examples are available in the [examples directory](https://github.com/UN-GCPDS/qt-material/blob/master/examples/runtime/)
