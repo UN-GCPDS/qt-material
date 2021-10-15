@@ -705,11 +705,11 @@ QMenuBar::item:pressed {
 QToolBox::tab {
   background-color: {{secondaryColor}};
   color: {{secondaryTextColor}};
-  padding-left: 15px;
   text-transform: uppercase;
   border-radius: 4px;
 }
 
+QToolBox::tab:selected,
 QToolBox::tab:hover {
   background-color: {{primaryColor|opacity(0.2)}};
 }
