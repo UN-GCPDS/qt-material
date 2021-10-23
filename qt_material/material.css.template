@@ -891,8 +891,8 @@ QToolButton {
   background: {{secondaryDarkColor}};
   border: 0px;
   height: 40px;
-  margin: 0px;
-  padding: 5px;
+  margin: 3px;
+  padding: 3px;
   border-right: 10px solid {{secondaryDarkColor}};
   border-left: 10px solid {{secondaryDarkColor}};
 }
