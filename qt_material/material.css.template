@@ -420,6 +420,12 @@ QCheckBox:disabled {
 /*  ------------------------------------------------------------------------  */
 /*  General Indicators  */
 
+QGroupBox::indicator {
+  width: 18px;
+  height: 18px;
+  border-radius: 3px;
+}
+
 QMenu::indicator,
 QListView::indicator,
 QTableWidget::indicator,
@@ -513,29 +519,35 @@ QTableView::indicator:disabled:indeterminate:focus {
 }
 
 /*  ------------------------------------------------------------------------  */
-/*  QCheckBox Indicator  */
+/*  QCheckBox and QGroupBox Indicator  */
 
-QCheckBox::indicator:checked {
+QCheckBox::indicator:checked,
+QGroupBox::indicator:checked {
   image: url(icon:/primary/checkbox_checked.svg);
 }
 
-QCheckBox::indicator:unchecked {
+QCheckBox::indicator:unchecked,
+QGroupBox::indicator:unchecked {
   image: url(icon:/primary/checkbox_unchecked.svg);
 }
 
-QCheckBox::indicator:indeterminate {
+QCheckBox::indicator:indeterminate,
+QGroupBox::indicator:indeterminate {
   image: url(icon:/primary/checkbox_indeterminate.svg);
 }
 
-QCheckBox::indicator:checked:disabled {
+QCheckBox::indicator:checked:disabled,
+QGroupBox::indicator:checked:disabled {
   image: url(icon:/disabled/checkbox_checked.svg);
 }
 
-QCheckBox::indicator:unchecked:disabled {
+QCheckBox::indicator:unchecked:disabled,
+QGroupBox::indicator:unchecked:disabled {
   image: url(icon:/disabled/checkbox_unchecked.svg);
 }
 
-QCheckBox::indicator:indeterminate:disabled {
+QCheckBox::indicator:indeterminate:disabled,
+QGroupBox::indicator:indeterminate:disabled {
   image: url(icon:/disabled/checkbox_indeterminate.svg);
 }
 
