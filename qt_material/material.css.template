@@ -950,6 +950,7 @@ QListView::item {
   min-height: 25px;
   color: {{secondaryTextColor}};
   selection-color: {{secondaryTextColor}}; /* For Windows */
+  border-color: transparent;  /* Fix #34 */
 }
 
 /*  ------------------------------------------------------------------------  */
