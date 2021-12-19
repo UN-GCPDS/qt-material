@@ -39,6 +39,7 @@ Navigation
 -  `Run examples <#run-examples>`__
 -  `New themes <#new-themes>`__
 -  `Change theme in runtime <#change-theme-in-runtime>`__
+-  `Density scale <#density-scale>`__
 
 Install
 -------
@@ -349,3 +350,24 @@ the main directory as ``my_theme.xml``
 
 A full set of examples are available in the `exmaples
 directory <https://github.com/UN-GCPDS/qt-material/blob/master/examples/runtime/>`__
+
+Density scale
+-------------
+
+The ``extra`` arguments also include an option to set the **density
+scale**, by default is ``0``.
+
+.. code:: ipython3
+
+    extra = {
+        
+        # Density Scale
+        'density_scale': '-2',
+    }
+    
+    apply_stylesheet(app, 'default', invert_secondary=False, extra=extra)
+
+.. figure:: _images/density/density.gif
+   :alt: dock
+
+   dock
