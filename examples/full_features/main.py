@@ -2,9 +2,9 @@ import os
 import sys
 import logging
 from multiprocessing import freeze_support
-import psutil
-import signal
-import importlib.resources
+# import psutil
+# import signal
+# import importlib.resources
 
 if '--pyside2' in sys.argv:
     from PySide2.QtWidgets import QApplication, QMainWindow, QFileDialog
@@ -33,13 +33,17 @@ elif '--pyqt6' in sys.argv:
 
 from qt_material import apply_stylesheet, QtStyleTools
 
-freeze_support()
-QCoreApplication.setAttribute(Qt.AA_ShareOpenGLContexts)
+try:
+    QCoreApplication.setAttribute(Qt.AA_ShareOpenGLContexts)
+except:
+    pass
+    # print("'Qt' object has no attribute 'AA_ShareOpenGLContexts'")
 
 app = QApplication([])
+freeze_support()
 app.processEvents()
 app.setQuitOnLastWindowClosed(False)
-app.lastWindowClosed.connect(lambda: app.quit())
+app.lastWindowClosed.connect(app.quit)
 
 # Extra stylesheets
 extra = {
@@ -51,6 +55,12 @@ extra = {
 
     # Font
     'font_family': 'Roboto',
+
+    # Density
+    'density_scale': '0',
+
+    # Button Shape
+    'button_shape': 'default',
 }
 
 
@@ -83,7 +93,7 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
             sys.exit()
         self.custom_styles()
 
-        self.set_extra_colors(extra)
+        self.set_extra(extra)
         self.add_menu_theme(self.main, self.main.menuStyles)
         self.show_dock_theme(self.main)
 
@@ -94,6 +104,11 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
         self.main.actionToolbar.setIcon(logo)
         [self.main.listWidget_2.item(i).setIcon(logo_frame)
          for i in range(self.main.listWidget_2.count())]
+
+        self.main.pushButton_file_dialog.clicked.connect(
+            lambda: QFileDialog.getOpenFileName(self.main))
+        self.main.pushButton_folder_dialog.clicked.connect(
+            lambda: QFileDialog.getExistingDirectory(self.main))
 
     # ----------------------------------------------------------------------
     def custom_styles(self):
