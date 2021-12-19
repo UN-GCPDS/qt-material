@@ -30,6 +30,7 @@ And light:
   * [Run examples](#run-examples)
   * [New themes](#new-themes)
   * [Change theme in runtime](#change-theme-in-runtime)
+  * [Density scale](#density-scale)
 
 ## Install
 
@@ -286,4 +287,21 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
 
 ![dock](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/runtime_dock.gif)
 
-A full set of examples are available in the [examples directory](https://github.com/UN-GCPDS/qt-material/blob/master/examples/runtime/)
+A full set of examples are available in the [exmaples directory](https://github.com/UN-GCPDS/qt-material/blob/master/examples/runtime/)
+
+## Density scale
+
+The ``extra`` arguments also include an option to set the **density scale**, by default is ```0```.
+
+
+```python
+extra = {
+    
+    # Density Scale
+    'density_scale': '-2',
+}
+
+apply_stylesheet(app, 'default', invert_secondary=False, extra=extra)
+```
+
+![dock](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/density/density.gif)

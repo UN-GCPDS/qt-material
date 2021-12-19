@@ -97,6 +97,7 @@ def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme')
     theme['icon'] = None
 
     env.filters['opacity'] = opacity
+    env.filters['density'] = density
     # env.filters['as_base64'] = as_base64
     # env.filters['load'] = load
 
@@ -106,6 +107,8 @@ def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme')
     theme.setdefault('danger', '#dc3545')
     theme.setdefault('warning', '#ffc107')
     theme.setdefault('success', '#17a2b8')
+    theme.setdefault('density_scale', '0')
+    theme.setdefault('button_shape', 'default')
 
     theme.update(extra)
 
@@ -202,6 +205,23 @@ def opacity(theme, value=0.5):
 
 
 # ----------------------------------------------------------------------
+def density(value, density_scale, border=0, scale=1):
+    """"""
+    # https://material.io/develop/web/supporting/density
+    if isinstance(value, str) and value.startswith('@'):
+        return value[1:] * scale
+
+    density_interval = 4
+    density = (value + (density_interval * int(density_scale)) -
+               (border * 2)) * scale
+
+    if density < 4:
+        density = 4
+
+    return density
+
+
+# ----------------------------------------------------------------------
 def set_icons_theme(theme, parent='theme'):
     """"""
     source = os.path.join(os.path.dirname(__file__), 'resources', 'source')
@@ -224,15 +244,36 @@ def list_themes():
     return sorted(list(themes))
 
 
+# ----------------------------------------------------------------------
+def deprecated(replace):
+    """"""
+    # ----------------------------------------------------------------------
+    def wrap1(fn):
+        # ----------------------------------------------------------------------
+        def wrap2(*args, **kwargs):
+            logging.warning(
+                f'This function is deprecated, please use "{replace}" instead.')
+            fn(*args, **kwargs)
+        return wrap2
+
+    return wrap1
+
+
 ########################################################################
 class QtStyleTools:
     """"""
-    extra_colors = {}
+    extra_values = {}
 
     # ----------------------------------------------------------------------
+    @deprecated('set_extra')
     def set_extra_colors(self, extra):
         """"""
-        self.extra_colors = extra
+        self.extra_values = extra
+
+    # ----------------------------------------------------------------------
+    def set_extra(self, extra):
+        """"""
+        self.extra_values = extra
 
     # ----------------------------------------------------------------------
     def add_menu_theme(self, parent, menu):
@@ -241,7 +282,7 @@ class QtStyleTools:
             action = QAction(parent)
             action.setText(theme)
             action.triggered.connect(self._wrapper(
-                parent, theme, self.extra_colors, self.update_buttons))
+                parent, theme, self.extra_values, self.update_buttons))
             menu.addAction(action)
 
     # ----------------------------------------------------------------------
@@ -328,7 +369,7 @@ class QtStyleTools:
             """.format(**self.custom_colors))
         light = self.dock_theme.checkBox_ligh_theme.isChecked()
         self.apply_stylesheet(parent, 'my_theme.xml', invert_secondary=light,
-                              extra=self.extra_colors, callable_=self.update_buttons)
+                              extra=self.extra_values, callable_=self.update_buttons)
 
     # ----------------------------------------------------------------------
     def set_color(self, parent, button_):
@@ -341,8 +382,9 @@ class QtStyleTools:
             color_ = color_dialog.currentColor()
 
             if done and color_.isValid():
+                rgb_255 = [color_.red(), color_.green(), color_.blue()]
                 color = '#' + ''.join([hex(v)[2:].ljust(2, '0')
-                                       for v in color_.toTuple()[:3]])
+                                       for v in rgb_255])
                 self.custom_colors[button_] = color
                 self.update_theme(parent)
 
