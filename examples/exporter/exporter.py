@@ -11,6 +11,9 @@ extra = {
     'font_family': 'monoespace',
     'font_size': '14px',
     'line_height': '14px',
+
+    # Density Scale
+    'density_scale': '0',
 }
 
 

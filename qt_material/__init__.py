@@ -69,12 +69,12 @@ def export_theme(theme='', qss=None, rcc=None, invert_secondary=False, extra={},
                     file.write(
                         f'    <file>{output}/{subfolder}/{filename}</file>\n')
 
-            file.write('  </qresource\n')
+            file.write('  </qresource>\n')
 
             file.write(f'  <qresource prefix="file">\n')
             if qss:
                 file.write(f'    <file>{qss}</file>\n')
-            file.write('  </qresource\n')
+            file.write('  </qresource>\n')
 
             file.write('</RCC>\n')
 
@@ -82,7 +82,10 @@ def export_theme(theme='', qss=None, rcc=None, invert_secondary=False, extra={},
 # ----------------------------------------------------------------------
 def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme'):
     """"""
-    add_fonts()
+    try:
+        add_fonts()
+    except Exception as e:
+        logging.warning(e)
 
     theme = get_theme(theme, invert_secondary)
     if theme is None:
