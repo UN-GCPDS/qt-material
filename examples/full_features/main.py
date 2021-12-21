@@ -145,7 +145,10 @@ if __name__ == "__main__":
     frame = RuntimeStylesheets()
     frame.main.show()
 
-    app.exec_()
+    if hasattr(app, 'exec'):
+        app.exec()
+    else:
+        app.exec_()
 
 
 
