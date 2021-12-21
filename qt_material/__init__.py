@@ -2,8 +2,9 @@ import os
 import sys
 import logging
 import base64
-from xml.etree import ElementTree
 from pathlib import Path
+import platform
+from xml.dom.minidom import parse
 
 from qt_material.resources import ResourseGenerator, RESOURCES_PATH
 GUI = True
@@ -27,10 +28,10 @@ elif 'PyQt5' in sys.modules:
     from PyQt5 import uic
 
 elif 'PyQt6' in sys.modules:
-    from PyQt5.QtGui import QFontDatabase, QColor, QGuiApplication, QPalette
-    from PyQt5.QtWidgets import QAction, QColorDialog
-    from PyQt5.QtCore import Qt, QDir
-    from PyQt5 import uic
+    from PyQt6.QtGui import QFontDatabase, QColor, QGuiApplication, QPalette, QAction
+    from PyQt6.QtWidgets import QColorDialog
+    from PyQt6.QtCore import Qt, QDir
+    from PyQt6 import uic
 else:
     GUI = False
     logging.warning("qt_material must be imported after PySide or PyQt!")
@@ -117,11 +118,29 @@ def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme')
 
     if GUI:
         default_palette = QGuiApplication.palette()
-        default_palette.setColor(QPalette.PlaceholderText, QColor(
-            *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
+
+        if hasattr(QPalette, 'PlaceholderText'):
+            default_palette.setColor(QPalette.PlaceholderText, QColor(
+                *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
+        else:
+            default_palette.setColor(QPalette.ColorRole.Text, QColor(
+                *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
+
         QGuiApplication.setPalette(default_palette)
 
-    return stylesheet.render(**theme)
+    environ = {
+
+        'linux': platform.system() == 'Linux',
+        'windows': platform.system() == 'Windows',
+        'darwin': platform.system() == 'Darwin',
+
+        'pyqt5': 'PyQt5' in sys.modules,
+        'pyqt6': 'PyQt6' in sys.modules,
+        'pyside2': 'PySide2' in sys.modules,
+        'pyside6': 'PySide6' in sys.modules,
+    }
+
+    return stylesheet.render(**{**theme, **environ})
 
 
 # ----------------------------------------------------------------------
@@ -143,8 +162,9 @@ def get_theme(theme_name, invert_secondary=False):
         logging.warning(f"{theme} not exist!")
         return None
 
-    tree = ElementTree.parse(theme)
-    theme = {child.attrib['name']: child.text for child in tree.getroot()}
+    document = parse(theme)
+    theme = {child.getAttribute(
+        'name'): child.firstChild.nodeValue for child in document.getElementsByTagName('color')}
 
     for k in theme:
         os.environ[str(k)] = theme[k]
@@ -410,11 +430,12 @@ class QtStyleTools:
         if 'PySide2' in sys.modules or 'PySide6' in sys.modules:
             self.dock_theme = QUiLoader().load(os.path.join(
                 os.path.dirname(__file__), 'dock_theme.ui'))
-        elif 'PyQt5' in sys.modules:
+        elif 'PyQt5' in sys.modules or 'PyQt6' in sys.modules:
             self.dock_theme = uic.loadUi(os.path.join(
                 os.path.dirname(__file__), 'dock_theme.ui'))
 
-        parent.addDockWidget(Qt.LeftDockWidgetArea, self.dock_theme)
+        parent.addDockWidget(
+            Qt.DockWidgetArea.LeftDockWidgetArea, self.dock_theme)
         self.dock_theme.setFloating(True)
 
         self.update_buttons()
