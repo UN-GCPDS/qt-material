@@ -606,7 +606,9 @@ QMenu::item {
 
 QCalendarWidget QMenu::item,
 QMenu::item {
-  padding: 0px 24px 0px 32px;
+  
+    padding: 0px 32px 0px 32px;
+  
 }
 
 QComboBox::item:selected,
@@ -1211,20 +1213,22 @@ QToolTip {
 /*  ------------------------------------------------------------------------  */
 /*  QDialog  */
 
-QDialog QToolButton,
-QDialog QToolButton:hover,
-QDialog QToolButton:pressed,
-QDialog QToolButton:checked {
-  border: 0px;
-  height: unset;
-  margin: unset;
-  padding: unset;
-  border-right: unset;
-  border-left: unset;
-  background-color: #1de9b6;
-  color: #ffffff;
-  border-radius: 4px;
-}
+
+  QDialog QToolButton,
+  QDialog QToolButton:hover,
+  QDialog QToolButton:pressed,
+  QDialog QToolButton:checked {
+    border: 0px;
+    height: unset;
+    margin: unset;
+    padding: unset;
+    border-right: unset;
+    border-left: unset;
+    background-color: #1de9b6;
+    color: #ffffff;
+    border-radius: 4px;
+  }
+
 
 QDialog QToolButton:disabled {
   background-color: #232629;
