@@ -27,7 +27,7 @@ setup(
 
     include_package_data=True,
     license='BSD-2-Clause',
-    description="Qt Stylesheet for PySide6, PySide2 and PyQt5.",
+    description="Material inspired stylesheet for PySide2, PySide6, PyQt5 and PyQt6.",
     long_description=README,
     long_description_content_type='text/markdown',
 
@@ -35,6 +35,7 @@ setup(
         'Development Status :: 4 - Beta',
         # 'Development Status :: 5 - Production/Stable',
         'License :: OSI Approved :: BSD License',
+        'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.7',
