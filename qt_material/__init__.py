@@ -113,6 +113,7 @@ def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme')
     theme.setdefault('success', '#17a2b8')
     theme.setdefault('density_scale', '0')
     theme.setdefault('button_shape', 'default')
+    theme.setdefault('font_size', '13px')
 
     theme.update(extra)
 
