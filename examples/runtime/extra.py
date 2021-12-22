@@ -12,8 +12,8 @@ extra = {
 
     # Font
     'font_family': 'monoespace',
-    'font_size': '14px',
-    'line_height': '14px',
+    'font_size': '13px',
+    'line_height': '13px',
 }
 
 
