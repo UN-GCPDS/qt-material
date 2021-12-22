@@ -798,13 +798,15 @@ QScrollBar:vertical {
   width: {{8|density(density_scale)}}px;
 }
 
+QScrollBar::handle {
+  background: {{primaryColor|opacity(0.1)}};
+}
+
 QScrollBar::handle:horizontal {
-  background: {{secondaryLightColor}};
   min-width: {{24|density(density_scale)}}px;
 }
 
 QScrollBar::handle:vertical {
-  background: {{secondaryLightColor}};
   min-height: {{24|density(density_scale)}}px;
 }
 
@@ -1303,7 +1305,13 @@ QSplitter::handle:vertical {
 QSizeGrip {
   image: url(icon:/primary/sizegrip.svg);
   background-color: transparent;
-  width: {{16|density(density_scale)}}px;;
-  height: {{16|density(density_scale)}}px;;
 }
 
+QMenuBar QToolButton:hover,
+QMenuBar QToolButton:pressed,
+QMenuBar QToolButton {
+  border-width: 0;
+  border-left: 10px;
+  border-image: url(icon:/primary/rightarrow2.svg);
+  background-color: transparent;
+}
