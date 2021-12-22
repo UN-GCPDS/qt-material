@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1361</width>
+    <width>1318</width>
     <height>806</height>
    </rect>
   </property>
@@ -822,7 +822,7 @@
        <enum>QTabWidget::South</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="documentMode">
        <bool>true</bool>
@@ -1808,7 +1808,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>599</width>
+             <width>446</width>
              <height>266</height>
             </rect>
            </property>
@@ -1832,7 +1832,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>578</width>
+             <width>425</width>
              <height>328</height>
             </rect>
            </property>
@@ -1878,7 +1878,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>578</width>
+             <width>425</width>
              <height>408</height>
             </rect>
            </property>
@@ -2527,7 +2527,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1361</width>
+     <width>1318</width>
      <height>30</height>
     </rect>
    </property>
@@ -2571,10 +2571,88 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
      <string>Styles</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuLorem_ipsum">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLorem_ipsum_2">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLorem_ipsum_3">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLorem_ipsum_4">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLorem_ipsum_5">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLorem_ipsum_6">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLorem_ipsum_7">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLorem_ipsum_8">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLorem_ipsum_9">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLorem_ipsum_10">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLorem_ipsum_11">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLorem_ipsum_12">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLorem_ipsum_13">
+    <property name="title">
+     <string>Lorem ipsum</string>
+    </property>
+   </widget>
    <addaction name="menuStyles"/>
    <addaction name="menumenu"/>
    <addaction name="menumenu2"/>
    <addaction name="menumenu_disabled"/>
+   <addaction name="menuLorem_ipsum"/>
+   <addaction name="menuLorem_ipsum_2"/>
+   <addaction name="menuLorem_ipsum_3"/>
+   <addaction name="menuLorem_ipsum_4"/>
+   <addaction name="menuLorem_ipsum_5"/>
+   <addaction name="menuLorem_ipsum_6"/>
+   <addaction name="menuLorem_ipsum_7"/>
+   <addaction name="menuLorem_ipsum_8"/>
+   <addaction name="menuLorem_ipsum_9"/>
+   <addaction name="menuLorem_ipsum_10"/>
+   <addaction name="menuLorem_ipsum_11"/>
+   <addaction name="menuLorem_ipsum_12"/>
+   <addaction name="menuLorem_ipsum_13"/>
   </widget>
   <action name="actionSubmenu_2">
    <property name="checkable">
