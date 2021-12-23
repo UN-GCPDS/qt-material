@@ -117,26 +117,21 @@ def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme')
 
     theme.update(extra)
 
-    # if GUI:
-        # default_palette = QGuiApplication.palette()
+    if GUI:
+        default_palette = QGuiApplication.palette()
+        color = QColor(*[int(theme['primaryColor'][i:i + 2], 16)
+                         for i in range(1, 6, 2)] + [92])
 
-        # try:
-            # if hasattr(QPalette, 'PlaceholderText'):
-                # default_palette.setColor(QPalette.PlaceholderText, QColor(
-                    # *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
-            # else:
-                # default_palette.setColor(QPalette.ColorRole.Text, QColor(
-                    # *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
-            # QGuiApplication.setPalette(default_palette)
+        try:
+            if hasattr(QPalette, 'PlaceholderText'):  # pyqt5, pyside2, pyside6
+                default_palette.setColor(QPalette.PlaceholderText, color)
+            else:  # pyqt6
+                default_palette.setColor(QPalette.ColorRole.Text, color)
+            QGuiApplication.setPalette(default_palette)
 
-        # except:
-            # if hasattr(QPalette, 'placeholder_text'):
-                # default_palette.set_color(QPalette.placeholder_text, QColor(
-                    # *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
-            # else:
-                # default_palette.set_color(QPalette.ColorRole.Text, QColor(
-                    # *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
-            # QGuiApplication.set_palette(default_palette)
+        except:  # pyside6  & snake_case, true_property
+            default_palette.set_color(QPalette.ColorRole.Text, color)
+            QGuiApplication.set_palette(default_palette)
 
     environ = {
 
@@ -206,7 +201,7 @@ def add_fonts():
             try:
                 QFontDatabase.addApplicationFont(
                     os.path.join(fonts_path, font_dir, font))
-            except:
+            except:  # snake_case, true_property
                 QFontDatabase.add_application_font(
                     os.path.join(fonts_path, font_dir, font))
 
@@ -218,7 +213,7 @@ def apply_stylesheet(app, theme='', style=None, save_as=None, invert_secondary=F
         try:
             try:
                 app.setStyle(style)
-            except:
+            except:  # snake_case, true_property
                 app.style = style
         except:
             logging.error(f"The style '{style}' does not exist.")
@@ -275,7 +270,7 @@ def set_icons_theme(theme, parent='theme'):
             QDir.addSearchPath('icon', resources.index)
             QDir.addSearchPath('qt_material', os.path.join(
                 os.path.dirname(__file__), 'resources'))
-        except:  # snake_case
+        except:  # snake_case, true_property
             QDir.add_search_path('icon', resources.index)
             QDir.add_search_path('qt_material', os.path.join(
                 os.path.dirname(__file__), 'resources'))
@@ -331,7 +326,7 @@ class QtStyleTools:
             try:
                 action.setText(theme)
                 menu.addAction(action)
-            except:
+            except:  # snake_case, true_property
                 action.text = theme
                 menu.add_action(action)
 
@@ -378,7 +373,7 @@ class QtStyleTools:
             if self.dock_theme.checkBox_ligh_theme.isChecked():
                 theme['secondaryColor'], theme['secondaryLightColor'], theme['secondaryDarkColor'] = theme[
                     'secondaryColor'], theme['secondaryDarkColor'], theme['secondaryLightColor']
-        except:
+        except:  # snake_case, true_property
             if self.dock_theme.checkBox_ligh_theme.checked:
                 theme['secondaryColor'], theme['secondaryLightColor'], theme['secondaryDarkColor'] = theme[
                     'secondaryColor'], theme['secondaryDarkColor'], theme['secondaryLightColor']
@@ -393,7 +388,7 @@ class QtStyleTools:
                     text_color = '#ffffff'
                 else:
                     text_color = '#000000'
-            except:
+            except:  # snake_case, true_property
                 if self.get_color(color).get_hsv()[2] < 128:
                     text_color = '#ffffff'
                 else:
@@ -430,8 +425,9 @@ class QtStyleTools:
             """.format(**self.custom_colors))
         try:
             light = self.dock_theme.checkBox_ligh_theme.isChecked()
-        except:
+        except:  # snake_case, true_property
             light = self.dock_theme.checkBox_ligh_theme.checked
+
         self.apply_stylesheet(parent, 'my_theme.xml', invert_secondary=light,
                               extra=self.extra_values, callable_=self.update_buttons)
 
@@ -443,12 +439,13 @@ class QtStyleTools:
             color_dialog = QColorDialog(parent=parent)
             try:
                 color_dialog.setCurrentColor(initial)
-            except:
+            except:  # snake_case, true_property
                 color_dialog.current_color = initial
             done = color_dialog.exec_()
+
             try:
                 color_ = color_dialog.currentColor()
-            except:
+            except:  # snake_case, true_property
                 color_ = color_dialog.current_color
 
             try:
@@ -458,7 +455,7 @@ class QtStyleTools:
                                            for v in rgb_255])
                     self.custom_colors[button_] = color
                     self.update_theme(parent)
-            except:
+            except:  # snake_case, true_property
                 if done and color_.is_valid():
                     rgb_255 = [color_.red(), color_.green(), color_.blue()]
                     color = '#' + ''.join([hex(v)[2:].ljust(2, '0')
@@ -493,7 +490,7 @@ class QtStyleTools:
             parent.addDockWidget(
                 Qt.DockWidgetArea.LeftDockWidgetArea, self.dock_theme)
             self.dock_theme.setFloating(True)
-        except:
+        except:  # snake_case, true_property
             parent.add_dock_widget(
                 Qt.DockWidgetArea.LeftDockWidgetArea, self.dock_theme)
             self.dock_theme.floating = True
