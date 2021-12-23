@@ -30,20 +30,27 @@ elif '--pyqt6' in sys.argv:
     from PyQt6.QtGui import QIcon
     from PyQt6 import uic, QtWebEngineWidgets
 
-
+# from __feature__ import snake_case, true_property
 from qt_material import apply_stylesheet, QtStyleTools
 
 try:
     QCoreApplication.setAttribute(Qt.AA_ShareOpenGLContexts)
 except:
+    QCoreApplication.set_attribute(Qt.AA_ShareOpenGLContexts)
     pass
     # print("'Qt' object has no attribute 'AA_ShareOpenGLContexts'")
 
 app = QApplication([])
 freeze_support()
-app.processEvents()
-app.setQuitOnLastWindowClosed(False)
-app.lastWindowClosed.connect(app.quit)
+try:
+    app.processEvents()
+    app.setQuitOnLastWindowClosed(False)
+    app.lastWindowClosed.connect(app.quit)
+except:
+    app.process_events()
+    app.quit_on_last_window_closed = False
+    app.lastWindowClosed.connect(app.quit)
+
 
 # Extra stylesheets
 extra = {
@@ -73,24 +80,30 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
 
         if '--pyside2' in sys.argv:
             self.main = QUiLoader().load('main_window.ui', self)
-            self.main.setWindowTitle(f'{self.main.windowTitle()} - PySide2')
+            wt = 'PySide2'
 
         elif'--pyside6' in sys.argv:
             self.main = QUiLoader().load('main_window.ui', self)
-            self.main.setWindowTitle(f'{self.main.windowTitle()} - PySide6')
+            wt = 'PySide6'
 
         elif '--pyqt5' in sys.argv:
             self.main = uic.loadUi('main_window.ui', self)
-            self.main.setWindowTitle(f'{self.main.windowTitle()} - PyQt5')
+            wt = 'PyQt5'
 
         elif '--pyqt6' in sys.argv:
             self.main = uic.loadUi('main_window.ui', self)
-            self.main.setWindowTitle(f'{self.main.windowTitle()} - PyQt6')
+            wt = 'PyQt6'
 
         else:
             logging.error(
                 'must include --pyside2, --pyside6 or --pyqt5 in args!')
             sys.exit()
+
+        try:
+            self.main.setWindowTitle(f'{self.main.windowTitle()} - {wt}')
+        except:
+            self.main.window_title = f'{self.main.window_title} - {wt}'
+
         self.custom_styles()
 
         self.set_extra(extra)
@@ -100,23 +113,41 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
         logo = QIcon("qt_material:/logo/logo.svg")
         logo_frame = QIcon("qt_material:/logo/logo_frame.svg")
 
-        self.main.setWindowIcon(logo)
-        self.main.actionToolbar.setIcon(logo)
-        [self.main.listWidget_2.item(i).setIcon(logo_frame)
-         for i in range(self.main.listWidget_2.count())]
+        try:
+            self.main.setWindowIcon(logo)
+            self.main.actionToolbar.setIcon(logo)
+            [self.main.listWidget_2.item(i).setIcon(logo_frame)
+             for i in range(self.main.listWidget_2.count())]
+        except:
+            self.main.window_icon = logo
+            self.main.actionToolbar.icon = logo
+            [setattr(self.main.listWidget_2.item(i), 'icon', logo_frame)
+             for i in range(self.main.listWidget_2.count)]
 
-        self.main.pushButton_file_dialog.clicked.connect(
-            lambda: QFileDialog.getOpenFileName(self.main))
-        self.main.pushButton_folder_dialog.clicked.connect(
-            lambda: QFileDialog.getExistingDirectory(self.main))
+        if hasattr(QFileDialog, 'getExistingDirectory'):
+            self.main.pushButton_file_dialog.clicked.connect(
+                lambda: QFileDialog.getOpenFileName(self.main))
+            self.main.pushButton_folder_dialog.clicked.connect(
+                lambda: QFileDialog.getExistingDirectory(self.main))
+        else:
+            self.main.pushButton_file_dialog.clicked.connect(
+                lambda: QFileDialog.get_open_file_name(self.main))
+            self.main.pushButton_folder_dialog.clicked.connect(
+                lambda: QFileDialog.get_existing_directory(self.main))
 
     # ----------------------------------------------------------------------
     def custom_styles(self):
         """"""
         for i in range(self.main.toolBar_vertical.layout().count()):
-            tool_button = self.main.toolBar_vertical.layout().itemAt(i).widget()
-            tool_button.setMaximumWidth(150)
-            tool_button.setMinimumWidth(150)
+
+            try:
+                tool_button = self.main.toolBar_vertical.layout().itemAt(i).widget()
+                tool_button.setMaximumWidth(150)
+                tool_button.setMinimumWidth(150)
+            except:
+                tool_button = self.main.toolBar_vertical.layout().item_at(i).widget()
+                tool_button.maximum_width = 150
+                tool_button.minimum_width = 150
 
 
 T0 = 1000
