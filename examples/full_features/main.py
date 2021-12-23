@@ -17,6 +17,7 @@ elif '--pyside6' in sys.argv:
     from PySide6.QtCore import QTimer, Qt, QCoreApplication
     from PySide6.QtGui import QIcon, QPixmap
     from PySide6.QtUiTools import QUiLoader
+    from __feature__ import snake_case, true_property
 
 elif '--pyqt5' in sys.argv:
     from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
@@ -30,15 +31,15 @@ elif '--pyqt6' in sys.argv:
     from PyQt6.QtGui import QIcon
     from PyQt6 import uic, QtWebEngineWidgets
 
-# from __feature__ import snake_case, true_property
 from qt_material import apply_stylesheet, QtStyleTools
 
-try:
-    QCoreApplication.setAttribute(Qt.AA_ShareOpenGLContexts)
-except:
-    QCoreApplication.set_attribute(Qt.AA_ShareOpenGLContexts)
-    pass
-    # print("'Qt' object has no attribute 'AA_ShareOpenGLContexts'")
+if hasattr(Qt, 'AA_ShareOpenGLContexts'):
+    try:
+        QCoreApplication.setAttribute(Qt.AA_ShareOpenGLContexts)
+    except:
+        QCoreApplication.set_attribute(Qt.AA_ShareOpenGLContexts)
+else:
+    print("'Qt' object has no attribute 'AA_ShareOpenGLContexts'")
 
 app = QApplication([])
 freeze_support()
