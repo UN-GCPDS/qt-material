@@ -117,17 +117,26 @@ def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme')
 
     theme.update(extra)
 
-    if GUI:
-        default_palette = QGuiApplication.palette()
+    # if GUI:
+        # default_palette = QGuiApplication.palette()
 
-        if hasattr(QPalette, 'PlaceholderText'):
-            default_palette.setColor(QPalette.PlaceholderText, QColor(
-                *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
-        else:
-            default_palette.setColor(QPalette.ColorRole.Text, QColor(
-                *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
+        # try:
+            # if hasattr(QPalette, 'PlaceholderText'):
+                # default_palette.setColor(QPalette.PlaceholderText, QColor(
+                    # *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
+            # else:
+                # default_palette.setColor(QPalette.ColorRole.Text, QColor(
+                    # *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
+            # QGuiApplication.setPalette(default_palette)
 
-        QGuiApplication.setPalette(default_palette)
+        # except:
+            # if hasattr(QPalette, 'placeholder_text'):
+                # default_palette.set_color(QPalette.placeholder_text, QColor(
+                    # *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
+            # else:
+                # default_palette.set_color(QPalette.ColorRole.Text, QColor(
+                    # *[int(theme['primaryColor'][i:i + 2], 16) for i in range(1, 6, 2)] + [92]))
+            # QGuiApplication.set_palette(default_palette)
 
     environ = {
 
@@ -194,8 +203,12 @@ def add_fonts():
 
     for font_dir in ['roboto']:
         for font in filter(lambda s: s.endswith('.ttf'), os.listdir(os.path.join(fonts_path, font_dir))):
-            QFontDatabase.addApplicationFont(
-                os.path.join(fonts_path, font_dir, font))
+            try:
+                QFontDatabase.addApplicationFont(
+                    os.path.join(fonts_path, font_dir, font))
+            except:
+                QFontDatabase.add_application_font(
+                    os.path.join(fonts_path, font_dir, font))
 
 
 # ----------------------------------------------------------------------
@@ -203,10 +216,14 @@ def apply_stylesheet(app, theme='', style=None, save_as=None, invert_secondary=F
     """"""
     if style:
         try:
-            app.setStyle(style)
+            try:
+                app.setStyle(style)
+            except:
+                app.style = style
         except:
             logging.error(f"The style '{style}' does not exist.")
             pass
+
     stylesheet = build_stylesheet(
         theme, invert_secondary, extra, parent)
     if stylesheet is None:
@@ -236,8 +253,8 @@ def density(value, density_scale, border=0, scale=1):
         return value[1:] * scale
 
     density_interval = 4
-    density = (value + (density_interval * int(density_scale)) -
-               (border * 2)) * scale
+    density = (value + (density_interval * int(density_scale))
+               - (border * 2)) * scale
 
     if density < 4:
         density = 4
@@ -254,9 +271,14 @@ def set_icons_theme(theme, parent='theme'):
     resources.generate()
 
     if GUI:
-        QDir.addSearchPath('icon', resources.index)
-        QDir.addSearchPath('qt_material', os.path.join(
-            os.path.dirname(__file__), 'resources'))
+        try:
+            QDir.addSearchPath('icon', resources.index)
+            QDir.addSearchPath('qt_material', os.path.join(
+                os.path.dirname(__file__), 'resources'))
+        except:  # snake_case
+            QDir.add_search_path('icon', resources.index)
+            QDir.add_search_path('qt_material', os.path.join(
+                os.path.dirname(__file__), 'resources'))
 
 
 # ----------------------------------------------------------------------
@@ -304,10 +326,14 @@ class QtStyleTools:
         """"""
         for theme in ['default'] + list_themes():
             action = QAction(parent)
-            action.setText(theme)
             action.triggered.connect(self._wrapper(
                 parent, theme, self.extra_values, self.update_buttons))
-            menu.addAction(action)
+            try:
+                action.setText(theme)
+                menu.addAction(action)
+            except:
+                action.text = theme
+                menu.add_action(action)
 
     # ----------------------------------------------------------------------
     def _wrapper(self, parent, theme, extra, callable_):
@@ -348,19 +374,30 @@ class QtStyleTools:
         elif 'dark' in os.environ['QTMATERIAL_THEME']:
             self.dock_theme.checkBox_ligh_theme.setChecked(False)
 
-        if self.dock_theme.checkBox_ligh_theme.isChecked():
-            theme['secondaryColor'], theme['secondaryLightColor'], theme['secondaryDarkColor'] = theme[
-                'secondaryColor'], theme['secondaryDarkColor'], theme['secondaryLightColor']
+        try:
+            if self.dock_theme.checkBox_ligh_theme.isChecked():
+                theme['secondaryColor'], theme['secondaryLightColor'], theme['secondaryDarkColor'] = theme[
+                    'secondaryColor'], theme['secondaryDarkColor'], theme['secondaryLightColor']
+        except:
+            if self.dock_theme.checkBox_ligh_theme.checked:
+                theme['secondaryColor'], theme['secondaryLightColor'], theme['secondaryDarkColor'] = theme[
+                    'secondaryColor'], theme['secondaryDarkColor'], theme['secondaryLightColor']
 
         for color_ in self.colors:
             button = getattr(self.dock_theme, f'pushButton_{color_}')
 
             color = theme[color_]
 
-            if self.get_color(color).getHsv()[2] < 128:
-                text_color = '#ffffff'
-            else:
-                text_color = '#000000'
+            try:
+                if self.get_color(color).getHsv()[2] < 128:
+                    text_color = '#ffffff'
+                else:
+                    text_color = '#000000'
+            except:
+                if self.get_color(color).get_hsv()[2] < 128:
+                    text_color = '#ffffff'
+                else:
+                    text_color = '#000000'
 
             button.setStyleSheet(f"""
             *{{
@@ -391,7 +428,10 @@ class QtStyleTools:
                 <color name="secondaryTextColor">{secondaryTextColor}</color>
               </resources>
             """.format(**self.custom_colors))
-        light = self.dock_theme.checkBox_ligh_theme.isChecked()
+        try:
+            light = self.dock_theme.checkBox_ligh_theme.isChecked()
+        except:
+            light = self.dock_theme.checkBox_ligh_theme.checked
         self.apply_stylesheet(parent, 'my_theme.xml', invert_secondary=light,
                               extra=self.extra_values, callable_=self.update_buttons)
 
@@ -401,16 +441,30 @@ class QtStyleTools:
         def iner():
             initial = self.get_color(self.custom_colors[button_])
             color_dialog = QColorDialog(parent=parent)
-            color_dialog.setCurrentColor(initial)
+            try:
+                color_dialog.setCurrentColor(initial)
+            except:
+                color_dialog.current_color = initial
             done = color_dialog.exec_()
-            color_ = color_dialog.currentColor()
+            try:
+                color_ = color_dialog.currentColor()
+            except:
+                color_ = color_dialog.current_color
 
-            if done and color_.isValid():
-                rgb_255 = [color_.red(), color_.green(), color_.blue()]
-                color = '#' + ''.join([hex(v)[2:].ljust(2, '0')
-                                       for v in rgb_255])
-                self.custom_colors[button_] = color
-                self.update_theme(parent)
+            try:
+                if done and color_.isValid():
+                    rgb_255 = [color_.red(), color_.green(), color_.blue()]
+                    color = '#' + ''.join([hex(v)[2:].ljust(2, '0')
+                                           for v in rgb_255])
+                    self.custom_colors[button_] = color
+                    self.update_theme(parent)
+            except:
+                if done and color_.is_valid():
+                    rgb_255 = [color_.red(), color_.green(), color_.blue()]
+                    color = '#' + ''.join([hex(v)[2:].ljust(2, '0')
+                                           for v in rgb_255])
+                    self.custom_colors[button_] = color
+                    self.update_theme(parent)
 
         return iner
 
@@ -435,9 +489,14 @@ class QtStyleTools:
             self.dock_theme = uic.loadUi(os.path.join(
                 os.path.dirname(__file__), 'dock_theme.ui'))
 
-        parent.addDockWidget(
-            Qt.DockWidgetArea.LeftDockWidgetArea, self.dock_theme)
-        self.dock_theme.setFloating(True)
+        try:
+            parent.addDockWidget(
+                Qt.DockWidgetArea.LeftDockWidgetArea, self.dock_theme)
+            self.dock_theme.setFloating(True)
+        except:
+            parent.add_dock_widget(
+                Qt.DockWidgetArea.LeftDockWidgetArea, self.dock_theme)
+            self.dock_theme.floating = True
 
         self.update_buttons()
         self.dock_theme.checkBox_ligh_theme.clicked.connect(
