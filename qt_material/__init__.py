@@ -11,24 +11,24 @@ GUI = True
 
 if 'PySide2' in sys.modules:
     from PySide2.QtGui import QFontDatabase, QColor, QGuiApplication, QPalette
-    from PySide2.QtWidgets import QAction, QColorDialog
+    from PySide2.QtWidgets import QAction, QColorDialog, QActionGroup
     from PySide2.QtUiTools import QUiLoader
     from PySide2.QtCore import Qt, QDir
 
 elif 'PySide6' in sys.modules:
-    from PySide6.QtGui import QFontDatabase, QAction, QColor, QGuiApplication, QPalette
+    from PySide6.QtGui import QFontDatabase, QAction, QColor, QGuiApplication, QPalette, QActionGroup
     from PySide6.QtWidgets import QColorDialog
     from PySide6.QtUiTools import QUiLoader
     from PySide6.QtCore import Qt, QDir
 
 elif 'PyQt5' in sys.modules:
     from PyQt5.QtGui import QFontDatabase, QColor, QGuiApplication, QPalette
-    from PyQt5.QtWidgets import QAction, QColorDialog
+    from PyQt5.QtWidgets import QAction, QColorDialog, QActionGroup
     from PyQt5.QtCore import Qt, QDir
     from PyQt5 import uic
 
 elif 'PyQt6' in sys.modules:
-    from PyQt6.QtGui import QFontDatabase, QColor, QGuiApplication, QPalette, QAction
+    from PyQt6.QtGui import QFontDatabase, QColor, QGuiApplication, QPalette, QAction, QActionGroup
     from PyQt6.QtWidgets import QColorDialog
     from PyQt6.QtCore import Qt, QDir
     from PyQt6 import uic
@@ -113,7 +113,8 @@ def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme')
     theme.setdefault('success', '#17a2b8')
     theme.setdefault('density_scale', '0')
     theme.setdefault('button_shape', 'default')
-    theme.setdefault('font_size', '13px')
+    # theme.setdefault('font_size', '13px')
+    # theme.setdefault('line_height', '13px')
 
     theme.update(extra)
 
@@ -145,7 +146,8 @@ def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme')
         'pyside6': 'PySide6' in sys.modules,
     }
 
-    return stylesheet.render(**{**theme, **environ})
+    environ.update(theme)
+    return stylesheet.render(environ)
 
 
 # ----------------------------------------------------------------------
@@ -241,19 +243,20 @@ def opacity(theme, value=0.5):
 
 
 # ----------------------------------------------------------------------
-def density(value, density_scale, border=0, scale=1):
+def density(value, density_scale, border=0, scale=1, density_interval=4):
     """"""
     # https://material.io/develop/web/supporting/density
     if isinstance(value, str) and value.startswith('@'):
         return value[1:] * scale
 
-    density_interval = 4
-    density = (value + (density_interval * int(density_scale))
-               - (border * 2)) * scale
+    if isinstance(value, str):
+        value = float(value.replace('px', ''))
 
-    if density < 4:
-        density = 4
+    density = (value + (density_interval * int(density_scale)) -
+               (border * 2)) * scale
 
+    # if density < 4:
+        # density = 4
     return density
 
 
@@ -319,31 +322,79 @@ class QtStyleTools:
     # ----------------------------------------------------------------------
     def add_menu_theme(self, parent, menu):
         """"""
-        for theme in ['default'] + list_themes():
+        self.menu_theme_ = menu
+        action_group = QActionGroup(menu)
+        try:
+            action_group.setExclusive(True)
+        except:
+            action_group.exclusive = True
+
+        for i, theme in enumerate(['default'] + list_themes()):
             action = QAction(parent)
-            action.triggered.connect(self._wrapper(
-                parent, theme, self.extra_values, self.update_buttons))
+            # action.triggered.connect(self._wrapper(parent, theme, self.extra_values, self.update_buttons))
+            action.triggered.connect(lambda: self.update_theme_event(parent))
             try:
                 action.setText(theme)
+                action.setCheckable(True)
+                action.setChecked(not bool(i))
+                action.setActionGroup(action_group)
                 menu.addAction(action)
+                action_group.addAction(action)
             except:  # snake_case, true_property
                 action.text = theme
+                action.checkable = True
+                action.checked = not bool(i)
+                action.action_group = action_group
                 menu.add_action(action)
+                action_group.add_action(action)
 
     # ----------------------------------------------------------------------
-    def _wrapper(self, parent, theme, extra, callable_):
+    def add_menu_density(self, parent, menu):
         """"""
-        def iner():
-            self._apply_theme(parent, theme, extra, callable_)
-        return iner
+        self.menu_density_ = menu
+        action_group = QActionGroup(menu)
+
+        try:
+            action_group.setExclusive(True)
+        except:
+            action_group.exclusive = True
+
+        for density in map(str, range(-3, 4)):
+            action = QAction(parent)
+            # action.triggered.connect(self._wrapper(parent, density, self.extra_values, self.update_buttons))
+            action.triggered.connect(lambda: self.update_theme_event(parent))
+            try:
+                action.setText(density)
+                action.setCheckable(True)
+                action.setChecked(density == '0')
+                action.setActionGroup(action_group)
+                menu.addAction(action)
+                action_group.addAction(action)
+            except:  # snake_case, true_property
+                action.text = density
+                action.checkable = True
+                action.checked = density == '0'
+                action.action_group = action_group
+                menu.add_action(action)
+                action_group.add_action(action)
+
+        # menu.add_action(action_group)
+
+    # # ----------------------------------------------------------------------
+    # def _wrapper(self, parent, theme, extra, callable_):
+        # """"""
+        # def iner():
+            # self._apply_theme(parent, theme, extra, callable_)
+        # return iner
+
+    # # ----------------------------------------------------------------------
+    # def _apply_theme(self, parent, theme, extra={}, callable_=None):
+        # """"""
+        # self.apply_stylesheet(parent, theme=theme, invert_secondary=theme.startswith(
+            # 'light'), extra=extra, callable_=callable_)
 
     # ----------------------------------------------------------------------
-    def _apply_theme(self, parent, theme, extra={}, callable_=None):
-        """"""
-        self.apply_stylesheet(parent, theme=theme, invert_secondary=theme.startswith(
-            'light'), extra=extra, callable_=callable_)
 
-    # ----------------------------------------------------------------------
     def apply_stylesheet(self, parent, theme, invert_secondary=False, extra={}, callable_=None):
         """"""
         if theme == 'default':
@@ -354,6 +405,25 @@ class QtStyleTools:
 
         if callable_:
             callable_()
+
+    # ----------------------------------------------------------------------
+    def update_theme_event(self, parent):
+        """"""
+        try:
+            density = [action.text() for action in self.menu_density_.actions(
+            ) if action.isChecked()][0]
+            theme = [action.text() for action in self.menu_theme_.actions()
+                     if action.isChecked()][0]
+        except:
+            density = [
+                action.text for action in self.menu_density_.actions() if action.checked][0]
+            theme = [action.text for action in self.menu_theme_.actions()
+                     if action.checked][0]
+
+        self.extra_values['density_scale'] = density
+
+        self.apply_stylesheet(parent, theme=theme, invert_secondary=theme.startswith(
+            'light'), extra=self.extra_values, callable_=self.update_buttons)
 
     # ----------------------------------------------------------------------
     def update_buttons(self):
