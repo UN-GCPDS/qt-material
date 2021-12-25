@@ -835,7 +835,7 @@
         <item row="0" column="0">
          <widget class="QTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <property name="tabsClosable">
            <bool>true</bool>
@@ -1808,8 +1808,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>96</width>
-             <height>26</height>
+             <width>446</width>
+             <height>266</height>
             </rect>
            </property>
            <attribute name="label">
@@ -1832,7 +1832,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>404</width>
+             <width>425</width>
              <height>328</height>
             </rect>
            </property>
@@ -2571,9 +2571,29 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
      <string>Styles</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuDensity">
+    <property name="title">
+     <string>Density</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuMenu_with_icons">
+    <property name="title">
+     <string>Menu with icons</string>
+    </property>
+    <addaction name="actionsubmenu"/>
+    <addaction name="actionsubmenu_2"/>
+    <addaction name="separator"/>
+    <addaction name="actionsubmenu_4"/>
+    <addaction name="actionsubmenu_3"/>
+    <addaction name="actionSave_all"/>
+    <addaction name="separator"/>
+    <addaction name="actionClose"/>
+   </widget>
    <addaction name="menuStyles"/>
+   <addaction name="menuDensity"/>
    <addaction name="menumenu"/>
    <addaction name="menumenu2"/>
+   <addaction name="menuMenu_with_icons"/>
    <addaction name="menumenu_disabled"/>
   </widget>
   <action name="actionSubmenu_2">
@@ -2674,6 +2694,75 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   <action name="actionaction3">
    <property name="text">
     <string>action3</string>
+   </property>
+  </action>
+  <action name="action111">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>111</string>
+   </property>
+  </action>
+  <action name="action222">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>222</string>
+   </property>
+  </action>
+  <action name="action333">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>333</string>
+   </property>
+  </action>
+  <action name="actionsubmenu">
+   <property name="icon">
+    <iconset theme="document-new"/>
+   </property>
+   <property name="text">
+    <string>New...</string>
+   </property>
+  </action>
+  <action name="actionsubmenu_2">
+   <property name="icon">
+    <iconset theme="folder"/>
+   </property>
+   <property name="text">
+    <string>Open...</string>
+   </property>
+  </action>
+  <action name="actionsubmenu_3">
+   <property name="icon">
+    <iconset theme="document-save-as"/>
+   </property>
+   <property name="text">
+    <string>Save as...</string>
+   </property>
+  </action>
+  <action name="actionsubmenu_4">
+   <property name="icon">
+    <iconset theme="document-save"/>
+   </property>
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="actionSave_all">
+   <property name="text">
+    <string>Save all</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="icon">
+    <iconset theme="window-close"/>
+   </property>
+   <property name="text">
+    <string>Close</string>
    </property>
   </action>
  </widget>

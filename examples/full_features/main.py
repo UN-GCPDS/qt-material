@@ -31,7 +31,7 @@ elif '--pyqt6' in sys.argv:
     from PyQt6.QtGui import QIcon
     from PyQt6 import uic, QtWebEngineWidgets
 
-from qt_material import apply_stylesheet, QtStyleTools
+from qt_material import apply_stylesheet, QtStyleTools, density
 
 if hasattr(Qt, 'AA_ShareOpenGLContexts'):
     try:
@@ -109,6 +109,7 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
 
         self.set_extra(extra)
         self.add_menu_theme(self.main, self.main.menuStyles)
+        self.add_menu_density(self.main, self.main.menuDensity)
         self.show_dock_theme(self.main)
 
         logo = QIcon("qt_material:/logo/logo.svg")
@@ -149,6 +150,19 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
                 tool_button = self.main.toolBar_vertical.layout().item_at(i).widget()
                 tool_button.maximum_width = 150
                 tool_button.minimum_width = 150
+        try:
+            for r in range(self.main.tableWidget.rowCount()):
+                self.main.tableWidget.setRowHeight(r, 36)
+
+            for r in range(self.main.tableWidget_2.rowCount()):
+                self.main.tableWidget_2.setRowHeight(r, 36)
+
+        except:
+            for r in range(self.main.tableWidget.row_count):
+                self.main.tableWidget.set_row_height(r, 36)
+
+            for r in range(self.main.tableWidget_2.row_count):
+                self.main.tableWidget_2.set_row_height(r, 36)
 
 
 T0 = 1000
