@@ -47,8 +47,10 @@ def export_theme(theme='', qss=None, rcc=None, invert_secondary=False, extra={},
     if not os.path.isabs(output) and not output.startswith('.'):
             output = f'.{output}'
 
-    stylesheet = build_stylesheet(
-        theme, invert_secondary, extra, output)
+    stylesheet = build_stylesheet(theme, invert_secondary, extra, output)
+
+    if output.startswith('.'):
+        output = output[1:]
 
     with open(qss, 'w') as file:
         file.writelines(stylesheet.replace('icon:/', prefix))
@@ -58,9 +60,6 @@ def export_theme(theme='', qss=None, rcc=None, invert_secondary=False, extra={},
         with open(rcc, 'w') as file:
             file.write('<RCC>\n')
             file.write(f'  <qresource prefix="{prefix[:-2]}">\n')
-
-            if output.startswith('.'):
-                output = output[1:]
 
             for subfolder in ['disabled', 'primary']:
                 files = os.listdir(os.path.join(
@@ -249,11 +248,14 @@ def density(value, density_scale, border=0, scale=1, density_interval=4):
     if isinstance(value, str) and value.startswith('@'):
         return value[1:] * scale
 
+    if value == 'unset':
+        return 'unset'
+
     if isinstance(value, str):
         value = float(value.replace('px', ''))
 
-    density = (value + (density_interval * int(density_scale)) -
-               (border * 2)) * scale
+    density = (value + (density_interval * int(density_scale))
+               - (border * 2)) * scale
 
     # if density < 4:
         # density = 4
