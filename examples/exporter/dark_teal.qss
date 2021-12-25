@@ -5,9 +5,17 @@
 
 *{
   color: #ffffff;
+
   font-family: monoespace;
-  line-height: 14px;
-  font-size: 14px;
+
+  
+    font-size: 13.0px;
+  
+
+  
+    line-height: 13.0px;
+  
+
   selection-background-color: #6effe8;
   selection-color: #000000;
 }
@@ -21,14 +29,44 @@
 
 .danger{
   color: #dc3545;
+  background-color: transparent;
 }
 
 .warning{
   color: #ffc107;
+  background-color: transparent;
 }
 
 .success{
   color: #17a2b8;
+  background-color: transparent;
+}
+
+.danger:disabled{
+  color: rgba(220, 53, 69, 0.4);
+  border-color: rgba(220, 53, 69, 0.4);
+}
+
+.warning:disabled{
+  color: rgba(255, 193, 7, 0.4);
+  border-color: rgba(255, 193, 7, 0.4);
+}
+
+.success:disabled{
+  color: rgba(23, 162, 184, 0.4);
+  border-color: rgba(23, 162, 184, 0.4);
+}
+
+.danger:flat:disabled{
+  background-color: rgba(220, 53, 69, 0.1);
+}
+
+.warning:flat:disabled{
+  background-color: rgba(255, 193, 7, 0.1);
+}
+
+.success:flat:disabled{
+  background-color: rgba(23, 162, 184, 0.1);
 }
 
 /*  ------------------------------------------------------------------------  */
@@ -38,9 +76,17 @@ QWidget {
   background-color: #31363b;
 }
 
+QGroupBox,
 QFrame {
   background-color: #31363b;
-  border: 1px solid #232629;
+  border: 2px solid #4f5b62;
+  border-radius: 4px;
+}
+
+QGroupBox.fill_background,
+QFrame.fill_background {
+  background-color: #232629;
+  border: 2px solid #232629;
   border-radius: 4px;
 }
 
@@ -104,7 +150,7 @@ QPlainTextEdit {
   border-radius: 4px;
   padding: 8px 16px;
   background-color: #31363b;
-  border: 1px solid #232629;
+  border: 2px solid #4f5b62;
 }
 
 QTextEdit {
@@ -257,11 +303,16 @@ QPushButton:flat:checked {
   background-color: rgba(29, 233, 182, 0.1);
 }
 
-QPushButton:disabled,
-QPushButton:flat:disabled {
+QPushButton:disabled {
   color: rgba(79, 91, 98, 0.75);
   background-color: transparent;
-  border-color:  #232629;
+  border-color:  #4f5b62;
+}
+
+QPushButton:flat:disabled {
+  color: rgba(79, 91, 98, 0.75);
+  background-color: rgba(79, 91, 98, 0.25);
+  border: none;
 }
 
 QPushButton:disabled {
@@ -373,23 +424,21 @@ QTabBar::close-button:hover {
 /*  QGroupBox  */
 
 QGroupBox {
-  background-color: #232629;
-  border-radius: 4px;
   padding: 16px;
-  padding-top: 32px;
+  padding-top: 36px;
   line-height: 13px;
   text-transform: uppercase;
+  font-size: 13px;
 }
 
 QGroupBox::title {
   color: rgba(255, 255, 255, 0.4);
   subcontrol-origin: margin;
   subcontrol-position: top left;
-  padding: 0 16px;
-  margin-top: 12px;
+  padding: 16px;
   background-color: #31363b;
   background-color: transparent;
-  height: 24px;
+  height: 36px;
 }
 
 /*  ------------------------------------------------------------------------  */
@@ -607,7 +656,7 @@ QMenu::item {
 QCalendarWidget QMenu::item,
 QMenu::item {
   
-    padding: 0px 32px 0px 32px;
+    padding: 0px 32px 0px 32px;  /* pyside2 */
   
 }
 
@@ -713,6 +762,7 @@ QToolBox::tab {
   color: #ffffff;
   text-transform: uppercase;
   border-radius: 4px;
+  padding-left: 15px;
 }
 
 QToolBox::tab:selected,
@@ -749,13 +799,15 @@ QScrollBar:vertical {
   width: 8px;
 }
 
+QScrollBar::handle {
+  background: rgba(29, 233, 182, 0.1);
+}
+
 QScrollBar::handle:horizontal {
-  background: #4f5b62;
   min-width: 24px;
 }
 
 QScrollBar::handle:vertical {
-  background: #4f5b62;
   min-height: 24px;
 }
 
@@ -974,20 +1026,17 @@ QListView {
   border-radius: 4px;
   padding: 4px;
   margin: 0px;
+  border: 0px;
 }
 
 QTableView::item,
 QTreeView::item,
 QListView::item {
   padding: 4px;
-  height: 32px;
+  min-height: 32px;
   color: #ffffff;
   selection-color: #ffffff; /* For Windows */
   border-color: transparent;  /* Fix #34 */
-}
-
-QTableView:section {
-  height: 100px;
 }
 
 /*  ------------------------------------------------------------------------  */
@@ -1158,7 +1207,13 @@ QHeaderView::section {
   border-color: #31363b;
 }
 
+QHeaderView::section:vertical {
 
+}
+
+QHeaderView::section:horizontal {
+
+}
 
 /*  ------------------------------------------------------------------------  */
 /*  QLCDNumber  */
@@ -1214,6 +1269,7 @@ QToolTip {
 /*  QDialog  */
 
 
+  /* linux */
   QDialog QToolButton,
   QDialog QToolButton:hover,
   QDialog QToolButton:pressed,
@@ -1252,6 +1308,13 @@ QSplitter::handle:vertical {
 QSizeGrip {
   image: url(icon:/primary/sizegrip.svg);
   background-color: transparent;
-  width: 16px;;
-  height: 16px;;
+}
+
+QMenuBar QToolButton:hover,
+QMenuBar QToolButton:pressed,
+QMenuBar QToolButton {
+  border-width: 0;
+  border-left: 10px;
+  border-image: url(icon:/primary/rightarrow2.svg);
+  background-color: transparent;
 }
