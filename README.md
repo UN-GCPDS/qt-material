@@ -223,7 +223,7 @@ A window with almost all widgets (see the previous screenshots) are available to
 git clone https://github.com/UN-GCPDS/qt-material.git
 cd qt-material
 python setup.py install
-cd test
+cd examples/full_features
 python main.py --pyside6
 ```
 

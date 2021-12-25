@@ -265,7 +265,7 @@ available to test all themes and **create new ones**.
     git clone https://github.com/UN-GCPDS/qt-material.git
     cd qt-material
     python setup.py install
-    cd test
+    cd examples/full_features
     python main.py --pyside6
 
 .. figure:: _images/theme.gif
