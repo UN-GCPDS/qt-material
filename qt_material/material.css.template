@@ -5,9 +5,21 @@
 
 *{
   color: {{secondaryTextColor}};
+
   font-family: {{font_family}};
-  line-height: {{line_height}};
-  font-size: {{font_size}};
+
+  {% if font_size %}
+    font-size: {{font_size|density(density_scale, density_interval=1)}}px;
+  {% else %}
+    font-size: {{13|density(density_scale, density_interval=1)}}px;
+  {% endif %}
+
+  {% if line_height %}
+    line-height: {{line_height|density(density_scale, density_interval=8)}}px;
+  {% else %}
+    line-height: {{13|density(density_scale, density_interval=8)}}px;
+  {% endif %}
+
   selection-background-color: {{primaryLightColor}};
   selection-color: {{primaryTextColor}};
 }
@@ -429,8 +441,7 @@ QGroupBox::title {
   color: {{secondaryTextColor|opacity(0.4)}};
   subcontrol-origin: margin;
   subcontrol-position: top left;
-  padding: 0 {{16|density(density_scale)}}px;
-  margin-top: {{12|density(density_scale)}}px;
+  padding: {{16|density(density_scale)}}px;
   background-color: {{secondaryDarkColor}};
   background-color: transparent;
   height: {{36|density(density_scale)}}px;
@@ -651,11 +662,11 @@ QMenu::item {
 QCalendarWidget QMenu::item,
 QMenu::item {
   {% if pyside6 or pyqt6 %}
-    padding: 0px 24px 0px 8px;
+    padding: 0px 24px 0px 8px;  /* pyside6 or pyqt6 */
   {% elif pyqt5 %}
-    padding: 0px {{24|density(density_scale)}}px 0px 8px;
-  {% else %}
-    padding: 0px {{32|density(density_scale)}}px 0px {{32|density(density_scale)}}px;
+    padding: 0px {{24|density(density_scale)}}px 0px 8px;  /* pyqt5 */
+  {% elif pyside2 %}
+    padding: 0px {{32|density(density_scale)}}px 0px {{32|density(density_scale)}}px;  /* pyside2 */
   {% endif %}
 }
 
@@ -1038,11 +1049,6 @@ QListView::item {
   border-color: transparent;  /* Fix #34 */
 }
 
-QTableView:section {
-  height: 100px;
-}
-
-
 /*  ------------------------------------------------------------------------  */
 /*  Items Selection */
 
@@ -1211,7 +1217,13 @@ QHeaderView::section {
   border-color: {{secondaryDarkColor}};
 }
 
+QHeaderView::section:vertical {
 
+}
+
+QHeaderView::section:horizontal {
+
+}
 
 /*  ------------------------------------------------------------------------  */
 /*  QLCDNumber  */
@@ -1267,6 +1279,7 @@ QToolTip {
 /*  QDialog  */
 
 {% if linux %}
+  /* linux */
   QDialog QToolButton,
   QDialog QToolButton:hover,
   QDialog QToolButton:pressed,
