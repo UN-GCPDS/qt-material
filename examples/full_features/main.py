@@ -175,11 +175,15 @@ if __name__ == "__main__":
         pixmap.save(os.path.join('screenshots', f'{theme}.png'))
         print(f'Saving {theme}')
 
-    try:
+    if len(sys.argv) > 2:
         theme = sys.argv[2]
-        QTimer.singleShot(T0, take_screenshot)
-        QTimer.singleShot(T0 * 2, app.closeAllWindows)
-    except:
+        try:
+            QTimer.singleShot(T0, take_screenshot)
+            QTimer.singleShot(T0 * 2, app.closeAllWindows)
+        except:
+            QTimer.single_shot(T0, take_screenshot)
+            QTimer.single_shot(T0 * 2, app.closeAllWindows)
+    else:
         theme = 'default'
 
     # Set theme on in itialization
@@ -189,7 +193,11 @@ if __name__ == "__main__":
                      extra=extra)
 
     frame = RuntimeStylesheets()
-    frame.main.show()
+
+    try:
+        frame.main.showMaximized()
+    except:
+        frame.main.show_maximized()
 
     if hasattr(app, 'exec'):
         app.exec()

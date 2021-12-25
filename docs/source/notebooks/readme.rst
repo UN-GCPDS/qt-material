@@ -196,7 +196,7 @@ There is an ``extra`` argument for accent colors and custom fonts.
         'success': '#17a2b8',
     
         # Font
-        'font-family': 'Roboto',
+        'font_family': 'Roboto',
     }
     
     apply_stylesheet(app, 'light_cyan.xml', invert_secondary=True, extra=extra)

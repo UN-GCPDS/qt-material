@@ -219,11 +219,11 @@ self.main.pushButton.setProperty('class', 'big_button')
 A window with almost all widgets (see the previous screenshots) are available to test all themes and **create new ones**.
 
 
-```
+```python
 git clone https://github.com/UN-GCPDS/qt-material.git
 cd qt-material
 python setup.py install
-cd examples/full_features
+cd test
 python main.py --pyside6
 ```
 

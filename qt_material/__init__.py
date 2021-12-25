@@ -229,7 +229,10 @@ def apply_stylesheet(app, theme='', style=None, save_as=None, invert_secondary=F
         with open(save_as, 'w') as file:
             file.writelines(stylesheet)
 
-    return app.setStyleSheet(stylesheet)
+    try:
+        app.setStyleSheet(stylesheet)
+    except:
+        app.style_sheet = stylesheet
 
 
 # ----------------------------------------------------------------------
@@ -254,11 +257,11 @@ def density(value, density_scale, border=0, scale=1, density_interval=4):
     if isinstance(value, str):
         value = float(value.replace('px', ''))
 
-    density = (value + (density_interval * int(density_scale))
-               - (border * 2)) * scale
+    density = (value + (density_interval * int(density_scale)) -
+               (border * 2)) * scale
 
-    # if density < 4:
-        # density = 4
+    if density < 0:
+        density = 0
     return density
 
 
