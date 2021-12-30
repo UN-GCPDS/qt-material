@@ -38,7 +38,8 @@ else:
 
 import jinja2
 
-template = 'material.css.template'
+TEMPLATE_FILE = os.path.join(os.path.dirname(
+    os.path.abspath(__file__)), 'material.css.template')
 
 
 # ----------------------------------------------------------------------
@@ -80,7 +81,7 @@ def export_theme(theme='', qss=None, rcc=None, invert_secondary=False, extra={},
 
 
 # ----------------------------------------------------------------------
-def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme'):
+def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme', template=TEMPLATE_FILE):
     """"""
     try:
         add_fonts()
@@ -93,27 +94,27 @@ def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme')
 
     set_icons_theme(theme, parent=parent)
 
-    loader = jinja2.FileSystemLoader(os.path.join(
-        os.path.dirname(os.path.abspath(__file__))))
-    env = jinja2.Environment(autoescape=False, loader=loader)
+    # Render custom template
+    if os.path.exists(template):
+        parent, template = os.path.split(template)
+        loader = jinja2.FileSystemLoader(parent)
+        env = jinja2.Environment(autoescape=False, loader=loader)
+        env.filters['opacity'] = opacity
+        env.filters['density'] = density
+        stylesheet = env.get_template(template)
+    else:
+        env = jinja2.Environment(autoescape=False, loader=jinja2.BaseLoader)
+        env.filters['opacity'] = opacity
+        env.filters['density'] = density
+        stylesheet.from_string(template)
 
-    theme['icon'] = None
-
-    env.filters['opacity'] = opacity
-    env.filters['density'] = density
-    # env.filters['as_base64'] = as_base64
-    # env.filters['load'] = load
-
-    stylesheet = env.get_template(template)
-
+    theme.setdefault('icon', None)
     theme.setdefault('font_family', 'Roboto')
     theme.setdefault('danger', '#dc3545')
     theme.setdefault('warning', '#ffc107')
     theme.setdefault('success', '#17a2b8')
     theme.setdefault('density_scale', '0')
     theme.setdefault('button_shape', 'default')
-    # theme.setdefault('font_size', '13px')
-    # theme.setdefault('line_height', '13px')
 
     theme.update(extra)
 
