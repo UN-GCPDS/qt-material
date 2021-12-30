@@ -991,6 +991,7 @@ QToolBar::separator:vertical {
   height: 1px;
 }
 
+
 /*  ------------------------------------------------------------------------  */
 /*  QToolButton  */
 
@@ -1000,26 +1001,26 @@ QToolButton {
   height: {{36|density(density_scale)}}px;
   margin: 3px;
   padding: 3px;
-  border-right: {{12|density(density_scale)}}px solid {{secondaryDarkColor}};
-  border-left: {{12|density(density_scale)}}px solid {{secondaryDarkColor}};
+  border-right: 12px solid {{secondaryDarkColor}};
+  border-left: 12px solid {{secondaryDarkColor}};
 }
 
 QToolButton:hover {
   background: {{secondaryLightColor}};
-  border-right: {{12|density(density_scale)}}px solid {{secondaryLightColor}};
-  border-left: {{12|density(density_scale)}}px solid {{secondaryLightColor}};
+  border-right: 12px solid {{secondaryLightColor}};
+  border-left: 12px solid {{secondaryLightColor}};
 }
 
 QToolButton:pressed {
   background: {{secondaryColor}};
-  border-right: {{12|density(density_scale)}}px solid {{secondaryColor}};
-  border-left: {{12|density(density_scale)}}px solid {{secondaryColor}};
+  border-right: 12px solid {{secondaryColor}};
+  border-left: 12px solid {{secondaryColor}};
 }
 
 QToolButton:checked {
   background: {{secondaryLightColor}};
-  border-left: {{12|density(density_scale)}}px solid {{secondaryLightColor}};
-  border-right: {{12|density(density_scale)}}px solid {{primaryColor}};
+  border-left: 12px solid {{secondaryLightColor}};
+  border-right: 12px solid {{primaryColor}};
 }
 
 /*  ------------------------------------------------------------------------  */
