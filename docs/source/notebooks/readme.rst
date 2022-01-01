@@ -39,6 +39,7 @@ Navigation
 -  `Run examples <#run-examples>`__
 -  `New themes <#new-themes>`__
 -  `Change theme in runtime <#change-theme-in-runtime>`__
+-  `Export theme <#export-theme>`__
 -  `Density scale <#density-scale>`__
 
 Install
@@ -350,6 +351,79 @@ the main directory as ``my_theme.xml``
 
 A full set of examples are available in the `exmaples
 directory <https://github.com/UN-GCPDS/qt-material/blob/master/examples/runtime/>`__
+
+Export theme
+------------
+
+This feature able to use ``qt-material`` themes into ``Qt``
+implementations using only local files.
+
+.. code:: ipython3
+
+    from qt_material import export_theme
+    
+    extra = {
+    
+        # Button colors
+        'danger': '#dc3545',
+        'warning': '#ffc107',
+        'success': '#17a2b8',
+    
+        # Font
+        'font_family': 'monoespace',
+        'font_size': '13px',
+        'line_height': '13px',
+    
+        # Density Scale
+        'density_scale': '0',
+    
+        # environ
+        'pyside6': True,
+        'linux': True,
+    
+    }
+    
+    export_theme(theme='dark_teal.xml', 
+                 qss='dark_teal.qss', 
+                 rcc='resources.rcc',
+                 output='theme', 
+                 prefix='icon:/', 
+                 invert_secondary=False, 
+                 extra=extra,
+                )
+
+This script will generate both ``dark_teal.qss`` and ``resources.rcc``
+and a folder with all theme icons called ``theme``.
+
+The files generated can be integrated into a ``PySide6`` application
+just with:
+
+.. code:: ipython3
+
+    import sys
+    
+    from PySide6 import QtWidgets
+    from PySide6.QtCore import QDir
+    from __feature__ import snake_case, true_property
+    
+    # Create application
+    app = QtWidgets.QApplication(sys.argv)
+    
+    # Load styles
+    with open('dark_teal.qss', 'r') as file:
+        app.style_sheet = file.read()
+    
+    # Load icons
+    QDir.add_search_path('icon', 'theme')
+    
+    # App
+    window = QtWidgets.QMainWindow()
+    checkbox = QtWidgets.QCheckBox(window)
+    checkbox.text = 'CheckBox'
+    window.show()
+    app.exec()
+
+This files can also be used into non ``Python`` environs like ``C++``.
 
 Density scale
 -------------
