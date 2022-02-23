@@ -190,7 +190,7 @@ QComboBox {
   border-radius: 0px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  height: {{36|density(density_scale)}}px;
+  height: {{36|density(density_scale, border=2)}}px;
 }
 
 QComboBox:disabled {
