@@ -16,7 +16,7 @@ extra = {
     'density_scale': '0',
 
     # environ
-    'pyside2': True,
+    'pyside6': True,
     'linux': True,
 
 }

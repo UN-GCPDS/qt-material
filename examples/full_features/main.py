@@ -137,6 +137,8 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
             self.main.pushButton_folder_dialog.clicked.connect(
                 lambda: QFileDialog.get_existing_directory(self.main))
 
+        self.main.comboBox_8.style_sheet = """*{border-color: red; color: red}"""
+
     # ----------------------------------------------------------------------
     def custom_styles(self):
         """"""

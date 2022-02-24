@@ -48,7 +48,8 @@ def export_theme(theme='', qss=None, rcc=None, invert_secondary=False, extra={},
     if not os.path.isabs(output) and not output.startswith('.'):
             output = f'.{output}'
 
-    stylesheet = build_stylesheet(theme, invert_secondary, extra, output)
+    stylesheet = build_stylesheet(
+        theme, invert_secondary, extra, output, export=True)
 
     if output.startswith('.'):
         output = output[1:]
@@ -81,12 +82,14 @@ def export_theme(theme='', qss=None, rcc=None, invert_secondary=False, extra={},
 
 
 # ----------------------------------------------------------------------
-def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme', template=TEMPLATE_FILE):
+def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme', template=TEMPLATE_FILE, export=False):
     """"""
-    try:
-        add_fonts()
-    except Exception as e:
-        logging.warning(e)
+
+    if not export:
+        try:
+            add_fonts()
+        except Exception as e:
+            logging.warning(e)
 
     theme = get_theme(theme, invert_secondary)
     if theme is None:
