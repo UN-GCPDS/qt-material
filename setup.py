@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='qt-material',
-    version='2.8.19',
+    version='2.10',
     packages=['qt_material',
               'qt_material.resources',
               'qt_material.resources.source'],
@@ -23,7 +23,7 @@ setup(
 
     install_requires=['Jinja2'],
 
-    python_requires='>=3.8',
+    python_requires='>=3.7',
 
     include_package_data=True,
     license='BSD-2-Clause',
