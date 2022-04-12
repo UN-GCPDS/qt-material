@@ -149,7 +149,7 @@ def build_stylesheet(theme='', invert_secondary=False, extra={}, parent='theme',
         'pyside6': 'PySide6' in sys.modules,
     }
 
-    environ.update(theme)
+    environ |= theme
     return stylesheet.render(environ)
 
 
@@ -222,8 +222,6 @@ def apply_stylesheet(app, theme='', style=None, save_as=None, invert_secondary=F
                 app.style = style
         except:
             logging.error(f"The style '{style}' does not exist.")
-            pass
-
     stylesheet = build_stylesheet(
         theme, invert_secondary, extra, parent)
     if stylesheet is None:
@@ -242,7 +240,7 @@ def apply_stylesheet(app, theme='', style=None, save_as=None, invert_secondary=F
 # ----------------------------------------------------------------------
 def opacity(theme, value=0.5):
     """"""
-    r, g, b = theme[1:][0:2], theme[1:][2:4], theme[1:][4:]
+    r, g, b = theme[1:][:2], theme[1:][2:4], theme[1:][4:]
     r, g, b = int(r, 16), int(g, 16), int(b, 16)
 
     return f'rgba({r}, {g}, {b}, {value})'
@@ -264,8 +262,7 @@ def density(value, density_scale, border=0, scale=1, density_interval=4):
     density = (value + (density_interval * int(density_scale)) -
                (border * 2)) * scale
 
-    if density < 0:
-        density = 0
+    density = max(density, 0)
     return density
 
 
