@@ -249,9 +249,6 @@ def setup(app):
 highlight_language = 'none'
 html_sourcelink_suffix = ''
 
-# nbsphinx_execute_arguments = [
-    # "--InlineBackend.figure_formats={'svg', 'pdf'}",
-    # "--InlineBackend.rc={'figure.dpi': 96}",
 # ]
 
 nbsphinx_execute = 'never'
@@ -278,10 +275,12 @@ notebooks_list = os.listdir(os.path.join(
     os.path.abspath(os.path.dirname(__file__)), notebooks_dir))
 notebooks_list = filter(lambda s: not s.startswith('__'), notebooks_list)
 
-notebooks = []
-for notebook in notebooks_list:
-    if notebook not in ['readme.ipynb', 'license.ipynb'] and notebook.endswith('.ipynb'):
-        notebooks.append(f"{notebooks_dir}/{notebook.replace('.ipynb', '')}")
+notebooks = [
+    f"{notebooks_dir}/{notebook.replace('.ipynb', '')}"
+    for notebook in notebooks_list
+    if notebook not in ['readme.ipynb', 'license.ipynb']
+    and notebook.endswith('.ipynb')
+]
 
 notebooks = '\n   '.join(sorted(notebooks))
 
