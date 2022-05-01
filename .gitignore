@@ -137,5 +137,7 @@ dmypy.json
 *.wpu
 *.h5
 
+screenshots/*
+
 test/my_theme.xml
 sandbox
