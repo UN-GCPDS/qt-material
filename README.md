@@ -232,7 +232,7 @@ python main.py --pyside6
 
 ## New themes
 
-Do you have a custom theme? it looks good? create a [pull request](https://github.com/UN-GCPDS/qt-material/pulls) in [themes folder](https://github.com/UN-GCPDS/qt-material/tree/master/qt_material/themes>)  and share it with all users.
+Do you have a custom theme? it looks good? create a [pull request](https://github.com/UN-GCPDS/qt-material/pulls) in [themes folder](https://github.com/UN-GCPDS/qt-material/tree/master/qt_material/themes)  and share it with all users.
 
 
 ## Change theme in runtime
