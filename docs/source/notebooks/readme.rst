@@ -1,8 +1,8 @@
 Qt-Material
 ===========
 
-This is another stylesheet for **PySide6**, **PySide2** and **PyQt5**,
-which looks like Material Design (close enough).
+This is another stylesheet for **PySide6**, **PySide2**, **PyQt5** and
+**PyQt6**, which looks like Material Design (close enough).
 
 |GitHub top language| |PyPI - License| |PyPI| |PyPI - Status| |PyPI -
 Python Version| |GitHub last commit| |CodeFactor Grade| |Documentation
