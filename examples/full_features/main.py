@@ -2,9 +2,6 @@ import os
 import sys
 import logging
 from multiprocessing import freeze_support
-# import psutil
-# import signal
-# import importlib.resources
 
 if '--pyside2' in sys.argv:
     from PySide2.QtWidgets import QApplication, QMainWindow, QFileDialog
@@ -55,18 +52,14 @@ except:
 
 # Extra stylesheets
 extra = {
-
     # Button colors
     'danger': '#dc3545',
     'warning': '#ffc107',
     'success': '#17a2b8',
-
     # Font
     'font_family': 'Roboto',
-
     # Density
     'density_scale': '0',
-
     # Button Shape
     'button_shape': 'default',
 }
@@ -83,7 +76,7 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
             self.main = QUiLoader().load('main_window.ui', self)
             wt = 'PySide2'
 
-        elif'--pyside6' in sys.argv:
+        elif '--pyside6' in sys.argv:
             self.main = QUiLoader().load('main_window.ui', self)
             wt = 'PySide6'
 
@@ -97,7 +90,8 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
 
         else:
             logging.error(
-                'must include --pyside2, --pyside6 or --pyqt5 in args!')
+                'must include --pyside2, --pyside6 or --pyqt5 in args!'
+            )
             sys.exit()
 
         try:
@@ -118,26 +112,32 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
         try:
             self.main.setWindowIcon(logo)
             self.main.actionToolbar.setIcon(logo)
-            [self.main.listWidget_2.item(i).setIcon(logo_frame)
-             for i in range(self.main.listWidget_2.count())]
+            [
+                self.main.listWidget_2.item(i).setIcon(logo_frame)
+                for i in range(self.main.listWidget_2.count())
+            ]
         except:
             self.main.window_icon = logo
             self.main.actionToolbar.icon = logo
-            [setattr(self.main.listWidget_2.item(i), 'icon', logo_frame)
-             for i in range(self.main.listWidget_2.count)]
+            [
+                setattr(self.main.listWidget_2.item(i), 'icon', logo_frame)
+                for i in range(self.main.listWidget_2.count)
+            ]
 
         if hasattr(QFileDialog, 'getExistingDirectory'):
             self.main.pushButton_file_dialog.clicked.connect(
-                lambda: QFileDialog.getOpenFileName(self.main))
+                lambda: QFileDialog.getOpenFileName(self.main)
+            )
             self.main.pushButton_folder_dialog.clicked.connect(
-                lambda: QFileDialog.getExistingDirectory(self.main))
+                lambda: QFileDialog.getExistingDirectory(self.main)
+            )
         else:
             self.main.pushButton_file_dialog.clicked.connect(
-                lambda: QFileDialog.get_open_file_name(self.main))
+                lambda: QFileDialog.get_open_file_name(self.main)
+            )
             self.main.pushButton_folder_dialog.clicked.connect(
-                lambda: QFileDialog.get_existing_directory(self.main))
-
-        self.main.comboBox_8.style_sheet = """*{border-color: red; color: red}"""
+                lambda: QFileDialog.get_existing_directory(self.main)
+            )
 
     # ----------------------------------------------------------------------
     def custom_styles(self):
@@ -145,11 +145,15 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
         for i in range(self.main.toolBar_vertical.layout().count()):
 
             try:
-                tool_button = self.main.toolBar_vertical.layout().itemAt(i).widget()
+                tool_button = (
+                    self.main.toolBar_vertical.layout().itemAt(i).widget()
+                )
                 tool_button.setMaximumWidth(150)
                 tool_button.setMinimumWidth(150)
             except:
-                tool_button = self.main.toolBar_vertical.layout().item_at(i).widget()
+                tool_button = (
+                    self.main.toolBar_vertical.layout().item_at(i).widget()
+                )
                 tool_button.maximum_width = 150
                 tool_button.minimum_width = 150
         try:
@@ -189,13 +193,14 @@ if __name__ == "__main__":
         theme = 'default'
 
     # Set theme on in itialization
-    apply_stylesheet(app, theme + '.xml',
-                     invert_secondary=(
-                         'light' in theme and 'dark' not in theme),
-                     extra=extra)
+    apply_stylesheet(
+        app,
+        theme + '.xml',
+        invert_secondary=('light' in theme and 'dark' not in theme),
+        extra=extra,
+    )
 
     frame = RuntimeStylesheets()
-
     try:
         frame.main.showMaximized()
     except:
@@ -205,11 +210,3 @@ if __name__ == "__main__":
         app.exec()
     else:
         app.exec_()
-
-
-
-
-
-
-
-
