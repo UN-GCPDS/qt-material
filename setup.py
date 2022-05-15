@@ -11,7 +11,7 @@ os.chdir(
 
 setup(
     name='qt-material',
-    version='2.12',
+    version='2.13',
     packages=[
         'qt_material',
         'qt_material.resources',

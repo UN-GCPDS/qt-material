@@ -298,6 +298,7 @@ def apply_stylesheet(
     invert_secondary=False,
     extra={},
     parent='theme',
+    css_file=None,
 ):
     """"""
     if style:
@@ -322,6 +323,10 @@ def apply_stylesheet(
     if save_as:
         with open(save_as, 'w') as file:
             file.writelines(stylesheet)
+
+    if css_file and os.path.exists(css_file):
+        with open(css_file) as file:
+            stylesheet += file.read().format(**os.environ)
 
     try:
         app.setStyleSheet(stylesheet)
@@ -718,7 +723,8 @@ class QtStyleTools:
         ]
 
         self.custom_colors = {
-            v: os.environ[f'QTMATERIAL_{v.upper()}'] for v in self.colors
+            v: os.environ.get(f'QTMATERIAL_{v.upper()}', '')
+            for v in self.colors
         }
 
         if 'PySide2' in sys.modules or 'PySide6' in sys.modules:

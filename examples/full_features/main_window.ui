@@ -837,6 +837,9 @@
           <property name="currentIndex">
            <number>0</number>
           </property>
+          <property name="usesScrollButtons">
+           <bool>true</bool>
+          </property>
           <property name="tabsClosable">
            <bool>true</bool>
           </property>
@@ -2001,8 +2004,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>96</width>
-             <height>26</height>
+             <width>647</width>
+             <height>266</height>
             </rect>
            </property>
            <attribute name="label">
@@ -2025,7 +2028,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>404</width>
+             <width>626</width>
              <height>328</height>
             </rect>
            </property>
@@ -2071,7 +2074,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>608</width>
+             <width>626</width>
              <height>408</height>
             </rect>
            </property>
@@ -2756,7 +2759,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
      <bool>false</bool>
     </property>
     <property name="title">
-     <string>Menu disabled</string>
+     <string>Menu3 disabled</string>
     </property>
    </widget>
    <widget class="QMenu" name="menuStyles">
@@ -2782,12 +2785,18 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
     <addaction name="separator"/>
     <addaction name="actionClose"/>
    </widget>
+   <widget class="QMenu" name="menuMenu3">
+    <property name="title">
+     <string>Menu4</string>
+    </property>
+   </widget>
    <addaction name="menuStyles"/>
    <addaction name="menuDensity"/>
    <addaction name="menumenu"/>
    <addaction name="menumenu2"/>
    <addaction name="menuMenu_with_icons"/>
    <addaction name="menumenu_disabled"/>
+   <addaction name="menuMenu3"/>
   </widget>
   <action name="actionSubmenu_2">
    <property name="checkable">

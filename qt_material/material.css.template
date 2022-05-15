@@ -382,44 +382,33 @@ QTabBar::tab:left:hover {
 
 QTabBar QToolButton:hover,
 QTabBar QToolButton {
-  border: 20px;
-  background-color: {{secondaryDarkColor}};
+  border: 0px;
+  background-color: {{secondaryColor}};
+  background: {{secondaryColor}};
 }
 
 QTabBar QToolButton::up-arrow {
-  image: url(icon:/disabled/uparrow2.svg);
-}
-
-QTabBar QToolButton::up-arrow:hover {
   image: url(icon:/primary/uparrow2.svg);
+  width: {{28|density(density_scale)}}px;
 }
 
 QTabBar QToolButton::down-arrow {
-  image: url(icon:/disabled/downarrow2.svg);
-}
-
-QTabBar QToolButton::down-arrow:hover {
   image: url(icon:/primary/downarrow2.svg);
+  width: {{28|density(density_scale)}}px;
 }
 
 QTabBar QToolButton::right-arrow {
   image: url(icon:/primary/rightarrow2.svg);
-}
-
-QTabBar QToolButton::right-arrow:hover {
-  image: url(icon:/disabled/rightarrow2.svg);
+  height: {{28|density(density_scale)}}px;
 }
 
 QTabBar QToolButton::left-arrow {
   image: url(icon:/primary/leftarrow2.svg);
-}
-
-QTabBar QToolButton::left-arrow:hover {
-  image: url(icon:/disabled/leftarrow2.svg);
+  height: {{28|density(density_scale)}}px;
 }
 
 QTabBar::close-button {
-  image: url(icon:/disabled/tab_close.svg);
+  image: url(icon:/primary/tab_close.svg);
 }
 
 QTabBar::close-button:hover {
