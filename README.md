@@ -377,3 +377,17 @@ apply_stylesheet(app, 'default', invert_secondary=False, extra=extra)
 ```
 
 ![dock](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/density/density.gif)
+
+## Troubleshoots
+
+### QMenu
+
+`QMenu` has multiple rendering for each Qt backend, and for each operating system. Even can be related with the style, like [fusion](https://doc.qt.io/qt-5/qtquickcontrols2-fusion.html). Then, the `extra` argument also supports`QMenu` parameters to configure this widgest for specific combinations. 
+
+
+```python
+extra['QMenu'] = {
+    'height': 50,
+    'padding': '50px 50px 50px 50px',  # top, right, bottom, left
+}
+```

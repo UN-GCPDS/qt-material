@@ -64,6 +64,10 @@ extra = {
     'button_shape': 'default',
 }
 
+extra['QMenu'] = {
+    'height': 50,
+    'padding': '50px 50px 50px 50px',  # top, right, bottom, left
+}
 
 ########################################################################
 class RuntimeStylesheets(QMainWindow, QtStyleTools):

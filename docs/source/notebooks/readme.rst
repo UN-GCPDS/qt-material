@@ -445,3 +445,22 @@ scale**, by default is ``0``.
    :alt: dock
 
    dock
+
+Troubleshoots
+-------------
+
+QMenu
+~~~~~
+
+``QMenu`` has multiple rendering for each Qt backend, and for each
+operating system. Even can be related with the style, like
+`fusion <https://doc.qt.io/qt-5/qtquickcontrols2-fusion.html>`__. Then,
+the ``extra`` argument also supports\ ``QMenu`` parameters to configure
+this widgest for specific combinations.
+
+.. code:: ipython3
+
+    extra['QMenu'] = {
+        'height': 50,
+        'padding': '50px 50px 50px 50px',  # top, right, bottom, left
+    }
