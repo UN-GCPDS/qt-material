@@ -310,6 +310,11 @@ def apply_stylesheet(
             logging.error(f"The style '{style}' does not exist.")
             pass
 
+    if 'QMenu' in extra:
+        for k in extra['QMenu']:
+            extra[f'qmenu_{k}'] = extra['QMenu'][k]
+        extra['QMenu'] = True
+
     stylesheet = build_stylesheet(theme, invert_secondary, extra, parent)
     if stylesheet is None:
         return

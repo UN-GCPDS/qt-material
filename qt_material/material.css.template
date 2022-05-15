@@ -654,21 +654,30 @@ QComboBox::indicator:checked:selected {
 QComboBox::item,
 QCalendarWidget QMenu::item,
 QMenu::item {
-  height: {{28|density(density_scale)}}px;
+  {% if QMenu %}
+    height: {{qmenu_height}}px;
+  {% else %}
+    height: {{28|density(density_scale)}}px;
+  {% endif %}
   border: 8px solid transparent;
   color: {{secondaryTextColor}};
 }
 
 QCalendarWidget QMenu::item,
 QMenu::item {
-  {% if pyside6 or pyqt6 %}
-    padding: 0px 24px 0px 8px;  /* pyside6 or pyqt6 */
-  {% elif pyqt5 %}
-    padding: 0px {{24|density(density_scale)}}px 0px 8px;  /* pyqt5 */
-  {% elif pyside2 %}
-    padding: 0px {{32|density(density_scale)}}px 0px {{32|density(density_scale)}}px;  /* pyside2 */
+  {% if QMenu %}
+    padding: {{qmenu_padding}};
+  {% else %}
+    {% if pyside6 or pyqt6 %}
+      padding: 0px {{24|density(density_scale)}}px 0px 8px;  /* pyside6 or pyqt6 */
+    {% elif pyqt5 %}
+      padding: 0px {{24|density(density_scale)}}px 0px 8px;  /* pyqt5 */
+    {% elif pyside2 %}
+      padding: 0px {{32|density(density_scale)}}px 0px {{32|density(density_scale)}}px;  /* pyside2 */
+    {% endif %}
   {% endif %}
 }
+
 
 QComboBox::item:selected,
 QCalendarWidget QMenu::item:selected,
