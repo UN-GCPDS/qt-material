@@ -11,7 +11,14 @@ class ResourseGenerator:
     """"""
 
     # ----------------------------------------------------------------------
-    def __init__(self, primary, secondary, disabled, source, parent='theme'):
+    def __init__(
+        self,
+        primary,
+        secondary,
+        disabled,
+        source,
+        parent='theme',
+    ):
         """Constructor"""
 
         if parent.startswith('/'):
@@ -21,9 +28,12 @@ class ResourseGenerator:
         else:
             self.index = os.path.join(RESOURCES_PATH, parent)
 
+        active = '#707070'
+
         self.contex = [
             (os.path.join(self.index, 'disabled'), disabled),
             (os.path.join(self.index, 'primary'), primary),
+            (os.path.join(self.index, 'active'), active),
         ]
 
         self.source = source
@@ -47,7 +57,8 @@ class ResourseGenerator:
                 for folder, color in self.contex:
                     new_content = self.replace_color(content_original, color)
                     new_content = self.replace_color(
-                        new_content, self.secondary, '#ff0000')
+                        new_content, self.secondary, '#ff0000'
+                    )
 
                     file_to_write = os.path.join(folder, icon)
                     with open(file_to_write, 'w') as file_output:
@@ -56,15 +67,19 @@ class ResourseGenerator:
     # ----------------------------------------------------------------------
     def replace_color(self, content, replace, color='#0000ff'):
         """"""
-        colors = [color] + [''.join(list(color)[:i] +
-                                    ['\\\n'] + list(color)[i:]) for i in range(1, 7)]
+        colors = [color] + [
+            ''.join(list(color)[:i] + ['\\\n'] + list(color)[i:])
+            for i in range(1, 7)
+        ]
         for c in colors:
             content = content.replace(c, replace)
 
         replace = '#ffffff00'
         color = '#000000'
-        colors = [color] + [''.join(list(color)[:i] +
-                                    ['\\\n'] + list(color)[i:]) for i in range(1, 7)]
+        colors = [color] + [
+            ''.join(list(color)[:i] + ['\\\n'] + list(color)[i:])
+            for i in range(1, 7)
+        ]
         for c in colors:
             content = content.replace(c, replace)
 

@@ -1,5 +1,5 @@
-Qt-Material
-===========
+# Qt-Material
+
 This is another stylesheet for **PySide6**, **PySide2**, **PyQt5** and **PyQt6**, which looks like Material Design (close enough).
 
 ![GitHub top language](https://img.shields.io/github/languages/top/un-gcpds/qt-material)
@@ -32,6 +32,7 @@ And light:
   * [Change theme in runtime](#change-theme-in-runtime)
   * [Export theme](#export-theme)
   * [Density scale](#density-scale)
+  * [Troubleshoots](#troubleshoots)
 
 ## Install
 
@@ -200,8 +201,13 @@ Then, the current stylesheet can be extended just with:
 
 
 ```python
-apply_stylesheet(app, theme='light_blue.xml')
+apply_stylesheet(app, theme='light_blue.xml', css_file='custom.css')
+```
 
+The stylesheet can also be changed on runtime by:
+
+
+```python
 stylesheet = app.styleSheet()
 with open('custom.css') as file:
     app.setStyleSheet(stylesheet + file.read().format(**os.environ))
@@ -382,7 +388,7 @@ apply_stylesheet(app, 'default', invert_secondary=False, extra=extra)
 
 ### QMenu
 
-`QMenu` has multiple rendering for each Qt backend, and for each operating system. Even can be related with the style, like [fusion](https://doc.qt.io/qt-5/qtquickcontrols2-fusion.html). Then, the `extra` argument also supports`QMenu` parameters to configure this widgest for specific combinations. 
+`QMenu` has multiple rendering for each Qt backend, and for each operating system. Even can be related with the style, like [fusion](https://doc.qt.io/qt-5/qtquickcontrols2-fusion.html). Then, the `extra` argument also supports`QMenu` parameters to configure this widgest for specific combinations. This options are not affected by **density scale**.
 
 
 ```python

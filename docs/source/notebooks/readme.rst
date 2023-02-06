@@ -41,6 +41,7 @@ Navigation
 -  `Change theme in runtime <#change-theme-in-runtime>`__
 -  `Export theme <#export-theme>`__
 -  `Density scale <#density-scale>`__
+-  `Troubleshoots <#troubleshoots>`__
 
 Install
 -------
@@ -238,8 +239,12 @@ Then, the current stylesheet can be extended just with:
 
 .. code:: ipython3
 
-    apply_stylesheet(app, theme='light_blue.xml')
-    
+    apply_stylesheet(app, theme='light_blue.xml', css_file='custom.css')
+
+The stylesheet can also be changed on runtime by:
+
+.. code:: ipython3
+
     stylesheet = app.styleSheet()
     with open('custom.css') as file:
         app.setStyleSheet(stylesheet + file.read().format(**os.environ))
@@ -456,7 +461,8 @@ QMenu
 operating system. Even can be related with the style, like
 `fusion <https://doc.qt.io/qt-5/qtquickcontrols2-fusion.html>`__. Then,
 the ``extra`` argument also supports\ ``QMenu`` parameters to configure
-this widgest for specific combinations.
+this widgest for specific combinations. This options are not affected by
+**density scale**.
 
 .. code:: ipython3
 

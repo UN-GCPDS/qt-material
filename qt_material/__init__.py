@@ -344,7 +344,9 @@ def opacity(theme, value=0.5):
 
 
 # ----------------------------------------------------------------------
-def density(value, density_scale, border=0, scale=1, density_interval=4):
+def density(
+    value, density_scale, border=0, scale=1, density_interval=4, min_=4
+):
     """"""
     # https://material.io/develop/web/supporting/density
     if isinstance(value, str) and value.startswith('@'):
@@ -360,8 +362,8 @@ def density(value, density_scale, border=0, scale=1, density_interval=4):
         value + (density_interval * int(density_scale)) - (border * 2)
     ) * scale
 
-    if density < 0:
-        density = 0
+    if density <= 0:
+        density = min_
     return density
 
 
