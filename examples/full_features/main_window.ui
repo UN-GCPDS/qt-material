@@ -835,7 +835,7 @@
         <item row="0" column="0">
          <widget class="QTabWidget" name="tabWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>7</number>
           </property>
           <property name="usesScrollButtons">
            <bool>true</bool>
@@ -1997,14 +1997,14 @@
         <item row="0" column="0" rowspan="2" colspan="2">
          <widget class="QToolBox" name="toolBox">
           <property name="currentIndex">
-           <number>2</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="page">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>647</width>
+             <width>629</width>
              <height>266</height>
             </rect>
            </property>
@@ -2028,8 +2028,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>626</width>
-             <height>328</height>
+             <width>608</width>
+             <height>286</height>
             </rect>
            </property>
            <attribute name="label">
@@ -2059,7 +2059,21 @@
              <widget class="QDateTimeEdit" name="dateTimeEdit"/>
             </item>
             <item row="0" column="1">
-             <widget class="QDateEdit" name="dateEdit"/>
+             <widget class="QDateEdit" name="dateEdit">
+              <property name="dateTime">
+               <datetime>
+                <hour>0</hour>
+                <minute>0</minute>
+                <second>0</second>
+                <year>1991</year>
+                <month>2</month>
+                <day>8</day>
+               </datetime>
+              </property>
+              <property name="calendarPopup">
+               <bool>true</bool>
+              </property>
+             </widget>
             </item>
             <item row="1" column="1">
              <widget class="QKeySequenceEdit" name="keySequenceEdit"/>
@@ -2074,7 +2088,7 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>626</width>
+             <width>608</width>
              <height>408</height>
             </rect>
            </property>

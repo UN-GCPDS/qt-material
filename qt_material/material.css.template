@@ -120,6 +120,7 @@ QTabWidget::pane {
 /*  ------------------------------------------------------------------------  */
 /*  Inputs  */
 
+QDateEdit,
 QDateTimeEdit,
 QSpinBox,
 QDoubleSpinBox,
@@ -133,6 +134,7 @@ QPushButton {
   height: {{36|density(density_scale, border=2)}}px;
 }
 
+QDateEdit,
 QDateTimeEdit,
 QSpinBox,
 QDoubleSpinBox,
@@ -165,6 +167,7 @@ QTextEdit {
   background-color: {{secondaryColor}};
 }
 
+QDateEdit:disabled,
 QDateTimeEdit:disabled,
 QSpinBox:disabled,
 QDoubleSpinBox:disabled,
@@ -184,6 +187,7 @@ QLineEdit:disabled {
 /*  ------------------------------------------------------------------------  */
 /*  QComboBox  */
 
+QDateEdit,
 QComboBox {
   color: {{primaryTextColor}};
   border: 2px solid {{primaryColor}};
@@ -196,43 +200,54 @@ QComboBox {
   border-width: 0 0 2px 0;
 }
 
+QDateEdit:disabled,
 QComboBox:disabled {
   color: {{secondaryTextColor|opacity(0.2)}};
   background-color: {{secondaryColor|opacity(0.3)}};
   border-bottom: 2px solid {{secondaryColor}};
 }
 
+QDateEdit::drop-down,
 QComboBox::drop-down {
   border: none;
   color: {{primaryColor}};
   width: 20px;
 }
 
+QDateEdit::down-arrow,
 QComboBox::down-arrow {
   image: url(icon:/active/downarrow.svg);
   margin-right: {{12|density(density_scale)}}px;
 }
+
+
+QDateEdit::down-arrow:focus,
 QComboBox::down-arrow:focus {
   image: url(icon:/primary/downarrow.svg);
   margin-right: {{12|density(density_scale)}}px;
 }
 
+QDateEdit::down-arrow:disabled,
 QComboBox::down-arrow:disabled {
   image: url(icon:/disabled/downarrow.svg);
   margin-right: {{12|density(density_scale)}}px;
 }
 
+QDateEdit QAbstractItemView,
 QComboBox QAbstractItemView {
   background-color: {{secondaryColor}};
   border: 2px solid {{secondaryLightColor}};
   border-radius: 4px;
 }
 
+QDateEdit[frame='false'],
 QComboBox[frame='false'] {
   color: {{secondaryTextColor}};
   background-color: transparent;
   border: 1px solid transparent;
 }
+
+QDateEdit[frame='false']:disabled,
 QComboBox[frame='false']:disabled {
   color: {{secondaryTextColor|opacity(0.2)}};
 }
@@ -628,6 +643,7 @@ QRadioButton::indicator:unchecked:disabled {
   image: url(icon:/disabled/radiobutton_unchecked.svg);
 }
 
+
 /*  ------------------------------------------------------------------------  */
 /*  QDockWidget  */
 
@@ -855,6 +871,14 @@ QScrollBar::sub-line:horizontal {
   height: 0px;
 }
 
+QScrollBar::sub-page:horizontal,
+QScrollBar::add-page:horizontal,
+QScrollBar::sub-page:vertical,
+QScrollBar::add-page:vertical,
+QScrolLBar:vertical {
+    background: transparent;
+}
+
 /*  ------------------------------------------------------------------------  */
 /*  QScrollBar-Big  */
 
@@ -917,22 +941,20 @@ QSlider::groove:vertical {
   width: 4px;
   background: #393939;
   margin: {{12|density(density_scale)}}px 0;
-  border-radius: {{24|density(density_scale)}}px;
 }
 
 QSlider::handle:horizontal {
   image: url(icon:/primary/slider.svg);
-  width: {{24|density(density_scale)}}px;
-  height: {{24|density(density_scale)}}px;
-  margin: -{{24|density(density_scale)}}px -{{12|density(density_scale)}}px;
+  width: {{18|density(density_scale)}}px;
+  height: {{18|density(density_scale)}}px;
+  margin: -{{18|density(density_scale)}}px -{{9|density(density_scale)}}px;
 }
 
 QSlider::handle:vertical {
   image: url(icon:/primary/slider.svg);
-  border-radius: {{24|density(density_scale)}}px;
-  width: {{24|density(density_scale)}}px;
-  height: {{24|density(density_scale)}}px;
-  margin: -{{12|density(density_scale)}}px -{{24|density(density_scale)}}px;
+  width: {{18|density(density_scale)}}px;
+  height: {{18|density(density_scale)}}px;
+  margin: -{{9|density(density_scale)}}px -{{18|density(density_scale)}}px;
 }
 
 QSlider::add-page {
@@ -1257,6 +1279,10 @@ QLCDNumber {
 
 /*  ------------------------------------------------------------------------  */
 /*  QCalendarWidget  */
+
+QCalendarWidget {
+  min-height: 300px;
+}
 
 #qt_calendar_prevmonth {
   qproperty-icon: url(icon:/primary/leftarrow.svg);
