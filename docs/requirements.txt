@@ -1,4 +1,4 @@
-ipython==7.16.3
+ipython==8.10.0
 ipykernel
 nbsphinx
 pygments>=2.4.1
