@@ -294,7 +294,7 @@ class RuntimeStylesheets(QMainWindow, QtStyleTools):
 
 ![dock](https://github.com/UN-GCPDS/qt-material/raw/master/docs/source/notebooks/_images/runtime_dock.gif)
 
-A full set of examples are available in the [exmaples directory](https://github.com/UN-GCPDS/qt-material/blob/master/examples/runtime/)
+A full set of examples are available in the [examples directory](https://github.com/UN-GCPDS/qt-material/blob/master/examples/runtime/)
 
 ## Export theme
 
@@ -388,7 +388,7 @@ apply_stylesheet(app, 'default', invert_secondary=False, extra=extra)
 
 ### QMenu
 
-`QMenu` has multiple rendering for each Qt backend, and for each operating system. Even can be related with the style, like [fusion](https://doc.qt.io/qt-5/qtquickcontrols2-fusion.html). Then, the `extra` argument also supports`QMenu` parameters to configure this widgest for specific combinations. This options are not affected by **density scale**.
+`QMenu` has multiple rendering for each Qt backend, and for each operating system. Even can be related with the style, like [fusion](https://doc.qt.io/qt-5/qtquickcontrols2-fusion.html). Then, the `extra` argument also supports`QMenu` parameters to configure this widget for specific combinations. This options are not affected by **density scale**.
 
 
 ```python
