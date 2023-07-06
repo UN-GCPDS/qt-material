@@ -197,7 +197,7 @@ if __name__ == "__main__":
     else:
         theme = 'default'
 
-    # Set theme on in itialization
+    # Set theme on in initialization
     apply_stylesheet(
         app,
         theme + '.xml',
