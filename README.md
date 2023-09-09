@@ -60,7 +60,7 @@ apply_stylesheet(app, theme='dark_teal.xml')
 
 # run
 window.show()
-app.exec_()
+app.exec()
 ```
 
 ## Themes
