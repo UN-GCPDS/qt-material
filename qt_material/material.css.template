@@ -185,11 +185,18 @@ QLineEdit:disabled {
 }
 
 /*  ------------------------------------------------------------------------  */
-/*  QComboBox  */
+/*  Default style when these widgets have no focus  */
 
+QLineEdit,
+QPlainTextEdit,
+QTextEdit,
+QSpinBox,
+QDoubleSpinBox,
 QDateEdit,
+QDateTimeEdit,
+QDateTime,
 QComboBox {
-  color: {{primaryTextColor}};
+  color: {{primaryColor|opacity(0.6)}};
   border: 2px solid {{primaryColor}};
   border-radius: 0px;
   border-top-left-radius: 4px;
@@ -1382,6 +1389,8 @@ QDateTimeEdit:focus,
 QSpinBox:focus,
 QDoubleSpinBox:focus,
 QLineEdit:focus,
+QPlainTextEdit:focus,
+QTextEdit:focus,
 QComboBox:focus {
   color: {{primaryColor}};
   border: 2px solid {{primaryColor}};
